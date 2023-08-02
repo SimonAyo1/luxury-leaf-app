@@ -42,7 +42,6 @@
               "src/assets/scss/app.scss",
               "src/styles.scss",
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
-
             ],
             "scripts": [
               "node_modules/isotope-layout/dist/isotope.pkgd.min.js"
@@ -95,12 +94,6 @@
             }
           }
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "LuxryLeafM:build"
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -127,42 +120,6 @@
           "configurations": {
             "production": {
               "devServerTarget": "LuxryLeafM:serve:production"
-            }
-          }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/LuxryLeafM/server",
-            "main": "server.ts",
-            "tsConfig": "tsconfig.server.json",
-            "sourceMap": true,
-            "optimization": false
-          },
-          "configurations": {
-            "production": {
-              "outputHashing": "media",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "sourceMap": false,
-              "optimization": true
-            }
-          }
-        },
-        "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
-          "options": {
-            "browserTarget": "LuxryLeafM:build",
-            "serverTarget": "LuxryLeafM:server"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "LuxryLeafM:build:production",
-              "serverTarget": "LuxryLeafM:server:production"
             }
           }
         },
