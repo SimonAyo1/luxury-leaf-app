@@ -1,0 +1,450 @@
+[
+  {
+    "id": 1,
+    "title": "Marijuana Product 1",
+    "description": "Description of marijuana product 1.",
+    "type": "marijuana",
+    "brand": "Brand 1",
+    "collection": ["on sale"],
+    "category": "marijuana",
+    "price": 100,
+    "sale": true,
+    "discount": "10",
+    "stock": 25,
+    "new": true,
+    "tags": ["sale"],
+    "variants": [
+      {
+        "variant_id": 101,
+        "id": 1,
+        "sku": "marijuana101",
+        "image_id": 111
+      }
+    ],
+    "images": [
+      {
+        "image_id": 111,
+        "id": 1,
+        "alt": "marijuana",
+        "src": "https://img.freepik.com/free-photo/cbd-oil-dropper-arrangement_23-2149013546.jpg?w=1060&t=st=1689261906~exp=1689262506~hmac=916161a3bf609f8d4fd6f43334e636bbbb262f6929e197993bc5d05a5bb68198",
+        "variant_id": [101]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Marijuana Product 2",
+    "description": "Description of marijuana product 2.",
+    "type": "marijuana",
+    "brand": "Brand 2",
+    "collection": [],
+    "category": "marijuana",
+    "price": 120,
+    "sale": false,
+    "discount": null,
+    "stock": 50,
+    "new": false,
+    "tags": [],
+    "variants": [
+      {
+        "variant_id": 201,
+        "id": 2,
+        "sku": "marijuana201",
+        "image_id": 211
+      }
+    ],
+    "images": [
+      {
+        "image_id": 211,
+        "id": 2,
+        "alt": "marijuana",
+        "src": "https://img.freepik.com/free-photo/healthy-argan-oil-assortment_23-2148989075.jpg?w=1060&t=st=1689262040~exp=1689262640~hmac=34856e4ee468d37e8ea819d8d5753a1d2ffd1eee3e902d7aea9341454d0d6577",
+        "variant_id": [201]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Hookah Product 1",
+    "description": "Description of hookah product 1.",
+    "type": "hookah",
+    "brand": "Brand 3",
+    "collection": ["on sale"],
+    "category": "hookah",
+    "price": 200,
+    "sale": true,
+    "discount": "15",
+    "stock": 10,
+    "new": true,
+    "tags": ["sale"],
+    "variants": [
+      {
+        "variant_id": 301,
+        "id": 3,
+        "sku": "hookah301",
+        "image_id": 311
+      }
+    ],
+    "images": [
+      {
+        "image_id": 311,
+        "id": 3,
+        "alt": "hookah",
+        "src": "https://img.freepik.com/free-photo/hookah-still-life-composition_23-2149213326.jpg?w=1060&t=st=1689262192~exp=1689262792~hmac=1573130f88b9cf4b8a5ca21f23e75835a6303fc5ceef31fe7792c6e27ed2886b",
+        "variant_id": [301]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Hookah Product 2",
+    "description": "Description of hookah product 2.",
+    "type": "hookah",
+    "brand": "Brand 4",
+    "collection": [],
+    "category": "hookah",
+    "price": 180,
+    "sale": false,
+    "discount": null,
+    "stock": 20,
+    "new": false,
+    "tags": [],
+    "variants": [
+      {
+        "variant_id": 401,
+        "id": 4,
+        "sku": "hookah401",
+        "image_id": 411
+      }
+    ],
+    "images": [
+      {
+        "image_id": 411,
+        "id": 4,
+        "alt": "hookah",
+        "src": "https://img.freepik.com/free-photo/hookah-still-life-arrangement_23-2149213287.jpg?w=1060&t=st=1689262397~exp=1689262997~hmac=ca05ad05fd4ab5fc8f24a0588c5139b09b4cc8dde624524c6785c12c10326565",
+        "variant_id": [401]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Indica Product 1",
+    "description": "Description of indica product 1.",
+    "type": "indica",
+    "brand": "Brand 5",
+    "collection": ["on sale"],
+    "category": "indica",
+    "price": 80,
+    "sale": true,
+    "discount": "20",
+    "stock": 15,
+    "new": true,
+    "tags": ["sale"],
+    "variants": [
+      {
+        "variant_id": 501,
+        "id": 5,
+        "sku": "indica501",
+        "image_id": 511
+      }
+    ],
+    "images": [
+      {
+        "image_id": 511,
+        "id": 5,
+        "alt": "indica",
+        "src": "https://img.freepik.com/free-photo/cannabis-oil-bottle-composition_23-2148977733.jpg?w=826&t=st=1689262453~exp=1689263053~hmac=703f11fc74f9d572bb6777f7a13eef9a53eedca1e65b331231abd0410c68e81f",
+        "variant_id": [501]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Indica Product 2",
+    "description": "Description of indica product 2.",
+    "type": "indica",
+    "brand": "Brand 6",
+    "collection": [],
+    "category": "indica",
+    "price": 90,
+    "sale": false,
+    "discount": null,
+    "stock": 30,
+    "new": false,
+    "tags": [],
+    "variants": [
+      {
+        "variant_id": 601,
+        "id": 6,
+        "sku": "indica601",
+        "image_id": 611
+      }
+    ],
+    "images": [
+      {
+        "image_id": 611,
+        "id": 6,
+        "alt": "indica",
+        "src": "https://img.freepik.com/free-photo/cannabis-oil-bottle-arrangement_23-2148977724.jpg?w=900&t=st=1689262480~exp=1689263080~hmac=3a352c0da9e12b61eaaedcf4076b4a199ee853792be955808741bf9c0ea4ed5e",
+        "variant_id": [601]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Cannabis Product 1",
+    "description": "Description of cannabis product 1.",
+    "type": "cannabis",
+    "brand": "Brand 7",
+    "collection": ["on sale"],
+    "category": "cannabis",
+    "price": 120,
+    "sale": true,
+    "discount": "15",
+    "stock": 25,
+    "new": true,
+    "tags": ["sale"],
+    "variants": [
+      {
+        "variant_id": 701,
+        "id": 7,
+        "sku": "cannabis701",
+        "image_id": 711
+      }
+    ],
+    "images": [
+      {
+        "image_id": 711,
+        "id": 7,
+        "alt": "cannabis",
+        "src": "https://img.freepik.com/free-photo/hemp-oil-that-is-paired-with-hemp-brown-wooden-floor_1150-18449.jpg?w=1060&t=st=1689267461~exp=1689268061~hmac=ebe4852308675dcc5eff660bde6f639f589afcec4663f047a57fff02f2e27844",
+        "variant_id": [701]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Cannabis Product 2",
+    "description": "Description of cannabis product 2.",
+    "type": "cannabis",
+    "brand": "Brand 8",
+    "collection": [],
+    "category": "cannabis",
+    "price": 110,
+    "sale": false,
+    "discount": null,
+    "stock": 40,
+    "new": false,
+    "tags": [],
+    "variants": [
+      {
+        "variant_id": 801,
+        "id": 8,
+        "sku": "cannabis801",
+        "image_id": 811
+      }
+    ],
+    "images": [
+      {
+        "image_id": 811,
+        "id": 8,
+        "alt": "cannabis",
+        "src": "https://img.freepik.com/free-photo/cannabis-oil-bottle-assortment_23-2148977688.jpg?w=1060&t=st=1689267520~exp=1689268120~hmac=b5a14fc9054fbdcc948d50ac8619b17cb2642c3d689e862b730571ef21baa5cd",
+        "variant_id": [801]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Sativa Product 1",
+    "description": "Description of sativa product 1.",
+    "type": "sativa",
+    "brand": "Brand 9",
+    "collection": ["on sale"],
+    "category": "sativa",
+    "price": 150,
+    "sale": true,
+    "discount": "10",
+    "stock": 20,
+    "new": true,
+    "tags": ["sale"],
+    "variants": [
+      {
+        "variant_id": 901,
+        "id": 9,
+        "sku": "sativa901",
+        "image_id": 911
+      }
+    ],
+    "images": [
+      {
+        "image_id": 911,
+        "id": 9,
+        "alt": "sativa",
+        "src": "https://img.freepik.com/free-photo/hemp-oil-from-hemp-seeds-leaves-medical-marijuana_1150-26680.jpg?w=1060&t=st=1689267595~exp=1689268195~hmac=af3d7204c128b9fb6c326adfa29dcae45a2be14b33591ba5ffdaa5e55fd1cbf5",
+        "variant_id": [901]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Sativa Product 2",
+    "description": "Description of sativa product 2.",
+    "type": "sativa",
+    "brand": "Brand 10",
+    "collection": [],
+    "category": "sativa",
+    "price": 160,
+    "sale": false,
+    "discount": null,
+    "stock": 35,
+    "new": false,
+    "tags": [],
+    "variants": [
+      {
+        "variant_id": 1001,
+        "id": 10,
+        "sku": "sativa1001",
+        "image_id": 1011
+      }
+    ],
+    "images": [
+      {
+        "image_id": 1011,
+        "id": 10,
+        "alt": "sativa",
+        "src": "https://img.freepik.com/free-photo/hemp-oil-from-hemp-seeds-leaves-medical-marijuana_1150-26677.jpg?w=1060&t=st=1689267640~exp=1689268240~hmac=890ed9476274c0742557bf5b3708e9973f31eb80ae03169316ed83c0abcb0fb4",
+        "variant_id": [1001]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "T-Shirt Product 1",
+    "description": "Description of T-shirt product 1.",
+    "type": "tshirt",
+    "brand": "Brand 11",
+    "collection": ["on sale"],
+    "category": "tshirt",
+    "price": 25,
+    "sale": true,
+    "discount": "20",
+    "stock": 50,
+    "new": true,
+    "tags": ["sale"],
+    "variants": [
+      {
+        "variant_id": 1101,
+        "id": 11,
+        "sku": "tshirt1101",
+        "image_id": 1111
+      }
+    ],
+    "images": [
+      {
+        "image_id": 1111,
+        "id": 11,
+        "alt": "tshirt",
+        "src": "https://img.freepik.com/free-photo/cannabis-marijuana-leaf-closeup_1150-15082.jpg?w=1060&t=st=1689267715~exp=1689268315~hmac=eadfad71725fee337f3684db4eabd3f72b60c1907a2e00484e74348bee7fa183",
+        "variant_id": [1101]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "T-Shirt Product 2",
+    "description": "Description of T-shirt product 2.",
+    "type": "tshirt",
+    "brand": "Brand 12",
+    "collection": [],
+    "category": "tshirt",
+    "price": 30,
+    "sale": false,
+    "discount": null,
+    "stock": 40,
+    "new": false,
+    "tags": [], 
+    "variants": [
+      {
+        "variant_id": 1201,
+        "id": 12,
+        "sku": "tshirt1201",
+        "image_id": 1211
+      }
+    ],
+    "images": [
+      {
+        "image_id": 1211,
+        "id": 12,
+        "alt": "tshirt",
+        "src": "https://img.freepik.com/free-photo/cbd-oil-dropper-assortment_23-2149013550.jpg?w=1060&t=st=1689267745~exp=1689268345~hmac=1058f40a58eda2ee208c716b5ab1bf871d46c4c0c415d7be85fe0fa240f5fd20",
+        "variant_id": [1201]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Marijuana Product 3",
+    "description": "Description of marijuana product 3.",
+    "type": "marijuana",
+    "brand": "Brand 2",
+    "collection": [],
+    "category": "marijuana",
+    "price": 120,
+    "sale": false,
+    "discount": null,
+    "stock": 50,
+    "new": false,
+    "tags": [],
+    "variants": [
+      {
+        "variant_id": 2201,
+        "id": 2,
+        "sku": "marijuana20",
+        "image_id": 211
+      }
+    ],
+    "images": [
+      {
+        "image_id": 2121,
+        "id": 21,
+        "alt": "marijuana",
+        "src": "https://img.freepik.com/free-photo/cannabis-oil-bottle-assortment_23-2148977693.jpg?w=1060&t=st=1689262074~exp=1689262674~hmac=f8925a41c47113273d4afa0aa35ccd5db1800034f77f7b3bc941937d6a805fbd",
+        "variant_id": [2121]
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "title": "Indica Product 4",
+    "description": "Description of indica product 4.",
+    "type": "indica",
+    "brand": "Brand 6",
+    "collection": [],
+    "category": "indica",
+    "price": 90,
+    "sale": false,
+    "discount": null,
+    "stock": 30,
+    "new": false,
+    "tags": [],
+    "variants": [
+      {
+        "variant_id": 6091,
+        "id": 61,
+        "sku": "indica601",
+        "image_id": 6119
+      }
+    ],
+    "images": [
+      {
+        "image_id": 6119,
+        "id": 6,
+        "alt": "indica",
+        "src": "https://img.freepik.com/free-photo/cannabis-oil-bottle-arrangement_23-2148977724.jpg?w=900&t=st=1689262480~exp=1689263080~hmac=3a352c0da9e12b61eaaedcf4076b4a199ee853792be955808741bf9c0ea4ed5e",
+        "variant_id": [6091]
+      }
+    ]
+  }
+]

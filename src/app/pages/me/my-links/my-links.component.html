@@ -1,0 +1,55 @@
+<div class="container mt-3">
+  <div
+    class="col-lg-12"
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    "
+  >
+    <div>
+      <h4>My Links</h4>
+    </div>
+    <div>
+      <button (click)="generateNewLink()" class="btn btn-primary btn-sm">
+        Generate New Link
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="links.length > 0; else noLinksMessage" class="mt-3">
+    <ul class="list-group">
+      <li *ngFor="let link of links; let i = index" class="list-group-item "  style="
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    ">
+        <div>
+          <a [href]="link.url" [class.disabled]="link.disabled">{{
+            link.url
+          }}</a>
+          <span class="badge bg-primary">{{ link.status }}</span>
+        </div>
+
+        <div>
+          <button
+            (click)="disableLink(link)"
+            [disabled]="link.disabled"
+            class="btn btn-warning btn-xs mx-2"
+          >
+            Disable
+          </button>
+          <button (click)="deleteLink(i)" class="btn btn-danger btn-xs">
+            Delete
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noLinksMessage>
+    <p>No links added yet.</p>
+  </ng-template>
+</div>

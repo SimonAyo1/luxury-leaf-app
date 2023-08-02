@@ -1,0 +1,30 @@
+<app-breadcrumb [title]="'Search'" [breadcrumb]="'Search'"></app-breadcrumb>
+<!-- section start -->
+<section class="authentication-page section-b-space">
+  <div class="container">
+    <section class="search-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+            <form class="form-header">
+              <div class="form-group">
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Search a Product">
+              </div>
+              <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="col-sm-12 text-center">
+      <img src="../../../../assets/images/icon/marijuana-packaging.svg" class="img-fluid mb-4">
+      <h3>Apologies! We do not have the product you were searching, check back
+        later. </h3>
+      <p>Please verify if there are any misspellings or consider using
+        alternative search terms.</p>
+      <a [routerLink]="['/store/collections']" class="btn btn-solid">continue
+        shopping</a>
+    </div>
+  </div>
+</section>
+<!-- section end -->

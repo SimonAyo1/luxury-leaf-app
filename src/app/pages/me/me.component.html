@@ -1,0 +1,41 @@
+<app-header-one
+  [sticky]="true"
+  *ngIf="url != '/pages/comingsoon'"
+></app-header-one>
+<app-breadcrumb [title]="'Dashboard'" [breadcrumb]="'Account'"></app-breadcrumb>
+<!-- section start -->
+<section class="section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="account-sidebar" (click)="ToggleDashboard()">
+          <a hre="javascript:void(0)" class="popup-btn"> my account </a>
+        </div>
+        <div class="dashboard-left" [class.open]="openDashboard">
+          <div class="collection-mobile-back" (click)="ToggleDashboard()">
+            <span class="filter-back">
+              <i class="fa fa-angle-left" aria-hidden="true"></i> back
+            </span>
+          </div>
+          <div class="block-content">
+            <ul>
+              <li routerLink="/me/account" routerLinkActive="active">
+                <a>My Account</a>
+              </li>
+              <li><a>My Orders</a></li>
+              <li routerLink="/me/wishlist" routerLinkActive="active"><a>My Wishlist</a></li>
+              <li routerLinkActive="active"><a>Membership</a></li>
+              <li routerLink="/me/my-links" routerLinkActive="active"><a>My Links</a></li>
+              <li routerLink="/me/change-password" routerLinkActive="active"><a>Change Password</a></li>
+              <li class="last" routerLinkActive="active" (click)="logout()"><a>Log Out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer-one *ngIf="url != '/pages/comingsoon'"></app-footer-one>

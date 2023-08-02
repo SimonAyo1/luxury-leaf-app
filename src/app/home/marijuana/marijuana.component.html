@@ -1,0 +1,142 @@
+<app-header-one [themeLogo]="themeLogo"></app-header-one>
+
+<!-- Home slider start-->
+<section class="p-0 service_slide">
+  <app-slider
+    [class]="'text-white'"
+    [sliders]="sliders"
+    [textClass]="'text-center p-center'"
+    [category]="'marijuana'"
+    [buttonClass]="'btn-green'"
+    [buttonText]="'shop now'"
+  >
+  </app-slider>
+</section>
+<!-- Home slider End -->
+
+<!-- service section start -->
+<section class="banner-padding absolute-banner pb-0 tools-service">
+  <div class="container absolute-bg">
+    <div class="service p-0">
+      <app-services></app-services>
+    </div>
+  </div>
+</section>
+<!-- service section end -->
+
+<!-- About section start -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="title3">
+          <h4>what we do</h4>
+          <h2 class="title-inner3">What Luxury Leaf Does</h2>
+          <div class="line"></div>
+        </div>
+        <div class="about-text">
+          <p>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui
+            blanditiis praesentium voluptatum deleniti atque corrupti quos
+            dolores et quas molestias excepturi sint occaecati cupiditate non
+            provident, similique sunt in culpa qui officia deserunt mollitia
+            animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
+            est et expedita distinctio. Nam libero tempore, cum soluta nobis est
+            eligendi optio cumque nihil impedit quo minus id quod maxime placeat
+            facere possimus, omnis voluptas assumenda est, omnis dolor
+            repellendus.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About section end -->
+<!-- section start -->
+<section class="section-b-space detail-cannabis bg-grey">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="detail_section">
+          <div>
+            <img
+              src="assets/images/icon/marijuana-scale.svg"
+              class="service-icon"
+              alt=""
+            />
+            <h4>100g Limit</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+              blanditiis cupiditate deleniti
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="detail_section">
+          <div>
+            <img
+              src="assets/images/icon/hookah.svg"
+              class="service-icon"
+              alt=""
+            />
+            <h4>18+ Only</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+              blanditiis cupiditate deleniti
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="detail_section">
+          <div>
+            <img
+              src="assets/images/icon/indica.svg"
+              class="service-icon"
+              alt=""
+            />
+            <h4>Trusted Source</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+              blanditiis cupiditate deleniti
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- section end -->
+
+<!-- product slider start -->
+<div class="title3 section-t-space">
+  <h4>special deals</h4>
+  <h2 class="title-inner3">new products</h2>
+  <div class="line"></div>
+</div>
+<section class="p-t-0 section-b-space tools-grey border-box">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let product of products">
+        <div class="product-box product-wrap">
+          <app-product-box-three
+            [product]="product"
+            [currency]="productService?.Currency"
+          >
+          </app-product-box-three>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- product slider end -->
+
+<app-age-verification></app-age-verification>
+<app-cart-variation [direction]="'right'"></app-cart-variation>
+<!-- Cart Open To Right Side-->
+<app-footer-one
+  [class]="'footer-5'"
+  [themeLogo]="themeFooterLogo"
+></app-footer-one>

@@ -1,0 +1,25 @@
+<app-breadcrumb [title]="'FAQ'" [breadcrumb]="'FAQ'"></app-breadcrumb>
+<!-- section start-->
+<section class="faq-section section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <ngb-accordion
+          [closeOthers]="true"
+          activeIds="static-1"
+          class="accordion theme-accordion"
+          id="accordionExample"
+        >
+          <ngb-panel
+            *ngFor="let faq of marijuanaFAQs; let i = index"
+            [id]="i"
+            [title]="faq.question"
+          >
+            <ng-template ngbPanelContent> {{ faq.answer }} </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Section ends-->

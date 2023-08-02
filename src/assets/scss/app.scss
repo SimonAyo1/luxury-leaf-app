@@ -1,0 +1,30 @@
+// Animation css
+@import '~animate.css/animate.min.css';
+
+// Bootstrap Layout scss
+@import '~bootstrap/scss/bootstrap';
+
+// Owl Carousel
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+// Themify icon scss
+@import 'themify';
+
+// Theme Scss
+@import 'theme/variables';
+:root {
+  --theme-deafult: #5d7227;
+  --theme-gradient1: #5d7227;
+  --theme-gradient2: #203f15;
+}
+@import 'theme/style';
+@import 'theme/theme-dark';
+@import 'theme/menu';
+@import 'theme/responsive';
+
+// Toastr Css
+@import '~ngx-toastr/toastr.css';
+
+// Rating Scss
+@import '~ngx-bar-rating/themes/br-default-theme';

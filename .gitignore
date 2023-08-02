@@ -1,0 +1,48 @@
+# Node.js and npm
+node_modules
+npm-debug.log
+package-lock.json
+e2e
+
+
+# Angular generated files
+/dist/
+/e2e/*.js
+/e2e/*.map
+
+# Compiled output
+/dist/
+
+# Angular logs
+logs/
+*.log
+
+# IDE files
+.idea/
+.vscode/
+
+# Dependency directories
+/bower_components/
+/typings/
+
+# Compiled TypeScript files
+*.js
+*.js.map
+
+# Compiled CSS files
+*.css
+*.css.map
+
+# Source maps
+*.map
+
+# Test generated files
+/karma-*.js
+/protractor-*.js
+
+# Environment variables
+# /src/environments/*.js
+
+# Angular CLI configuration
+angular.json
+.angular-cli.json

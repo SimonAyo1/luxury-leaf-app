@@ -1,0 +1,32 @@
+<!--modal popup start-->
+<ng-template class="theme-modal" #ageVerification let-modal>
+  <div class="modal-content">
+    <div class="modal-body modal13">
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-12">
+            <div class="modal-bg">
+              <div class="age-content">
+                <h2>Age verification</h2>
+                <h4>
+                  This Website requires you to be 18 years or older to access:
+                </h4>
+                <form id="demForm">
+                  <button
+                    type="submit"
+                    (click)="ageForm()"
+                    class="btn btn-solid"
+                  >
+                    Yes, I am 18+
+                  </button>
+                 
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!--modal popup end-->

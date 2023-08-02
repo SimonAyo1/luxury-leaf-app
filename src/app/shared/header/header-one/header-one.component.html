@@ -1,0 +1,63 @@
+<header class="sticky" [ngClass]="class" [class.fixed]="stick && sticky">
+  <div class="mobile-fix-option"></div>
+  <div class="top-header" *ngIf="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="header-contact">
+            <ul>
+              <li>
+                <i class="fa fa-phone" aria-hidden="true"></i>Reach Us:
+                123-456-7890
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 text-right">
+          <ul class="header-dropdown">
+            <li class="mobile-account" routerLink="/auth/sign-in" *ngIf="!isLoggedIn">
+              <i class="fa fa-sign-in" aria-hidden="true"></i>Login
+             
+            </li>
+            <li class="mobile-account" routerLink="/me" *ngIf="isLoggedIn">
+              <i class="fa fa-user" aria-hidden="true"></i>My Account
+             
+            </li>
+            <!-- <li class="onhover-dropdown mobile-account">
+              <i class="fa fa-user" aria-hidden="true"></i> My Account
+              <ul class="onhover-show-div">
+              
+                <li>
+                  <a data-lng="es"> Logout </a>
+                </li>
+              </ul>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="main-menu">
+          <div class="menu-left">
+            <div class="brand-logo">
+              <a routerLink="/" id="headerlogo">
+                <img [src]="themeLogo" class="img-fluid logo" alt="logo" />
+              </a>
+            </div>
+          </div>
+          <div class="menu-right pull-right">
+            <div>
+              <app-menu></app-menu>
+            </div>
+            <div>
+              <app-settings></app-settings>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
