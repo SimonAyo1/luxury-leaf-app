@@ -44,4 +44,4 @@ logs/
 # /src/environments/*.js
 
 # Angular CLI configuration
-.angular-cli.json
+.angular
