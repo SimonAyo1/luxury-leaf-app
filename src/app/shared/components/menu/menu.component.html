@@ -22,9 +22,9 @@
           *ngIf="menuItem.type === 'sub'"
           (click)="toggletNavActive(menuItem)"
         >
-          {{ menuItem.title | translate }}
+          {{ menuItem.title  }}
           <div class="lable-nav" *ngIf="menuItem.badge">
-            {{ menuItem.badgeText | translate }}
+            {{ menuItem.badgeText  }}
           </div>
           <span class="sub-arrow" *ngIf="menuItem.children"></span>
         </a>
@@ -38,7 +38,7 @@
         >
           {{ menuItem.title }}
           <div class="lable-nav" *ngIf="menuItem.badge">
-            {{ menuItem.badgeText | translate }}
+            {{ menuItem.badgeText  }}
           </div>
           <span class="sub-arrow" *ngIf="menuItem.children"></span>
         </a>
@@ -50,7 +50,7 @@
         >
           {{ menuItem.title }}
           <div class="lable-nav" *ngIf="menuItem.badge">
-            {{ menuItem.badgeText | translate }}
+            {{ menuItem.badgeText  }}
           </div>
           <span class="sub-arrow" *ngIf="menuItem.children"></span>
         </a>
@@ -62,7 +62,7 @@
         >
           {{ menuItem.title }}
           <div class="lable-nav" *ngIf="menuItem.badge">
-            {{ menuItem.badgeText | translate }}
+            {{ menuItem.badgeText  }}
           </div>
           <span class="sub-arrow" *ngIf="menuItem.children"></span>
         </a>
@@ -82,9 +82,9 @@
               [queryParams]="childrenItem.params"
               *ngIf="childrenItem.type === 'link-params'"
             >
-              {{ childrenItem.title | translate }}
+              {{ childrenItem.title  }}
               <span class="new-tag" *ngIf="childrenItem.badge">{{
-                childrenItem.badgeText | translate
+                childrenItem.badgeText 
               }}</span>    
             </a>
             <a
@@ -92,9 +92,9 @@
               *ngIf="childrenItem.type === 'sub'"
               (click)="toggletNavActive(childrenItem)"
             >
-              {{ childrenItem.title | translate }}
+              {{ childrenItem.title  }}
               <span class="new-tag" *ngIf="childrenItem.badge">{{
-                childrenItem.badgeText | translate
+                childrenItem.badgeText 
               }}</span>
               <span class="sub-arrow" *ngIf="childrenItem.children"></span>
             </a>
@@ -105,9 +105,9 @@
               [routerLinkActiveOptions]="{ exact: true }"
               *ngIf="childrenItem.type === 'link'"
             >
-              {{ childrenItem.title | translate }}
+              {{ childrenItem.title  }}
               <span class="new-tag" *ngIf="childrenItem.badge">{{
-                childrenItem.badgeText | translate
+                childrenItem.badgeText 
               }}</span>
               <span class="sub-arrow" *ngIf="childrenItem.children"></span>
             </a>
@@ -116,9 +116,9 @@
               href="{{ childrenItem.path }}"
               *ngIf="childrenItem.type === 'extLink'"
             >
-              {{ childrenItem.title | translate }}
+              {{ childrenItem.title  }}
               <span class="new-tag" *ngIf="childrenItem.badge">{{
-                childrenItem.badgeText | translate
+                childrenItem.badgeText 
               }}</span>
               <span class="sub-arrow" *ngIf="childrenItem.children"></span>
             </a>
@@ -128,9 +128,9 @@
               target="_blank"
               *ngIf="childrenItem.type === 'extTabLink'"
             >
-              {{ childrenItem.title | translate }}
+              {{ childrenItem.title  }}
               <span class="new-tag" *ngIf="childrenItem.badge">{{
-                childrenItem.badgeText | translate
+                childrenItem.badgeText 
               }}</span>
               <span class="sub-arrow" *ngIf="childrenItem.children"></span>
             </a>
@@ -149,9 +149,9 @@
                   [routerLinkActiveOptions]="{ exact: true }"
                   *ngIf="childrenSubItem.type === 'link'"
                 >
-                  {{ childrenSubItem.title | translate }}
+                  {{ childrenSubItem.title  }}
                   <span class="new-tag" *ngIf="childrenSubItem.badge">{{
-                    childrenSubItem.badgeText | translate
+                    childrenSubItem.badgeText 
                   }}</span>
                 </a>
                 <!-- External Link -->
@@ -159,9 +159,9 @@
                   href="{{ childrenSubItem.path }}"
                   *ngIf="childrenSubItem.type === 'extLink'"
                 >
-                  {{ childrenSubItem.title | translate }}
+                  {{ childrenSubItem.title  }}
                   <span class="new-tag" *ngIf="childrenSubItem.badge">{{
-                    childrenSubItem.badgeText | translate
+                    childrenSubItem.badgeText 
                   }}</span>
                 </a>
                 <!-- External Tab Link -->
@@ -170,9 +170,9 @@
                   target="_blank"
                   *ngIf="childrenSubItem.type === 'extTabLink'"
                 >
-                  {{ childrenSubItem.title | translate }}
+                  {{ childrenSubItem.title  }}
                   <span class="new-tag" *ngIf="childrenSubItem.badge">{{
-                    childrenSubItem.badgeText | translate
+                    childrenSubItem.badgeText 
                   }}</span>
                 </a>
               </li>
@@ -193,7 +193,7 @@
                 <div class="link-section">
                   <div class="menu-title">
                     <h5>
-                      {{ childrenItem.title | translate }}
+                      {{ childrenItem.title  }}
                       <span
                         class="sub-arrow"
                         *ngIf="childrenItem.children"
@@ -208,9 +208,9 @@
                           href="javascript:void(0)"
                           *ngIf="childrenSubItem.type === 'sub'"
                         >
-                          {{ childrenSubItem.title | translate }}
+                          {{ childrenSubItem.title  }}
                           <span class="new-tag" *ngIf="childrenSubItem.badge">{{
-                            childrenSubItem.badgeText | translate
+                            childrenSubItem.badgeText 
                           }}</span>
                         </a>
                         <!-- Link -->
@@ -220,9 +220,9 @@
                           [routerLinkActiveOptions]="{ exact: true }"
                           *ngIf="childrenSubItem.type === 'link'"
                         >
-                          {{ childrenSubItem.title | translate }}
+                          {{ childrenSubItem.title  }}
                           <span class="new-tag" *ngIf="childrenSubItem.badge">{{
-                            childrenSubItem.badgeText | translate
+                            childrenSubItem.badgeText 
                           }}</span>
                         </a>
 
@@ -231,9 +231,9 @@
                           href="{{ childrenSubItem.path }}"
                           *ngIf="childrenSubItem.type === 'extLink'"
                         >
-                          {{ childrenSubItem.title | translate }}
+                          {{ childrenSubItem.title  }}
                           <span class="new-tag" *ngIf="childrenSubItem.badge">{{
-                            childrenSubItem.badgeText | translate
+                            childrenSubItem.badgeText 
                           }}</span>
                         </a>
                         <!-- External Tab Link -->
@@ -242,9 +242,9 @@
                           target="_blank"
                           *ngIf="childrenSubItem.type === 'extTabLink'"
                         >
-                          {{ childrenSubItem.title | translate }}
+                          {{ childrenSubItem.title  }}
                           <span class="new-tag" *ngIf="childrenSubItem.badge">{{
-                            childrenSubItem.badgeText | translate
+                            childrenSubItem.badgeText 
                           }}</span>
                         </a>
                       </li>

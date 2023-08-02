@@ -6,8 +6,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { ToastrModule } from 'ngx-toastr';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+// import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+// import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
@@ -23,9 +23,9 @@ import { getAuth } from 'firebase/auth';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 // AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
-}
+// export function HttpLoaderFactory(http: HttpClient) {
+//   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+// }
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ElementsComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     NgbModule,
@@ -50,13 +50,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     provideAuth(() => getAuth()),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
+    // TranslateModule.forRoot({
+    //   loader: {
+    //     provide: TranslateLoader,
+    //     useFactory: HttpLoaderFactory,
+    //     deps: [HttpClient]
+    //   }
+    // }),
     SharedModule,
     AppRoutingModule,
     NgxSpinnerModule
