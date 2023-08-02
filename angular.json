@@ -28,7 +28,7 @@
               "rxjs/Subject",
               "rxjs/Subscription"
             ],
-            "outputPath": "dist/LuxryLeafM/browser",
+            "outputPath": "dist/LuxryLeafM",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
