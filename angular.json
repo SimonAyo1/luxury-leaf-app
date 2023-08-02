@@ -122,20 +122,8 @@
               "devServerTarget": "LuxryLeafM:serve:production"
             }
           }
-        },
-        "prerender": {
-          "builder": "@nguniversal/builders:prerender",
-          "options": {
-            "browserTarget": "LuxryLeafM:build:production",
-            "serverTarget": "LuxryLeafM:server:production",
-            "routes": [
-              "/"
-            ]
-          },
-          "configurations": {
-            "production": {}
-          }
         }
+      
       }
     }
   },
