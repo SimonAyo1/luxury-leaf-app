@@ -16,11 +16,11 @@ const redirectUnauthorized = () => redirectUnauthorizedTo('/auth');
 const redirectAuthorized = () => redirectLoggedInTo('/me');
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '',
-  //   pathMatch: 'full'
-  // },  
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
+  },  
   {
     path: '',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
@@ -56,7 +56,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabled',
+    useHash: false,
+    anchorScrolling: 'enabled',
+    scrollPositionRestoration: 'enabled',
+    relativeLinkResolution: 'legacy'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
