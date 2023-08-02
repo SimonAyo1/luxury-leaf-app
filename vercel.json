@@ -3,7 +3,7 @@
     "public": true,
     "name": "test-universal",
     "rewrites": [
-      { "source": "/(.*)", "destination": "/api" }
+      { "source": "/(.*)", "destination": "/dist/LuxryLeafM/server.js" }
     ],
     "functions": {
       "api/index.js": {
