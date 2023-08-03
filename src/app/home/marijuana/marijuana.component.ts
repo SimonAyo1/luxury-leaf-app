@@ -20,8 +20,8 @@ export class MarijuanaComponent implements OnInit, OnDestroy {
   constructor(public productService: ProductService) {
     this.productService.getProducts.subscribe((response) => {
       this.products = response.filter(
-        (item) => item.type == "marijuana" || item.type == "indica"  || item.type == "hookah"
-      );
+        (item) => item.type.toLocaleLowerCase().trim() == "indica" || item.type.toLocaleLowerCase().trim() == "sativa"
+      )
       this.products.filter((item) => {
         item.collection.filter((collection) => {
           const index = this.productCollections.indexOf(collection);
