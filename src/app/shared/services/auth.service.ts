@@ -52,7 +52,7 @@ export class AuthService {
 
         this._user.addUser(new_user).then(() => {
           this.userSubject.next(credential.user)
-          this.router.navigate(["/me"])
+          this.router.navigate(["/me/account"])
           this.notification.hideSpinner()
           this.notification.successMessage(`Welcome on board ${name}`)
 
@@ -74,7 +74,7 @@ export class AuthService {
         this.notification.hideSpinner();
         console.log(credential.user, 'credential');
         this.userSubject.next(credential.user); // Manually emit the authenticated user
-        this.router.navigate(['/me']);
+        this.router.navigate(['/me/account']);
       })
       .catch((error) => {
         this.notification.hideSpinner();

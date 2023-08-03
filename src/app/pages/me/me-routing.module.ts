@@ -14,7 +14,6 @@ const routes: Routes = [
     children: [
       {
         path: "account",
-        pathMatch: "full",
         component: DashboardComponent,
       },
       {
