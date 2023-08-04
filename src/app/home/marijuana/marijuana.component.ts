@@ -16,7 +16,7 @@ export class MarijuanaComponent implements OnInit, OnDestroy {
   public productCollections: any[] = [];
 
   public ProductSliderConfig: any = ProductSlider;
-
+  
   constructor(public productService: ProductService) {
     this.productService.getProducts.subscribe((response) => {
       this.products = response.filter(
@@ -30,7 +30,7 @@ export class MarijuanaComponent implements OnInit, OnDestroy {
       });
     });
   }
-
+  
   public sliders = [
     {
       title: "discount sale",
