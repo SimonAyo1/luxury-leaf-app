@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, startWith, delay } from 'rxjs/operators';
+import { map, startWith, delay, filter } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../classes/product';
 import { StoreService } from './store.service';
+import { UserI, UserService } from './user.service';
+import { NotificationService } from './notification.service';
 
 const state = {
   products: JSON.parse(localStorage['products'] || '[]'),
@@ -21,9 +23,17 @@ export class ProductService {
   public Currency = { name: 'Dollar', currency: 'USD', price: 1 } // Default Currency
   public OpenCart: boolean = false;
   public Products
+  USER: UserI
+  constructor(private http: HttpClient, private notification: NotificationService,
+    private toastrService: ToastrService, private _store: StoreService, private _user: UserService) {
+    setTimeout(() => {
+      this._user?.user?.subscribe((data: UserI[]) => {
+        this.USER = data[0]
+      })
+    }, 2000)
 
-  constructor(private http: HttpClient,
-    private toastrService: ToastrService, private _store: StoreService) { }
+
+  }
 
   /*
     ---------------------------------------------
@@ -46,10 +56,10 @@ export class ProductService {
 
   // Get Products By Slug
   public getProductBySlug(slug: string): Observable<Product> {
-    return this.products.pipe(map(items => { 
-      return items.find((item: any) => { 
-        return item.title.replace(' ', '-') === slug; 
-      }); 
+    return this.products.pipe(map(items => {
+      return items.find((item: any) => {
+        return item.title.replace(' ', '-') === slug;
+      });
     }));
   }
 
@@ -62,31 +72,67 @@ export class ProductService {
 
   // Get Wishlist Items
   public get wishlistItems(): Observable<Product[]> {
+
+
     const itemsStream = new Observable(observer => {
-      observer.next(state.wishlist);
-      observer.complete();
+      observer.next(this.USER.wishlist);
+      observer.complete()
     });
-    return <Observable<Product[]>>itemsStream;
+    return itemsStream as Observable<Product[]>;
+
+
+
+
+
   }
 
   // Add to Wishlist
   public addToWishlist(product): any {
-    const wishlistItem = state.wishlist.find(item => item.id === product.id)
-    if (!wishlistItem) {
-      state.wishlist.push({
-        ...product
-      })
+    if (!this.USER?.id) {
+      this.toastrService.error('Please login to add to wishlist.');
+      return
     }
-    this.toastrService.success('Product has been added in wishlist.');
-    localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
+    const wishlistItem = this.USER.wishlist?.find(item => item.id === product.id)
+    if (!wishlistItem) {
+      this.notification.startSpinner()
+      const new_wishlist = this.USER.wishlist || []
+      new_wishlist.push(product)
+      const data: any = {
+        id: this.USER.id,
+        wishlist: new_wishlist
+      }
+      this._user.updateuser(data).then(() => {
+        this.notification.hideSpinner()
+        this.notification.successMessage('Product added to wishlist.');
+      }).catch((e) => {
+        this.notification.hideSpinner()
+        this.toastrService.success(e.code);
+      })
+      return true
+    }
+    this.toastrService.error('Product has already been added to wishlist.');
+    // localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
+
     return true
   }
 
   // Remove Wishlist items
   public removeWishlistItem(product: Product): any {
-    const index = state.wishlist.indexOf(product);
-    state.wishlist.splice(index, 1);
-    localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
+    const index = this.USER.wishlist.indexOf(product);
+    const newArr: any = this.USER.wishlist;
+    newArr.splice(index, 1)
+    const data: any = {
+      id: this.USER.id,
+      wishlist: newArr
+    }
+    // localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
+    this._user.updateuser(data).then(() => {
+      this.notification.hideSpinner()
+      this.notification.successMessage('Product deleted from wishlist.');
+    }).catch((e) => {
+      this.notification.hideSpinner()
+      this.toastrService.success(e.code);
+    })
     return true
   }
 
@@ -147,11 +193,11 @@ export class ProductService {
     const qty = product.quantity ? product.quantity : 1;
     const items = cartItem ? cartItem : product;
     const stock = this.calculateStockCounts(items, qty);
-    
-    if(!stock) return false
+
+    if (!stock) return false
 
     if (cartItem) {
-        cartItem.quantity += qty    
+      cartItem.quantity += qty
     } else {
       state.cart.push({
         ...product,
@@ -179,12 +225,12 @@ export class ProductService {
     })
   }
 
-    // Calculate Stock Counts
+  // Calculate Stock Counts
   public calculateStockCounts(product, quantity) {
     const qty = product.quantity + quantity
     const stock = product.stock
     if (stock < qty || stock == 0) {
-      this.toastrService.error('You can not add more items than available. In stock '+ stock +' items.');
+      this.toastrService.error('You can not add more items than available. In stock ' + stock + ' items.');
       return false
     }
     return true
@@ -197,13 +243,19 @@ export class ProductService {
     localStorage.setItem("cartItems", JSON.stringify(state.cart));
     return true
   }
+  public deleteCart(): any {
+
+    state.cart = null
+    localStorage.removeItem("cartItems");
+    return true
+  }
 
   // Total amount 
   public cartTotalAmount(): Observable<number> {
     return this.cartItems.pipe(map((product: Product[]) => {
       return product.reduce((prev, curr: Product) => {
         let price = curr.price;
-        if(curr.discount) {
+        if (curr.discount) {
           price = curr.price - (curr.price * curr.discount / 100)
         }
         return (prev + price * curr.quantity) * this.Currency.price;
@@ -219,7 +271,7 @@ export class ProductService {
 
   // Get Product Filter
   public filterProducts(filter: any): Observable<Product[]> {
-    return this.products.pipe(map(product => 
+    return this.products.pipe(map(product =>
       product.filter((item: Product) => {
         if (!filter.length) return true
         const Tags = filter.some((prev) => { // Match Tags
@@ -233,11 +285,29 @@ export class ProductService {
       })
     ));
   }
+  generateUniqueID(): string {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const length = 6;
 
+    let uniqueID = '';
+
+    // Add random characters to the uniqueID
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      uniqueID += characters.charAt(randomIndex);
+    }
+
+    // Add timestamp to ensure uniqueness
+    const timestamp = Date.now().toString();
+    uniqueID += timestamp;
+
+    return uniqueID;
+  }
   // Sorting Filter
   public sortProducts(products: Product[], payload: string): any {
 
-    if(payload === 'ascending') {
+    if (payload === 'ascending') {
       return products.sort((a, b) => {
         if (a.id < b.id) {
           return -1;
@@ -282,7 +352,7 @@ export class ProductService {
         }
         return 0;
       })
-    } 
+    }
   }
 
   /*
@@ -298,22 +368,22 @@ export class ProductService {
     let paginateRange = 3;
 
     // ensure current page isn't out of range
-    if (currentPage < 1) { 
-      currentPage = 1; 
-    } else if (currentPage > totalPages) { 
-      currentPage = totalPages; 
+    if (currentPage < 1) {
+      currentPage = 1;
+    } else if (currentPage > totalPages) {
+      currentPage = totalPages;
     }
-    
+
     let startPage: number, endPage: number;
     if (totalPages <= 5) {
       startPage = 1;
       endPage = totalPages;
-    } else if(currentPage < paginateRange - 1){
+    } else if (currentPage < paginateRange - 1) {
       startPage = 1;
       endPage = startPage + paginateRange - 1;
     } else {
       startPage = currentPage - 1;
-      endPage =  currentPage + 1;
+      endPage = currentPage + 1;
     }
 
     // calculate start and end item indexes

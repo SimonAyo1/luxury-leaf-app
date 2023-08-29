@@ -11,7 +11,7 @@ import { ProductService } from '../../../services/product.service';
 export class ProductBoxVerticalSliderComponent implements OnInit {
 
   @Input() title: string = 'New Product'; // Default
-  @Input() type: string = 'marijuana'; // Default Fashion
+  @Input() type: string = 'CBD'; // Default Fashion
 
   public products : Product[] = [];
 

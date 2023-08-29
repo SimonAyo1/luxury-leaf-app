@@ -1,7 +1,4 @@
-<app-header-one
-  [sticky]="true"
-  *ngIf="url != '/pages/comingsoon'"
-></app-header-one>
+<app-header-one [sticky]="true" *ngIf="url != '/pages/comingsoon'"></app-header-one>
 <app-breadcrumb [title]="'Dashboard'" [breadcrumb]="'Account'"></app-breadcrumb>
 <!-- section start -->
 <section class="section-b-space">
@@ -22,9 +19,9 @@
               <li routerLink="/me/account" routerLinkActive="active">
                 <a>My Account</a>
               </li>
-              <li><a>My Orders</a></li>
+              <li routerLink="/me/my-orders"><a>My Orders</a></li>
               <li routerLink="/me/wishlist" routerLinkActive="active"><a>My Wishlist</a></li>
-              <li routerLinkActive="active"><a>Membership</a></li>
+              <li routerLinkActive="active" routerLink="/me/my-membership"><a>Membership</a></li>
               <li routerLink="/me/my-links" routerLinkActive="active"><a>My Links</a></li>
               <li routerLink="/me/change-password" routerLinkActive="active"><a>Change Password</a></li>
               <li class="last" routerLinkActive="active" (click)="logout()"><a>Log Out</a></li>

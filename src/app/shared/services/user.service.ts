@@ -24,6 +24,8 @@ export interface UserI {
   city: string;
   postalCode: string;
   phoneNumber: string;
+  state: string;
+  points: number;
   membership: {
     date: Date,
     type: string
@@ -32,7 +34,12 @@ export interface UserI {
     userId: string;
     name: string
     email: string
+  }[],
+  links: {
+    url: string;
+    activated: boolean
   }[]
+  wishlist: any[]
 }
 
 
@@ -49,8 +56,8 @@ export class UserService {
 
     this.userCollection = collection(this.firestore, 'users');
     this._auth.onAuthStateChanged((user) => {
-      this.userId = user.uid
-      this.user = this.getUserById(user.uid)
+      this.userId = user?.uid
+      this.user = user?.uid ? this.getUserById(user.uid) : null
     });
   }
 

@@ -1,0 +1,65 @@
+/* my-orders.component.css */
+.card {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 15px;
+    font-weight: bold;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    margin-bottom: 5px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 5px;
+  }
+  
+
+
+ul.items-list {
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .items-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .items-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .item-name {
+    font-weight: bold;
+  }
+  
+  .item-quantity {
+    color: #777;
+  }
+  
+    

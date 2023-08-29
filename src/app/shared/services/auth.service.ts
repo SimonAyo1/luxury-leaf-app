@@ -3,7 +3,9 @@ import {
   Auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  user,
+  sendPasswordResetEmail,
+  updatePassword,
+  user
 } from '@angular/fire/auth';
 import { User } from 'firebase/auth';
 import { Observable, BehaviorSubject } from 'rxjs'; // Use BehaviorSubject instead of Subject
@@ -39,12 +41,17 @@ export class AuthService {
       name,
       id: this._user.generateUniqueID(),
       email,
-      address: '',
-      city: '',
-      postalCode: '',
-      phoneNumber: '',
+      address: null,
+      city: null,
+      postalCode: null,
+      phoneNumber: null,
       membership: null,
-      referrals: null
+      referrals: null,
+      state: null,
+      points: 0,
+      wishlist: null,
+      links: null
+
     }
     return createUserWithEmailAndPassword(this.afAuth, email, password)
       .then((credential) => {
@@ -66,6 +73,29 @@ export class AuthService {
       });
   }
 
+  //CHange password
+
+  resetPassword(email) {
+    this.notification.startSpinner()
+    return sendPasswordResetEmail(this.afAuth, email).then(() => {
+      this.notification.hideSpinner()
+      this.notification.successMessage("Password reset link sent to your email")
+    }).catch((e) => {
+      this.notification.hideSpinner()
+
+      this.notification.errorMessage(e.code)
+    })
+  }
+  changePassword(newPassword) {
+    updatePassword(this._user.user[0], newPassword).then(() => {
+      this.notification.hideSpinner()
+      this.notification.successMessage("Password updated!")
+    }).catch((e) => {
+      this.notification.hideSpinner()
+
+      this.notification.errorMessage(e.code)
+    })
+  }
   // Sign in with email and password
   async signIn(email: string, password: string) {
     this.notification.startSpinner();

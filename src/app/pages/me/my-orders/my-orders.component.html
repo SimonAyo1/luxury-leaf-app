@@ -1,1 +1,29 @@
-<p>my-orders works!</p>
+<div>
+    <h4>My Referral Links</h4>
+</div>
+<div *ngIf="!orders">
+    <p>No orders available.</p>
+</div>
+
+<div *ngIf="orders">
+    <div *ngFor="let order of orders" class="card mb-3">
+        <div class="card-header">
+            Order #{{ order.orderId }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Total: {{ order.totalAmount | currency }}</h5>
+            <p class="card-text">Status: {{ order.status }}</p>
+            <p class="card-text">Payment Method: {{ order.paymentMethod }}</p>
+            <p class="card-text">Date: {{ order.time }}</p>
+            <p class="card-text">Delivery Date: {{ order.delivery_date }}</p>
+            <p class="card-text">Products:</p>
+            <ul class="items-list">
+                <li *ngFor="let product of order.product; let i = index" class="item">
+                    <span class="item-name">{{i +0}} {{ product.title }}</span>
+                    <span class="item-quantity">Price: {{ product.price | currency }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

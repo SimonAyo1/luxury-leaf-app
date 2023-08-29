@@ -6,6 +6,8 @@ import { WishlistComponent } from "./wishlist/wishlist.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { ChangePasswordComponent } from "./change-password/change-password.component";
 import { MyLinksComponent } from "./my-links/my-links.component";
+import { MyOrdersComponent } from "./my-orders/my-orders.component";
+import { MyMembershipComponent } from "./my-membership/my-membership.component";
 
 const routes: Routes = [
   {
@@ -19,6 +21,14 @@ const routes: Routes = [
       {
         path: "wishlist",
         component: WishlistComponent,
+      },
+      {
+        path: "my-membership",
+        component: MyMembershipComponent,
+      },
+      {
+        path: "my-orders",
+        component: MyOrdersComponent,
       },
       {
         path: "edit-profile",
@@ -40,4 +50,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MeRoutingModule {}
+export class MeRoutingModule { }

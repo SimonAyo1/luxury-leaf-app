@@ -1,58 +1,60 @@
 <div class="dashboard-right">
   <div class="dashboard">
-    <div class="row mb-5">
-      <div class="col-sm-12">
-        <h3>Personal Details</h3>
-        <form class="theme-form">
+    <form class="theme-form" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+
+      <div class="row mb-5">
+        <div class="col-sm-12">
+          <h3>Personal Details</h3>
           <div class="form-row">
             <div class="col-md-6">
               <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter Your name" required="" />
+              <input type="text" class="form-control" formControlName="name" name="name"
+                placeholder="Enter Your name" />
             </div>
 
             <div class="col-md-6">
               <label for="review">Phone number</label>
-              <input type="text" class="form-control" id="review" placeholder="Enter your number" required="" />
+              <input type="tel" class="form-control" name="phoneNumber" formControlName="phoneNumber"
+                placeholder="Enter your number" />
             </div>
 
           </div>
-        </form>
+
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <h3>Shipping Address</h3>
-        <form class="theme-form">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Shipping Address</h3>
           <div class="form-row">
+
             <div class="col-md-6">
-              <label for="name">flat / plot</label>
-              <input type="text" class="form-control" id="home-ploat" placeholder="company name" required="" />
+              <label for="name">Address</label>
+              <input type="text" class="form-control" formControlName="address" name="address" placeholder="Address" />
             </div>
             <div class="col-md-6">
-              <label for="name">Address *</label>
-              <input type="text" class="form-control" id="address-two" placeholder="Address" required="" />
-            </div>
-            <div class="col-md-6">
-              <label for="email">Zip Code *</label>
-              <input type="text" class="form-control" id="zip-code" placeholder="zip-code" required="" />
+              <label for="email">Postal Code</label>
+              <input type="text" class="form-control" formControlName="postalCode" name="postalCode"
+                placeholder="zip-code" />
             </div>
 
             <div class="col-md-6">
-              <label for="review">City *</label>
-              <input type="text" class="form-control" id="city" placeholder="City" required="" />
+              <label for="review">City</label>
+              <input type="text" class="form-control" formControlName="city" name="city" placeholder="City" />
             </div>
             <div class="col-md-6">
-              <label for="review">Region/State *</label>
-              <input type="text" class="form-control" id="region-state" placeholder="Region/state" required="" />
+              <label for="review">State</label>
+              <input type="text" class="form-control" formControlName="state" name="state" placeholder="State" />
             </div>
             <div class="col-md-12 mt-3">
-              <button class="btn btn-sm btn-solid" type="submit">
-                Save setting
+              <button class="btn btn-sm btn-solid" [disabled]="profileForm.get('id').value == null" type="submit">
+                Update profile
               </button>
             </div>
           </div>
-        </form>
+
+        </div>
       </div>
-    </div>
+    </form>
+
   </div>
 </div>

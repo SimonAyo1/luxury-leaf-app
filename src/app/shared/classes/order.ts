@@ -6,4 +6,11 @@ export interface Order {
     product?: Product;
     orderId?: any;
     totalAmount?: any;
+    time: string;
+    status?: string;
+    paymentMethod?: string;
+    paymentStatus?: string;
+    deliveryStatus?: string;
+    userId: string;
+    delivery_date: string;
 }

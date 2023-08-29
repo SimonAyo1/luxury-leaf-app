@@ -6,6 +6,9 @@ import { environment } from '../../../environments/environment';
 import { Product } from "../../shared/classes/product";
 import { ProductService } from "../../shared/services/product.service";
 import { OrderService } from "../../shared/services/order.service";
+import { NotificationService } from 'src/app/shared/services/notification.service';
+import { UserI, UserService } from 'src/app/shared/services/user.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-checkout',
@@ -14,32 +17,59 @@ import { OrderService } from "../../shared/services/order.service";
 })
 export class CheckoutComponent implements OnInit {
 
-  public checkoutForm:  FormGroup;
+  public checkoutForm: FormGroup;
   public products: Product[] = [];
-  public payPalConfig ? : IPayPalConfig;
+  public payPalConfig?: IPayPalConfig;
   public payment: string = 'Stripe';
-  public amount:  any;
+  public amount: any;
 
   constructor(private fb: FormBuilder,
     public productService: ProductService,
-    private orderService: OrderService) { 
+    private orderService: OrderService,
+    private _notification: NotificationService,
+    private _user: UserService) {
     this.checkoutForm = this.fb.group({
-      firstname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
-      lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
+      name: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
+      // lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
       phone: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       email: ['', [Validators.required, Validators.email]],
-      address: ['', [Validators.required, Validators.maxLength(50)]],
-      country: ['', Validators.required],
-      town: ['', Validators.required],
+      address: ['', [Validators.required, Validators.maxLength(200)]],
+      // country: ['', Validators.required],
+      city: ['', Validators.required],
+      userId: ['', Validators.required],
       state: ['', Validators.required],
-      postalcode: ['', Validators.required]
+      postalcode: ['', Validators.required],
+
     })
   }
 
   ngOnInit(): void {
     this.productService.cartItems.subscribe(response => this.products = response);
     this.getTotal.subscribe(amount => this.amount = amount);
+    this._notification.startSpinner()
+    setTimeout(() => {
+      this._user?.user?.subscribe((data: UserI[]) => {
+        const user = data[0]
+        console.log(user, "CHECKOUT")
+        this.checkoutForm.patchValue({
+          userId: user.id,
+          name: user.name,
+          phone: user.phoneNumber,
+          address: user.address,
+          email: user.email,
+          postalcode: user.postalCode,
+          city: user.city,
+          state: user.state
+        })
+        this._notification.hideSpinner()
+      }, (error) => {
+        console.log(error, "CHECKOUT")
+      })
+    }, 2000);
+
     this.initConfig();
+
+
   }
 
   public get getTotal(): Observable<number> {
@@ -52,14 +82,14 @@ export class CheckoutComponent implements OnInit {
     //   key: environment.stripe_token, // publishble key
     //   locale: 'auto',
     //   token: (token: any) => {
-    //     // You can access the token ID with `token.id`.
-    //     // Get the token ID to your server-side code for use.
-    //     this.orderService.createOrder(this.products, this.checkoutForm.value, token.id, this.amount);
+    // You can access the token ID with `token.id`.
+    // Get the token ID to your server-side code for use.
+    this.orderService.createOrder(this.products, this.checkoutForm.value, this.productService.generateUniqueID(), this.amount, "success", this.payment)
     //   }
     // });
     // handler.open({
     //   name: 'LuxryLeafM',
-    //   description: 'Online Fashion Store',
+    //   description: 'LLM Store',
     //   amount: this.amount * 100
     // }) 
   }

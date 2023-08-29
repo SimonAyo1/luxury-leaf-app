@@ -17,12 +17,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this._notification.startSpinner()
     this.greeting = this.getGreeting()
-    this._user.user.subscribe((data: UserI[]) => {
+    this._user?.user?.subscribe((data: UserI[]) => {
       this.user = data[0]
       this._notification.hideSpinner()
       console.log(this.user)
     })
-  }
+  }   
   getGreeting() {
     const currentHour = new Date().getHours();
 

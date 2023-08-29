@@ -57,10 +57,10 @@ export class NotificationService {
           'This domain is not authorized to access the authentication server.';
         break;
       case 'auth/invalid-email':
-        customErrorMessage = 'Invalid Email or Password.';
+        customErrorMessage = 'Invalid Email.';
         break;
       case 'auth/user-not-found':
-        customErrorMessage = 'Invalid Email or Password.';
+        customErrorMessage = 'Email does not belong to this account.';
         break;
       case 'auth/wrong-password':
         customErrorMessage = 'Invalid Email or Password.';

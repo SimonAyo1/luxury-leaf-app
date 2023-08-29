@@ -10,6 +10,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MyLinksComponent } from './my-links/my-links.component';
+import { MyMembershipComponent } from './my-membership/my-membership.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MyLinksComponent } from './my-links/my-links.component';
     WishlistComponent,
     ChangePasswordComponent,
     ProfileComponent,
-    MyLinksComponent
+    MyLinksComponent,
+    MyMembershipComponent
   ],
   imports: [
     CommonModule,

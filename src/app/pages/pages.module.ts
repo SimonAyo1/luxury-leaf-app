@@ -40,6 +40,7 @@ import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonr
 import { MasonryGridFourComponent } from './portfolio/masonry-grid-four/masonry-grid-four.component';
 import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonry-full-width.component';
 import { MeComponent } from './me/me.component';
+import { EventsComponent } from './events/events.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { MeComponent } from './me/me.component';
     MasonryGridThreeComponent,
     MasonryGridFourComponent,
     MasonryFullWidthComponent,
-    MeComponent
+    MeComponent,
+    EventsComponent
   ],
   imports: [
     CommonModule,

@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "title": "Marijuana Product 1",
-    "description": "Description of marijuana product 1.",
-    "type": "marijuana",
+    "title": "CBD Product 1",
+    "description": "Description of CBD product 1.",
+    "type": "CBD",
     "brand": "Brand 1",
     "collection": ["on sale"],
-    "category": "marijuana",
+    "category": "CBD",
     "price": 100,
     "sale": true,
     "discount": "10",
@@ -17,7 +17,7 @@
       {
         "variant_id": 101,
         "id": 1,
-        "sku": "marijuana101",
+        "sku": "CBD101",
         "image_id": 111
       }
     ],
@@ -25,7 +25,7 @@
       {
         "image_id": 111,
         "id": 1,
-        "alt": "marijuana",
+        "alt": "CBD",
         "src": "https://img.freepik.com/free-photo/cbd-oil-dropper-arrangement_23-2149013546.jpg?w=1060&t=st=1689261906~exp=1689262506~hmac=916161a3bf609f8d4fd6f43334e636bbbb262f6929e197993bc5d05a5bb68198",
         "variant_id": [101]
       }
@@ -33,12 +33,12 @@
   },
   {
     "id": 2,
-    "title": "Marijuana Product 2",
-    "description": "Description of marijuana product 2.",
-    "type": "marijuana",
+    "title": "CBD Product 2",
+    "description": "Description of CBD product 2.",
+    "type": "CBD",
     "brand": "Brand 2",
     "collection": [],
-    "category": "marijuana",
+    "category": "CBD",
     "price": 120,
     "sale": false,
     "discount": null,
@@ -49,7 +49,7 @@
       {
         "variant_id": 201,
         "id": 2,
-        "sku": "marijuana201",
+        "sku": "CBD201",
         "image_id": 211
       }
     ],
@@ -57,7 +57,7 @@
       {
         "image_id": 211,
         "id": 2,
-        "alt": "marijuana",
+        "alt": "CBD",
         "src": "https://img.freepik.com/free-photo/healthy-argan-oil-assortment_23-2148989075.jpg?w=1060&t=st=1689262040~exp=1689262640~hmac=34856e4ee468d37e8ea819d8d5753a1d2ffd1eee3e902d7aea9341454d0d6577",
         "variant_id": [201]
       }
@@ -194,8 +194,8 @@
   {
     "id": 7,
     "title": "Cannabis Product 1",
-    "description": "Description of cannabis product 1.",
-    "type": "cannabis",
+    "description": "Description of CBD product 1.",
+    "type": "CBD",
     "brand": "Brand 7",
     "collection": ["on sale"],
     "category": "cannabis",
@@ -282,7 +282,7 @@
         "image_id": 911,
         "id": 9,
         "alt": "sativa",
-        "src": "https://img.freepik.com/free-photo/hemp-oil-from-hemp-seeds-leaves-medical-marijuana_1150-26680.jpg?w=1060&t=st=1689267595~exp=1689268195~hmac=af3d7204c128b9fb6c326adfa29dcae45a2be14b33591ba5ffdaa5e55fd1cbf5",
+        "src": "https://img.freepik.com/free-photo/hemp-oil-from-hemp-seeds-leaves-medical-CBD_1150-26680.jpg?w=1060&t=st=1689267595~exp=1689268195~hmac=af3d7204c128b9fb6c326adfa29dcae45a2be14b33591ba5ffdaa5e55fd1cbf5",
         "variant_id": [901]
       }
     ]
@@ -314,7 +314,7 @@
         "image_id": 1011,
         "id": 10,
         "alt": "sativa",
-        "src": "https://img.freepik.com/free-photo/hemp-oil-from-hemp-seeds-leaves-medical-marijuana_1150-26677.jpg?w=1060&t=st=1689267640~exp=1689268240~hmac=890ed9476274c0742557bf5b3708e9973f31eb80ae03169316ed83c0abcb0fb4",
+        "src": "https://img.freepik.com/free-photo/hemp-oil-from-hemp-seeds-leaves-medical-CBD_1150-26677.jpg?w=1060&t=st=1689267640~exp=1689268240~hmac=890ed9476274c0742557bf5b3708e9973f31eb80ae03169316ed83c0abcb0fb4",
         "variant_id": [1001]
       }
     ]
@@ -346,7 +346,7 @@
         "image_id": 1111,
         "id": 11,
         "alt": "tshirt",
-        "src": "https://img.freepik.com/free-photo/cannabis-marijuana-leaf-closeup_1150-15082.jpg?w=1060&t=st=1689267715~exp=1689268315~hmac=eadfad71725fee337f3684db4eabd3f72b60c1907a2e00484e74348bee7fa183",
+        "src": "https://img.freepik.com/free-photo/cannabis-CBD-leaf-closeup_1150-15082.jpg?w=1060&t=st=1689267715~exp=1689268315~hmac=eadfad71725fee337f3684db4eabd3f72b60c1907a2e00484e74348bee7fa183",
         "variant_id": [1101]
       }
     ]
@@ -385,12 +385,12 @@
   },
   {
     "id": 3,
-    "title": "Marijuana Product 3",
-    "description": "Description of marijuana product 3.",
-    "type": "marijuana",
+    "title": "CBD Product 3",
+    "description": "Description of CBD product 3.",
+    "type": "CBD",
     "brand": "Brand 2",
     "collection": [],
-    "category": "marijuana",
+    "category": "CBD",
     "price": 120,
     "sale": false,
     "discount": null,
@@ -401,7 +401,7 @@
       {
         "variant_id": 2201,
         "id": 2,
-        "sku": "marijuana20",
+        "sku": "CBD20",
         "image_id": 211
       }
     ],
@@ -409,7 +409,7 @@
       {
         "image_id": 2121,
         "id": 21,
-        "alt": "marijuana",
+        "alt": "CBD",
         "src": "https://img.freepik.com/free-photo/cannabis-oil-bottle-assortment_23-2148977693.jpg?w=1060&t=st=1689262074~exp=1689262674~hmac=f8925a41c47113273d4afa0aa35ccd5db1800034f77f7b3bc941937d6a805fbd",
         "variant_id": [2121]
       }

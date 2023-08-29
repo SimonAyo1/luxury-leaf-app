@@ -1,12 +1,12 @@
 
 <section class="wishlist-section section-b-space">
   
-    <div class="col-md-12 empty-cart-cls text-center" *ngIf='!products.length'>
+    <div class="col-md-12 empty-cart-cls text-center" *ngIf='!products.length && !isLoading'>
       <img src="../../../../assets/images/icon/cloning.svg" style="width: 150px" alt="Empty cart" title="Emprt cart">
       <h3 class="mt-2"><b>You Have An Empty Wishlist</b></h3>
       <h4>Explore Store.</h4>
     </div>
-    <div class="row" *ngIf='products.length'>
+    <div class="row" *ngIf='products.length && !isLoading'>
       <div class="col-sm-12">
         <table class="table cart-table table-responsive-xs">
           <thead>

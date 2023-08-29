@@ -34,12 +34,12 @@ export class MarijuanaComponent implements OnInit, OnDestroy {
   public sliders = [
     {
       title: "discount sale",
-      subTitle: "Quality Marijuana Delivered to Your Doorstep.",
+      subTitle: "Quality CBD Delivered to Your Doorstep.",
       image: "../../../assets/images/slider/marijuana.jpg",
     },
     {
       title: "special deal",
-      subTitle: "Explore the World of Premium Cannabis.",
+      subTitle: "Explore the World of Premium CBD.",
       image: "../../../assets/images/slider/shrubs.jpg",
     },
     {
