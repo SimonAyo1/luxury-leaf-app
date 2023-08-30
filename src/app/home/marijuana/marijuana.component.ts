@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ProductSlider } from "../../shared/data/slider";
 import { Product } from "../../shared/classes/product";
 import { ProductService } from "../../shared/services/product.service";
+import { UserI, UserService } from "src/app/shared/services/user.service";
+import { NotificationService } from "src/app/shared/services/notification.service";
 
 @Component({
   selector: "app-marijuana",
@@ -11,13 +13,14 @@ import { ProductService } from "../../shared/services/product.service";
 export class MarijuanaComponent implements OnInit, OnDestroy {
   public themeLogo: string = "assets/images/logos/luxury-logo.png";
   public themeFooterLogo: string = "assets/images/logos/luxury-logo.png";
-
+  public isLoading: boolean = false;
   public products: Product[] = [];
   public productCollections: any[] = [];
-
+  public isActivated: boolean = false;
   public ProductSliderConfig: any = ProductSlider;
-  
-  constructor(public productService: ProductService) {
+  public accountStatus: string
+
+  constructor(public productService: ProductService, private _notification: NotificationService, private _user: UserService) {
     this.productService.getProducts.subscribe((response) => {
       this.products = response.filter(
         (item) => item.type.toLocaleLowerCase().trim() == "indica" || item.type.toLocaleLowerCase().trim() == "sativa"
@@ -30,7 +33,7 @@ export class MarijuanaComponent implements OnInit, OnDestroy {
       });
     });
   }
-  
+
   public sliders = [
     {
       title: "discount sale",
@@ -127,10 +130,22 @@ export class MarijuanaComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit(): void {
-    // Change color for this layout
-    document.documentElement.style.setProperty("--theme-deafult", "#5d7227");
-    document.documentElement.style.setProperty("--theme-gradient1", "#5d7227");
-    document.documentElement.style.setProperty("--theme-gradient2", "#203f15");
+    this.isLoading = true
+    this._notification.startSpinner()
+    this._user?.user?.subscribe((data: UserI[]) => {
+      this.isActivated = data[0].status === 'activated' || data[0].status === 'approved'
+
+      this.accountStatus = data[0].status
+
+      this._notification.hideSpinner()
+      // Change color for this layout
+      document.documentElement.style.setProperty("--theme-deafult", "#5d7227");
+      document.documentElement.style.setProperty("--theme-gradient1", "#5d7227");
+      document.documentElement.style.setProperty("--theme-gradient2", "#203f15");
+      this.isLoading = false
+
+    })
+
   }
 
   ngOnDestroy(): void {

@@ -1,7 +1,7 @@
-<app-header-one [sticky]="true" *ngIf="url != '/pages/comingsoon'"></app-header-one>
-<app-breadcrumb [title]="'Dashboard'" [breadcrumb]="'Account'"></app-breadcrumb>
+<app-header-one [sticky]="true" *ngIf="url != '/pages/comingsoon' && !isLoading && isActivated"></app-header-one>
+<app-breadcrumb [title]="'Dashboard'" [breadcrumb]="'Account'" *ngIf="!isLoading && isActivated"></app-breadcrumb>
 <!-- section start -->
-<section class="section-b-space">
+<section class="section-b-space" *ngIf="!isLoading && isActivated">
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
@@ -35,4 +35,11 @@
     </div>
   </div>
 </section>
-<app-footer-one *ngIf="url != '/pages/comingsoon'"></app-footer-one>
+
+<app-footer-one *ngIf="url != '/pages/comingsoon' && !isLoading && isActivated"></app-footer-one>
+
+
+
+<div *ngIf="!isLoading && !isActivated">
+  <app-no-access [status]="accountStatus"></app-no-access>
+</div>

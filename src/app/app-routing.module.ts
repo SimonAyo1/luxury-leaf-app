@@ -23,6 +23,7 @@ const routes: Routes = [
   // },  
   {
     path: '',
+    ...canActivate(redirectUnauthorized),
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
@@ -37,18 +38,20 @@ const routes: Routes = [
   {
     path: 'store',
     component: ShopComponent,
+    ...canActivate(redirectUnauthorized),
     loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
   },
   {
     path: 'l',
     component: PagesComponent,
+    ...canActivate(redirectUnauthorized),
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   },
-  {
-    path: 'elements',
-    component: ElementsComponent,
-    loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule)
-  },
+  // {
+  //   path: 'elements',
+  //   component: ElementsComponent,
+  //   loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule)
+  // },
   {
     path: '**', // Navigate to Home Page if not found any page
     redirectTo: '/',

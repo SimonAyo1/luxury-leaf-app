@@ -1,3 +1,9 @@
-<app-header-one [sticky]="true" *ngIf="url != '/pages/comingsoon'"></app-header-one>
-<router-outlet></router-outlet>
-<app-footer-one *ngIf="url != '/pages/comingsoon'"></app-footer-one>
+<app-header-one [sticky]="true" *ngIf="url != '/pages/comingsoon' && !isLoading && isActivated"></app-header-one>
+<router-outlet *ngIf="!isLoading && isActivated"></router-outlet>
+<app-footer-one *ngIf="url != '/pages/comingsoon' && !isLoading && isActivated"></app-footer-one>
+
+
+
+<div *ngIf="!isLoading && !isActivated">
+    <app-no-access [status]="accountStatus"></app-no-access>
+</div>

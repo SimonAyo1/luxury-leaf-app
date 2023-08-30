@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
+import { UserI, UserService } from 'src/app/shared/services/user.service';
 // import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -14,11 +16,16 @@ export class LoginComponent implements OnInit {
   authType: string = "sign-in"
   public loginForm: FormGroup;
   public registerForm: FormGroup;
-
+  public refId: string
+  public isRefValid: boolean
+  public isLoading: boolean
   constructor(private formBuilder: FormBuilder,
     // private authenticationService: AuthenticationService,
     private _auth: AuthService,
     private route: ActivatedRoute,
+    private router: Router,
+    private _userService: UserService,
+    private notificationService: NotificationService
 
   ) {
     this.createLoginForm();
@@ -60,15 +67,56 @@ export class LoginComponent implements OnInit {
     })
   }
   async signup() {
-    await this._auth.signUp(this.registerForm.get("email").value, this.registerForm.get("password").value, this.registerForm.get("name").value)
+    await this._auth.signUp(this.registerForm.get("email").value, this.registerForm.get("password").value, this.registerForm.get("name").value, this.refId)
   }
   async signIn() {
     await this._auth.signIn(this.loginForm.get("email").value, this.loginForm.get('password').value)
   }
+  doesLinkExist(linkArray, targetLink) {
+    return linkArray.some(item => item.url === targetLink);
+  }
+  checkIfRefLinkIsValid(refId: string): any {
+    this._userService.getUserById(refId).subscribe((user: UserI[]) => {
+      if (!user) {
+        this.isRefValid = false
+        this.notificationService.hideSpinner()
+        this.isLoading = false
+        this.notificationService.errorMessage("Invalid registration link!, if you have an account kindly login")
+        return
+      }
+      console.log(user[0])
+      const referrer = user[0]
+      this.isRefValid = this.doesLinkExist(referrer.links, window.location.href)
+      this.notificationService.hideSpinner()
+      this.isLoading = false
+
+    })
+
+  }
+
   ngOnInit() {
+    this.isLoading = true
+    this.notificationService.startSpinner()
     this.route.params.subscribe(e => {
       if (e?.type) {
+        if (e.type !== 'sign-up' && e.code1 && e.code2) {
+          this.router.navigate(['/auth']);
+        }
+        if (e.type == 'sign-up' && e.code1 && e.code3) {
+          console.log(e.code1)
+          this.refId = this._userService.decrypt(e.code1, 3)
+          this.checkIfRefLinkIsValid(this.refId)
+
+
+        }
         this.authType = e.type
+        this.notificationService.hideSpinner()
+        this.isLoading = false
+      }
+      if (!e?.type) {
+        this.authType = 'sign-in'
+        this.notificationService.hideSpinner()
+        this.isLoading = false
       }
     })
   }

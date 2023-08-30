@@ -78,9 +78,9 @@ export class MyLinksComponent {
   }
 
   generateNewLink(userId: string) {
-    const baseUrl = "https://luxury-leaf.vercel.app/ref/";
+    const baseUrl = "http://localhost:4200/auth/sign-up/ref/";
     const uniqueId = this.generateUniqueId();
-    const newLink = baseUrl + `${userId.slice(0, 5)}/${userId.slice(6)}/${uniqueId}`;
+    const newLink = baseUrl + `${this._user.encrypt(userId, 3)}/${uniqueId}`;
     return {
       url: newLink,
       activated: true

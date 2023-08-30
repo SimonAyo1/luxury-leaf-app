@@ -1,7 +1,7 @@
-<app-header-one [themeLogo]="themeLogo"></app-header-one>
+<app-header-one [themeLogo]="themeLogo" *ngIf="!isLoading && isActivated"> </app-header-one>
 
 <!-- Home slider start-->
-<section class="p-0 service_slide">
+<section class="p-0 service_slide" *ngIf="!isLoading && isActivated">
   <app-slider [class]="'text-white'" [sliders]="sliders" [textClass]="'text-center p-center'" [category]="'CBD'"
     [buttonClass]="'btn-green'" [buttonText]="'shop now'">
   </app-slider>
@@ -9,7 +9,7 @@
 <!-- Home slider End -->
 
 <!-- service section start -->
-<section class="banner-padding absolute-banner pb-0 tools-service">
+<section class="banner-padding absolute-banner pb-0 tools-service" *ngIf="!isLoading && isActivated">
   <div class="container absolute-bg">
     <div class="service p-0">
       <app-services></app-services>
@@ -19,7 +19,7 @@
 <!-- service section end -->
 
 <!-- About section start -->
-<section>
+<section *ngIf="!isLoading && isActivated">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 offset-lg-2">
@@ -47,7 +47,7 @@
 </section>
 <!-- About section end -->
 <!-- section start -->
-<section class="section-b-space detail-cannabis bg-grey">
+<section *ngIf="!isLoading && isActivated" class="section-b-space detail-cannabis bg-grey">
   <div class="container">
     <div class="row">
       <div class="col-md-4">
@@ -93,12 +93,12 @@
 <!-- section end -->
 
 <!-- product slider start -->
-<div class="title3 section-t-space">
+<div *ngIf="!isLoading && isActivated" class="title3 section-t-space">
   <h4>special deals</h4>
   <h2 class="title-inner3">new products</h2>
   <div class="line"></div>
 </div>
-<section class="p-t-0 section-b-space tools-grey border-box">
+<section *ngIf="!isLoading && isActivated" class="p-t-0 section-b-space tools-grey border-box">
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let product of products">
@@ -112,7 +112,11 @@
 </section>
 <!-- product slider end -->
 
-<app-age-verification></app-age-verification>
-<app-cart-variation [direction]="'right'"></app-cart-variation>
+<app-age-verification *ngIf="!isLoading && isActivated"></app-age-verification>
+<app-cart-variation *ngIf="!isLoading && isActivated" [direction]="'right'"></app-cart-variation>
 <!-- Cart Open To Right Side-->
-<app-footer-one ></app-footer-one>
+<app-footer-one *ngIf="!isLoading && isActivated" ></app-footer-one>
+
+<div *ngIf="!isLoading && !isActivated">
+  <app-no-access [status]="accountStatus"></app-no-access>
+</div>

@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   // Sign up with email and password
-  async signUp(email: string, password: string, name: string) {
+  async signUp(email: string, password: string, name: string, refId: string) {
     this.notification.startSpinner()
     let new_user: UserI = {
       name,
@@ -59,9 +59,11 @@ export class AuthService {
 
         this._user.addUser(new_user).then(() => {
           this.userSubject.next(credential.user)
-          this.router.navigate(["/me/account"])
-          this.notification.hideSpinner()
-          this.notification.successMessage(`Welcome on board ${name}`)
+          this._user.awardPoint(5, refId).then(() => {
+            this.router.navigate(["/me/account"])
+            this.notification.hideSpinner()
+          })
+
 
         })
 
@@ -104,7 +106,7 @@ export class AuthService {
         this.notification.hideSpinner();
         console.log(credential.user, 'credential');
         this.userSubject.next(credential.user); // Manually emit the authenticated user
-        this.router.navigate(['/me/account']);
+        this.router.navigate(['/']);
       })
       .catch((error) => {
         this.notification.hideSpinner();

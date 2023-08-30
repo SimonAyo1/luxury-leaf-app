@@ -26,6 +26,7 @@ export interface UserI {
   phoneNumber: string;
   state: string;
   points: number;
+  status?: string;
   membership: {
     date: Date,
     type: string
@@ -87,6 +88,40 @@ export class UserService {
     return deleteDoc(userDocRef);
   }
 
+
+  awardPoint(points: number, id: string) {
+    const userDocRef = doc(this.userCollection, id);
+    return updateDoc(userDocRef, { points });
+  }
+  encrypt(text, shift) {
+    let encryptedText = "";
+    for (let i = 0; i < text.length; i++) {
+      let char = text[i];
+      if (char.match(/[a-z]/i)) {
+        let asciiOffset = char.toLowerCase() === char ? 'a'.charCodeAt(0) : 'A'.charCodeAt(0);
+        let encryptedChar = String.fromCharCode((char.charCodeAt(0) - asciiOffset + shift) % 26 + asciiOffset);
+        encryptedText += encryptedChar;
+      } else {
+        encryptedText += char; // Keep non-alphabetic characters as they are
+      }
+    }
+    return encryptedText;
+  }
+
+  decrypt(encryptedText, shift) {
+    let decryptedText = "";
+    for (let i = 0; i < encryptedText.length; i++) {
+      let char = encryptedText[i];
+      if (char.match(/[a-z]/i)) {
+        let asciiOffset = char.toLowerCase() === char ? 'a'.charCodeAt(0) : 'A'.charCodeAt(0);
+        let decryptedChar = String.fromCharCode((char.charCodeAt(0) - asciiOffset - shift + 26) % 26 + asciiOffset);
+        decryptedText += decryptedChar;
+      } else {
+        decryptedText += char; // Keep non-alphabetic characters as they are
+      }
+    }
+    return decryptedText;
+  }
 
 
 

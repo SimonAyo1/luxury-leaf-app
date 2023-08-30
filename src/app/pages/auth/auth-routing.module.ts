@@ -11,6 +11,10 @@ const routes: Routes = [
     path: ":type",
     component: LoginComponent,
   },
+  {
+    path: ":type/ref/:code1/:code3",
+    component: LoginComponent,
+  }
 ];
 
 @NgModule({
