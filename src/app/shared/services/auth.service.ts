@@ -61,7 +61,7 @@ export class AuthService {
 
           this.userSubject.next(credential.user)
           this._user.awardPoint(currentPoint || 0 + 5, refId).then(() => {
-            this.router.navigate(["/me/account"])
+            this.router.navigate(["/"])
             this.notification.hideSpinner()
           })
         })
@@ -103,7 +103,6 @@ export class AuthService {
     return signInWithEmailAndPassword(this.afAuth, email, password)
       .then((credential) => {
         this.notification.hideSpinner();
-        console.log(credential.user, 'credential');
         this.userSubject.next(credential.user); // Manually emit the authenticated user
         this.router.navigate(['/']);
       })
