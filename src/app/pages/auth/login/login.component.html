@@ -25,7 +25,7 @@
           <div class="card tab2-card">
             <div class="card-body">
               <ngb-tabset class="tab-coupon mb-0" [activeId]="authType">
-                <ngb-tab id="sign-in" *ngIf="!refId">
+                <ngb-tab id="sign-in" *ngIf="!refId || !isRefValid">
                   <ng-template ngbTabTitle><i class="icon-user mr-2"></i>Sign In</ng-template>
                   <ng-template ngbTabContent>
                     <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">

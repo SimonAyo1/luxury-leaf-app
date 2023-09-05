@@ -2,7 +2,12 @@
 <section class="section-b-space">
   <div class="container padding-cls">
     <div class="checkout-page">
-      <div class="checkout-form">
+      <div class="col-md-12 empty-cart-cls text-center" *ngIf='!checkoutForm.valid'>
+        <img src="../../../../assets/images/icon/cloning.svg" style="width: 150px" alt="Empty cart" title="Emprt cart">
+        <h3 class="mt-2"><b>Please complete your profile to checkout</b></h3>
+        <!-- <h4>Explore Store.</h4> -->
+      </div>
+      <div class="checkout-form" *ngIf='checkoutForm.valid'>
         <form>
           <div class="row">
             <div class="col-lg-6 col-sm-12 col-xs-12">

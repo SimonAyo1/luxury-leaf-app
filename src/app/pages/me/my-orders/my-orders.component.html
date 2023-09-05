@@ -1,8 +1,10 @@
 <div>
-    <h4>My Referral Links</h4>
+    <h4>My Orders</h4>
 </div>
-<div *ngIf="!orders">
-    <p>No orders available.</p>
+<div class="col-md-12 empty-cart-cls text-center" *ngIf='!orders'>
+    <img src="../../../../assets/images/icon/cloning.svg" style="width: 150px" alt="Empty cart" title="Emprt cart">
+    <h3 class="mt-2"><b>You Have No Order</b></h3>
+    <h4>Explore Store.</h4>
 </div>
 
 <div *ngIf="orders">
@@ -19,7 +21,7 @@
             <p class="card-text">Products:</p>
             <ul class="items-list">
                 <li *ngFor="let product of order.product; let i = index" class="item">
-                    <span class="item-name">{{i +0}} {{ product.title }}</span>
+                    <span class="item-name">{{i + 1}}. {{ product.title }}</span>
                     <span class="item-quantity">Price: {{ product.price | currency }}</span>
                 </li>
             </ul>

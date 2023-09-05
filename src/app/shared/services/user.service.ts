@@ -10,6 +10,9 @@ import {
   setDoc,
   updateDoc,
   DocumentData,
+  query,
+  where,
+  getDocs,
 } from '@angular/fire/firestore';
 
 
@@ -36,6 +39,7 @@ export interface UserI {
     name: string
     email: string
   }[],
+  referrer?: string;
   links: {
     url: string;
     activated: boolean
@@ -58,14 +62,30 @@ export class UserService {
     this.userCollection = collection(this.firestore, 'users');
     this._auth.onAuthStateChanged((user) => {
       this.userId = user?.uid
+      console.log(user.uid)
       this.user = user?.uid ? this.getUserById(user.uid) : null
     });
   }
 
 
   // Get user by ID
-  getUserById(userId: string): Observable<any> {
-    return collectionData(this.userCollection, { idField: userId });
+  getUserById(userId: string): Observable<UserI[] | undefined> {
+    const userQuery = query(this.userCollection, where('id', '==', userId));
+    return new Observable(observer => {
+      getDocs(userQuery).then(querySnapshot => {
+        if (!querySnapshot.empty) {
+          const doc = querySnapshot.docs[0];
+          const userData = doc.data() as UserI;
+          observer.next([userData]);
+        } else {
+          observer.next([]); // No matching document found
+        }
+        observer.complete();
+      }).catch(error => {
+        observer.error(error);
+      });
+    });
+    // return collectionData(this.userCollection, { idField: userId });
   }
 
   // Add a new user
@@ -90,6 +110,7 @@ export class UserService {
 
 
   awardPoint(points: number, id: string) {
+    console.log(points, "AWARD POINTS")
     const userDocRef = doc(this.userCollection, id);
     return updateDoc(userDocRef, { points });
   }

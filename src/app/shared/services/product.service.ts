@@ -29,6 +29,7 @@ export class ProductService {
     setTimeout(() => {
       this._user?.user?.subscribe((data: UserI[]) => {
         this.USER = data[0]
+        // console.log(this.USER, "USER")
       })
     }, 2000)
 
@@ -75,7 +76,7 @@ export class ProductService {
 
 
     const itemsStream = new Observable(observer => {
-      observer.next(this.USER.wishlist);
+      observer.next(this.USER.wishlist || []);
       observer.complete()
     });
     return itemsStream as Observable<Product[]>;

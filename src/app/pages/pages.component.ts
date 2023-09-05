@@ -27,9 +27,9 @@ export class PagesComponent implements OnInit {
     this.isLoading = true
     this._notification.startSpinner()
     this._user?.user?.subscribe((data: UserI[]) => {
-      this.isActivated = data[0].status === 'activated' || data[0].status === 'approved'
+      this.isActivated = data[0]?.status === 'activated' || data[0]?.status === 'approved'
 
-      this.accountStatus = data[0].status
+      this.accountStatus = data[0]?.status
 
       this._notification.hideSpinner()
 

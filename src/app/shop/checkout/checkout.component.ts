@@ -33,7 +33,7 @@ export class CheckoutComponent implements OnInit {
       // lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
       phone: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       email: ['', [Validators.required, Validators.email]],
-      address: ['', [Validators.required, Validators.maxLength(200)]],
+      address: ['', [Validators.required, Validators.maxLength(300)]],
       // country: ['', Validators.required],
       city: ['', Validators.required],
       userId: ['', Validators.required],

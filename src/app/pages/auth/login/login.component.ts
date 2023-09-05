@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   public refId: string
   public isRefValid: boolean
   public isLoading: boolean
+  public referrerCurrentPoints: number
   constructor(private formBuilder: FormBuilder,
     // private authenticationService: AuthenticationService,
     private _auth: AuthService,
@@ -67,7 +68,7 @@ export class LoginComponent implements OnInit {
     })
   }
   async signup() {
-    await this._auth.signUp(this.registerForm.get("email").value, this.registerForm.get("password").value, this.registerForm.get("name").value, this.refId)
+    await this._auth.signUp(this.registerForm.get("email").value, this.registerForm.get("password").value, this.registerForm.get("name").value, this.refId, this.referrerCurrentPoints)
   }
   async signIn() {
     await this._auth.signIn(this.loginForm.get("email").value, this.loginForm.get('password').value)
@@ -84,9 +85,12 @@ export class LoginComponent implements OnInit {
         this.notificationService.errorMessage("Invalid registration link!, if you have an account kindly login")
         return
       }
-      console.log(user[0])
       const referrer = user[0]
-      this.isRefValid = this.doesLinkExist(referrer.links, window.location.href)
+      this.referrerCurrentPoints = user[0].points
+      this.isRefValid = this.doesLinkExist(referrer.links || [], window.location.href)
+      if (!this.isRefValid) {
+        this.notificationService.errorMessage("Invalid registration link!, if you have an account kindly login")
+      }
       this.notificationService.hideSpinner()
       this.isLoading = false
 
@@ -106,8 +110,7 @@ export class LoginComponent implements OnInit {
           console.log(e.code1)
           this.refId = this._userService.decrypt(e.code1, 3)
           this.checkIfRefLinkIsValid(this.refId)
-
-
+          return
         }
         this.authType = e.type
         this.notificationService.hideSpinner()
