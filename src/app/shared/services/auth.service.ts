@@ -60,7 +60,8 @@ export class AuthService {
         this._user.addUser(new_user).then(() => {
 
           this.userSubject.next(credential.user)
-          this._user.awardPoint(currentPoint ? currentPoint + 5 : 5, refId).then(() => {
+          let pointToGive = currentPoint ? currentPoint + 5 : 5
+          this._user.awardPoint(pointToGive, refId).then(() => {
             this.router.navigate(["/"])
             this.notification.hideSpinner()
           })
