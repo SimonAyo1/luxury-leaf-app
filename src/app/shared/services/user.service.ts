@@ -80,6 +80,7 @@ export class UserService {
         } else {
           observer.next([]); // No matching document found
         }
+        observer.complete();
       }).catch(error => {
         observer.error(error);
       });

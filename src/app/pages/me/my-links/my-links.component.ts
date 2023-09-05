@@ -30,7 +30,7 @@ export class MyLinksComponent {
     }
     this._user.updateuser(data).then(() => {
       this.notification.hideSpinner()
-
+      window.location.reload()
       this.notification.successMessage("Referral link generated!")
     }).catch((e) => {
       this.notification.hideSpinner()
