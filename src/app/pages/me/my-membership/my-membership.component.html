@@ -1,18 +1,51 @@
 <div class="membership-container">
-    <h2 class="membership-title">My Membership</h2>
-    <div class="membership-details">
-      <div class="plan-details">
-        <h3 class="plan-title">Membership Status: <span style="color: rgb(181, 24, 24);">INACTIVE</span></h3>
-        <ul class="benefit-list">
-          <li class="benefit-item">Unlimited access to premium content</li>
-          <li class="benefit-item">Exclusive member-only events</li>
-          <li class="benefit-item">24/7 customer support</li>
-        </ul>
-      </div>
-      <div class="actions">
-        <!-- <button class="btn btn-upgrade btn-sm">Upgrade Plan</button> -->
-        <button class="btn btn-cancel btn-sm">Cancel Membership</button>
-      </div>
+  <h2 class="membership-title">My Membership</h2>
+  <div class="membership-details" *ngIf="user">
+    <div class="plan-details">
+      <h3 class="plan-title">
+        Membership Status:
+        <span
+          style="color: rgb(181, 24, 24)"
+          *ngIf="
+            isDateAboveOneMonth(user?.membership?.date) && !successfullPayment
+          "
+          >INACTIVE</span
+        >
+        <span
+          style="color: rgb(9, 144, 27)"
+          *ngIf="
+            !isDateAboveOneMonth(user?.membership?.date) || successfullPayment
+          "
+          >ACTIVE</span
+        >
+      </h3>
+      <ul class="benefit-list">
+        <li class="benefit-item">Unlimited access to premium content</li>
+        <li class="benefit-item">Exclusive member-only events</li>
+        <li class="benefit-item">24/7 customer support</li>
+      </ul>
+    </div>
+    <div class="actions">
+      <!-- <button class="btn btn-upgrade btn-sm">Upgrade Plan</button> -->
+      <button
+        *ngIf="
+          isDateAboveOneMonth(user?.membership?.date) && !successfullPayment
+        "
+        class="btn btn-cancel btn-sm"
+        (click)="open()"
+      >
+        Activate Membership
+      </button>
     </div>
   </div>
-  
+</div>
+
+<ng-template #paymentModal let-modal>
+  <app-payment
+    [amount]="500"
+    [checkoutForm]="checkoutForm"
+    description="Payment for membership monthly subscription"
+    (closeEvent)="handleModalClose($event)"
+    (paymentStatus)="handlePaymentStatus($event)"
+  ></app-payment>
+</ng-template>

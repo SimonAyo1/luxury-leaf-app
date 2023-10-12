@@ -5,6 +5,7 @@ import { Order } from '../classes/order';
 import { collection, setDoc, doc, Firestore, CollectionReference, DocumentData, getDocs, query, where } from '@angular/fire/firestore';
 import { NotificationService } from './notification.service';
 import { ProductService } from './product.service';
+import { HttpClient } from '@angular/common/http';
 
 const state = {
   checkoutItems: JSON.parse(localStorage['checkoutItems'] || '[]')
@@ -16,9 +17,9 @@ const state = {
 export class OrderService {
   private firestore: Firestore = inject(Firestore);
   private orderCollection: CollectionReference<DocumentData>;
+  BASE_URL = "http://localhost:3000"
 
-
-  constructor(private router: Router, private notify: NotificationService, private product_service: ProductService) {
+  constructor(private router: Router, private notify: NotificationService, private product_service: ProductService, private http: HttpClient) {
     this.orderCollection = collection(this.firestore, 'orders');
 
   }
@@ -102,4 +103,10 @@ export class OrderService {
 
   }
 
+  public checkoutSession(price: number, description: string): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/create-checkout-session`, {
+      amount: price,
+      description
+    })
+  }
 }

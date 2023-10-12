@@ -26,45 +26,90 @@
             <div class="card-body">
               <ngb-tabset class="tab-coupon mb-0" [activeId]="authType">
                 <ngb-tab id="sign-in" *ngIf="!refId || !isRefValid">
-                  <ng-template ngbTabTitle><i class="icon-user mr-2"></i>Sign In</ng-template>
+                  <ng-template ngbTabTitle
+                    ><i class="icon-user mr-2"></i>Sign In</ng-template
+                  >
                   <ng-template ngbTabContent>
-                    <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
-                      <form [formGroup]="loginForm" class="form-horizontal auth-form" novalidate=""
-                        (ngSubmit)="signIn()">
+                    <div
+                      class="tab-pane fade active show"
+                      id="account"
+                      role="tabpanel"
+                      aria-labelledby="account-tab"
+                    >
+                      <form
+                        [formGroup]="loginForm"
+                        class="form-horizontal auth-form"
+                        novalidate=""
+                        (ngSubmit)="signIn()"
+                      >
                         <div class="form-group">
-                          <input required="" name="email" type="email" formControlName="email" class="form-control"
-                            placeholder="Username" id="exampleInputEmail1" />
+                          <input
+                            required=""
+                            name="email"
+                            type="email"
+                            formControlName="email"
+                            class="form-control"
+                            placeholder="Username"
+                            id="exampleInputEmail1"
+                          />
                         </div>
                         <div class="form-group">
-                          <input required="" name="password" type="password" formControlName="password"
-                            class="form-control" placeholder="Password" />
+                          <input
+                            required=""
+                            name="password"
+                            type="password"
+                            formControlName="password"
+                            class="form-control"
+                            placeholder="Password"
+                          />
                         </div>
                         <div class="form-terms">
                           <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing" />
+                            <input
+                              type="checkbox"
+                              class="custom-control-input"
+                              id="customControlAutosizing"
+                            />
                             <!-- <label
                               class="custom-control-label"
                               for="customControlAutosizing"
                               >Remember me</label
                             > -->
-                            <a href="javascript:void(0)" class="btn btn-default forgot-pass">forgot password?</a>
+                            <a
+                              href="javascript:void(0)"
+                              class="btn btn-default forgot-pass"
+                              >forgot password?</a
+                            >
                           </div>
                         </div>
                         <div class="form-button">
-                          <button [disabled]="loginForm.invalid" class="btn btn-primary" type="submit">
+                          <button
+                            [disabled]="loginForm.invalid"
+                            class="btn btn-primary"
+                            type="submit"
+                          >
                             Sign In
                           </button>
                         </div>
                         <div class="form-footer">
                           <ul class="social">
                             <li>
-                              <a class="fa fa-twitter" href="javascript:void(0)"></a>
+                              <a
+                                class="fa fa-twitter"
+                                href="javascript:void(0)"
+                              ></a>
                             </li>
                             <li>
-                              <a class="fa fa-facebook" href="javascript:void(0)"></a>
+                              <a
+                                class="fa fa-facebook"
+                                href="javascript:void(0)"
+                              ></a>
                             </li>
                             <li>
-                              <a class="fa fa-instagram" href="javascript:void(0)"></a>
+                              <a
+                                class="fa fa-instagram"
+                                href="javascript:void(0)"
+                              ></a>
                             </li>
                           </ul>
                         </div>
@@ -72,47 +117,157 @@
                     </div>
                   </ng-template>
                 </ngb-tab>
+                <!-- *ngIf="isRefValid" -->
                 <ngb-tab id="sign-up" *ngIf="isRefValid">
-                  <ng-template ngbTabTitle><i class="icon-unlock mr-2"></i> Sign Up
+                  <ng-template ngbTabTitle
+                    ><i class="icon-unlock mr-2"></i> Sign Up
                     <ng-template ngbTabContent>
-                      <form [formGroup]="registerForm" class="form-horizontal auth-form" novalidate
-                        (ngSubmit)="signup()">
-                        <div class="form-group">
-                          <input required name="name" type="text" formControlName="name" class="form-control"
-                            placeholder="Name" id="exampleInputEmail12" />
+                      <form
+                        [formGroup]="registerForm"
+                        class="form-horizontal auth-form "
+                        novalidate
+                        (ngSubmit)="signup()"
+                      >
+                      <div class="d-flex row">
+
+                        <div class="form-group col-lg-6 col-sm-12">
+                          <input
+                            required
+                            name="name"
+                            type="text"
+                            formControlName="name"
+                            class="form-control"
+                            placeholder="Name"
+                            id="exampleInputEmail12"
+                          />
                         </div>
-                        <div class="form-group">
-                          <input required name="email" type="email" formControlName="email" class="form-control"
-                            placeholder="Email" id="exampleInputEmail12" />
+                        <div class="form-group col-lg-6 col-sm-12">
+                          <input
+                            required
+                            name="phone_number"
+                            type="tel"
+                            formControlName="phone_number"
+                            class="form-control"
+                            placeholder="Phone Number"
+                            id="exampleInputEmail12"
+                          />
                         </div>
-                        <div class="form-group">
-                          <input required name="password" formControlName="password" type="password"
-                            class="form-control" placeholder="Password" />
+                        <div class="form-group col-lg-6 col-sm-12">
+                          <input
+                            required
+                            name="address"
+                            type="text"
+                            formControlName="address"
+                            class="form-control"
+                            placeholder="Address"
+                            id="exampleInputEmail12"
+                          />
                         </div>
+                        <div class="form-group col-lg-6 col-sm-12">
+                          <input
+                            required
+                            name="postal_code"
+                            type="text"
+                            formControlName="postal_code"
+                            class="form-control"
+                            placeholder="Postal Code"
+                            id="exampleInputEmail12"
+                          />
+                        </div>
+                        <div class="form-group col-lg-6 col-sm-12">
+                          <input
+                            required
+                            name="city"
+                            type="text"
+                            formControlName="city"
+                            class="form-control"
+                            placeholder="City"
+                            id="exampleInputEmail12"
+                          />
+                        </div>
+                        <div class="form-group col-lg-6 col-sm-12">
+                          <input
+                            required
+                            name="state"
+                            type="text"
+                            formControlName="state"
+                            class="form-control"
+                            placeholder="State"
+                            id="exampleInputEmail12"
+                          />
+                        </div>
+                        <div class="form-group col-lg-6 col-sm-12">
+                          <input
+                            required
+                            name="email"
+                            type="email"
+                            formControlName="email"
+                            class="form-control"
+                            placeholder="Email"
+                            id="exampleInputEmail12"
+                          />
+                        </div>
+                        <div class="form-group col-lg-6 col-sm-12">
+                          <input
+                            required
+                            name="password"
+                            formControlName="password"
+                            type="password"
+                            class="form-control"
+                            placeholder="Password"
+                          />
+                        </div>
+                      </div>
+
                         <div class="form-terms">
                           <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing1"
-                              name="check" formControlName="check" />
-                            <label class="custom-control-label" for="customControlAutosizing1"><span>I agree to the
-                                <a href="javascript:void(0)" class="pull-right">Terms &amp;
-                                  Conditions</a></span></label>
+                            <input
+                              type="checkbox"
+                              class="custom-control-input"
+                              id="customControlAutosizing1"
+                              name="check"
+                              formControlName="check"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="customControlAutosizing1"
+                              ><span
+                                >I agree to the
+                                <a href="javascript:void(0)" class="pull-right"
+                                  >Terms &amp; Conditions</a
+                                ></span
+                              ></label
+                            >
                           </div>
                         </div>
-                        <div class="form-button">
-                          <button [disabled]="registerForm.invalid" class="btn btn-primary" type="submit">
+                        <div class="form-button" style="display: flex; justify-content: center;">
+                          <button
+                            [disabled]="registerForm.invalid"
+                            class="btn btn-primary"
+                            type="submit"
+                          >
                             Sign Up
                           </button>
                         </div>
                         <div class="form-footer">
                           <ul class="social">
                             <li>
-                              <a class="fa fa-twitter" href="javascript:void(0)"></a>
+                              <a
+                                class="fa fa-twitter"
+                                href="javascript:void(0)"
+                              ></a>
                             </li>
                             <li>
-                              <a class="fa fa-facebook" href="javascript:void(0)"></a>
+                              <a
+                                class="fa fa-facebook"
+                                href="javascript:void(0)"
+                              ></a>
                             </li>
                             <li>
-                              <a class="fa fa-instagram" href="javascript:void(0)"></a>
+                              <a
+                                class="fa fa-instagram"
+                                href="javascript:void(0)"
+                              ></a>
                             </li>
                           </ul>
                         </div>

@@ -31,7 +31,7 @@ export interface UserI {
   points: number;
   status?: string;
   membership: {
-    date: Date,
+    date: Date | string,
     type: string
   }
   referrals: {
@@ -167,5 +167,10 @@ export class UserService {
     return uniqueID;
   }
 
+
+
+  activateMembershipSubscription() {
+    
+  }
 
 }

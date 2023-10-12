@@ -50,10 +50,12 @@ import { LayoutBoxComponent } from './components/layout-box/layout-box.component
 
 // Tap To Top
 import { TapToTopComponent } from './components/tap-to-top/tap-to-top.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 // Pipes
 import { DiscountPipe } from './pipes/discount.pipe';
 import { NoAccessComponent } from './components/no-access/no-access.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,8 @@ import { NoAccessComponent } from './components/no-access/no-access.component';
     LayoutBoxComponent,
     TapToTopComponent,
     DiscountPipe,
-    NoAccessComponent
+    NoAccessComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
@@ -102,7 +105,8 @@ import { NoAccessComponent } from './components/no-access/no-access.component';
       // preset: scrollPreset // <-- tell LazyLoadImage that you want to use scrollPreset
     }),
     NgxSkeletonLoaderModule,
-    TranslateModule
+    TranslateModule,
+    NgxStripeModule.forRoot('pk_test_51MlgVWKmVAeVumT0L8gwahBkFhg9veVsd4bld8usSjuCSj9mIrmc4GquJbqFpiy5KL3f13Wy6anMRFMOulmKNT5000rXdolecx'),
   ],
   exports: [
     CommonModule,
@@ -142,7 +146,8 @@ import { NoAccessComponent } from './components/no-access/no-access.component';
     LayoutBoxComponent,
     TapToTopComponent,
     DiscountPipe,
-    NoAccessComponent
+    NoAccessComponent,
+    PaymentComponent
   ]
 })
 export class SharedModule { }

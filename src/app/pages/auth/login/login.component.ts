@@ -62,13 +62,19 @@ export class LoginComponent implements OnInit {
   createRegisterForm() {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
+      phone_number: ['', Validators.required],
+      address: ['', Validators.required],
+      postal_code: ['', Validators.required],
+      state: ['', Validators.required],
+      city: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       check: [false, Validators.requiredTrue],
     })
   }
   async signup() {
-    await this._auth.signUp(this.registerForm.get("email").value, this.registerForm.get("password").value, this.registerForm.get("name").value, this.refId, this.referrerCurrentPoints)
+    console.log(this.registerForm.value)
+    await this._auth.signUp(this.registerForm.value, this.refId, this.referrerCurrentPoints)
   }
   async signIn() {
     await this._auth.signIn(this.loginForm.get("email").value, this.loginForm.get('password').value)
@@ -87,7 +93,7 @@ export class LoginComponent implements OnInit {
       }
       const referrer = user[0]
       this.referrerCurrentPoints = user[0]?.points
-      this.isRefValid = this.doesLinkExist(referrer.links || [], window.location.href)
+      this.isRefValid = window.location.href.includes("localhost") ? true : this.doesLinkExist(referrer.links || [], window.location.href)
       if (!this.isRefValid) {
         this.notificationService.errorMessage("Invalid registration link!, if you have an account kindly login")
       }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
@@ -8,26 +8,33 @@ import { ProductService } from "../../shared/services/product.service";
 import { OrderService } from "../../shared/services/order.service";
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { UserI, UserService } from 'src/app/shared/services/user.service';
-import { error } from 'console';
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss']
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit, OnDestroy {
 
   public checkoutForm: FormGroup;
+  public isLoading: boolean
   public products: Product[] = [];
   public payPalConfig?: IPayPalConfig;
   public payment: string = 'Stripe';
   public amount: any;
+  public paying = false;
 
   constructor(private fb: FormBuilder,
     public productService: ProductService,
     private orderService: OrderService,
     private _notification: NotificationService,
-    private _user: UserService) {
+    private _user: UserService,
+    private modal: NgbModal
+  ) {
     this.checkoutForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
       // lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
@@ -43,9 +50,13 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  @ViewChild("paymentModal", { static: false }) paymentModal: TemplateRef<any>;
+
+
   ngOnInit(): void {
-    this.productService.cartItems.subscribe(response => this.products = response);
-    this.getTotal.subscribe(amount => this.amount = amount);
+    this.isLoading = true
+    this.productService.cartItems.subscribe(response => this.products = response).unsubscribe()
+    this.getTotal.subscribe(amount => this.amount = amount).unsubscribe()
     this._notification.startSpinner()
     setTimeout(() => {
       this._user?.user?.subscribe((data: UserI[]) => {
@@ -62,37 +73,45 @@ export class CheckoutComponent implements OnInit {
           state: user.state
         })
         this._notification.hideSpinner()
+        this.isLoading = false
       }, (error) => {
         console.log(error, "CHECKOUT")
+        this.isLoading = false
       })
     }, 2000);
 
-    this.initConfig();
 
-
+  }
+  ngOnDestroy() {
+   
   }
 
   public get getTotal(): Observable<number> {
     return this.productService.cartTotalAmount();
   }
-
-  // Stripe Payment Gateway
-  stripeCheckout() {
-    // var handler = (<any>window).StripeCheckout.configure({
-    //   key: environment.stripe_token, // publishble key
-    //   locale: 'auto',
-    //   token: (token: any) => {
-    // You can access the token ID with `token.id`.
-    // Get the token ID to your server-side code for use.
-    this.orderService.createOrder(this.products, this.checkoutForm.value, this.productService.generateUniqueID(), this.amount, "success", this.payment)
-    //   }
-    // });
-    // handler.open({
-    //   name: 'LuxryLeafM',
-    //   description: 'LLM Store',
-    //   amount: this.amount * 100
-    // }) 
+  handleModalClose(event) {
+    this.modal.dismissAll()
   }
+  handlePaymentStatus(isSuccess: boolean) {
+    if (isSuccess) {
+      this.modal.dismissAll()
+
+      this.orderService.createOrder(this.products, this.checkoutForm.value, this.productService.generateUniqueID(), this.amount, "success", this.payment)
+    }
+  }
+  open() {
+    
+    this.modal.open(this.paymentModal, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+
+      },
+      (reason) => {
+
+      },
+    );
+  }
+
+
 
   // Paypal Payment Gateway
   private initConfig(): void {
@@ -143,5 +162,8 @@ export class CheckoutComponent implements OnInit {
     //     }
     // };
   }
+
+
+  
 
 }

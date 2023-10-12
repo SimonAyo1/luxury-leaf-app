@@ -35,26 +35,26 @@ export class AuthService {
   }
 
   // Sign up with email and password
-  async signUp(email: string, password: string, name: string, refId: string, currentPoint: number) {
+  async signUp(form: any, refId: string, currentPoint: number) {
     this.notification.startSpinner()
     let new_user: UserI = {
-      name,
+      name: form?.name,
       id: '',
-      email,
-      address: null,
-      city: null,
-      postalCode: null,
-      phoneNumber: null,
+      email: form?.email,
+      address: form?.address,
+      city: form?.city,
+      postalCode: form?.postal_code,
+      phoneNumber: form?.phone_number,
       membership: null,
       referrals: null,
       referrer: refId,
-      state: null,
+      state: form?.state,
       points: 0,
       wishlist: null,
       links: null
 
     }
-    return createUserWithEmailAndPassword(this.afAuth, email, password)
+    return createUserWithEmailAndPassword(this.afAuth, form?.email, form?.password)
       .then((credential) => {
         new_user["id"] = credential.user.uid
         this._user.addUser(new_user).then(() => {

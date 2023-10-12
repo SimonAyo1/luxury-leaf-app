@@ -22,6 +22,7 @@ import { provideAuth } from '@angular/fire/auth';
 import { getAuth } from 'firebase/auth';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+
 // AoT requires an exported function for factories
 // export function HttpLoaderFactory(http: HttpClient) {
 //   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
