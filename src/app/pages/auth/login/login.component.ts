@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
       }
       const referrer = user[0]
       this.referrerCurrentPoints = user[0]?.points
-      this.isRefValid = window.location.href.includes("localhosttest") ? true : this.doesLinkExist(referrer.links || [], window.location.href)
+      this.isRefValid = window.location.href.includes("localhosttestjj") ? true : this.doesLinkExist(referrer.links || [], window.location.href)
       if (!this.isRefValid) {
         this.notificationService.errorMessage("Invalid registration link!, if you have an account kindly login")
       }
