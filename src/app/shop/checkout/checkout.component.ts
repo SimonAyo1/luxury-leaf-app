@@ -24,7 +24,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public isLoading: boolean
   public products: Product[] = [];
   public payPalConfig?: IPayPalConfig;
-  public payment: string = 'Stripe';
+  public payment: string = 'paypal';
   public amount: any;
   public paying = false;
 
@@ -40,7 +40,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       // lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
       phone: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       email: ['', [Validators.required, Validators.email]],
-      address: ['', [Validators.required, Validators.maxLength(300)]],
+      address: ['', [Validators.required]],
       // country: ['', Validators.required],
       city: ['', Validators.required],
       userId: ['', Validators.required],
@@ -48,6 +48,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       postalcode: ['', Validators.required],
 
     })
+    this.initConfig()
   }
 
   @ViewChild("paymentModal", { static: false }) paymentModal: TemplateRef<any>;
@@ -83,7 +84,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   }
   ngOnDestroy() {
-   
+
   }
 
   public get getTotal(): Observable<number> {
@@ -93,14 +94,18 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.modal.dismissAll()
   }
   handlePaymentStatus(isSuccess: boolean) {
+
     if (isSuccess) {
       this.modal.dismissAll()
-
-      this.orderService.createOrder(this.products, this.checkoutForm.value, this.productService.generateUniqueID(), this.amount, "success", this.payment)
+      this._user.awardPoint((this.amount), this._user.userId).then(() => {
+        this.orderService.createOrder(this.products, this.checkoutForm.value, this.productService.generateUniqueID(), this.amount, "success", this.payment)
+      }).catch(() => {
+        this.orderService.createOrder(this.products, this.checkoutForm.value, this.productService.generateUniqueID(), this.amount, "success", this.payment)
+      })
     }
   }
   open() {
-    
+
     this.modal.open(this.paymentModal, { ariaLabelledBy: 'modal-basic-title' }).result.then(
       (result) => {
 
@@ -111,6 +116,38 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     );
   }
 
+  handlePaymentType() {
+    if (this.payment == 'paypal') {
+      this.open()
+      return
+    }
+    this._notification.startSpinner()
+    this._user.user.subscribe((user) => {
+      if (user[0]?.points >= 100 && user[0]?.points < 250) {
+        const val = (user[0]?.points / 100) * 10
+        if (this.amount <= val) {
+          this._user.awardPoint(user[0]?.points - this.amount, user[0]?.id).then(() => {
+            this._notification.hideSpinner()
+            this.orderService.createOrder(this.products, this.checkoutForm.value, this.productService.generateUniqueID(), this.amount, "success", this.payment)
+          })
+        }
+
+      }
+      else if (user[0]?.points >= 250) {
+        const val = (user[0]?.points / 250) * 35
+        if (this.amount <= val) {
+          this._user.awardPoint(user[0]?.points - this.amount, user[0]?.id).then(() => {
+            this._notification.hideSpinner()
+            this.orderService.createOrder(this.products, this.checkoutForm.value, this.productService.generateUniqueID(), this.amount, "success", this.payment)
+          })
+        }
+      }
+      else {
+        this._notification.hideSpinner()
+        this._notification.errorMessage("You don't have enough points to make this purchase!")
+      }
+    })
+  }
 
 
   // Paypal Payment Gateway
@@ -164,6 +201,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
 
-  
+
 
 }

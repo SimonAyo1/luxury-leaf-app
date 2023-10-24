@@ -11,8 +11,21 @@ import { UserI, UserService } from 'src/app/shared/services/user.service';
 })
 export class MyOrdersComponent implements OnInit {
   orders: Order[]
-  constructor(private orderService: OrderService, private _user: UserService, private notification: NotificationService) { }
+  deliveryStatusOptions: string[] = ['Pending', 'Shipped', 'Delivered'];
 
+  constructor(private orderService: OrderService, private _user: UserService, private notification: NotificationService) { }
+  getStatusClass(deliveryStatus: string) {
+    switch (deliveryStatus) {
+      case 'Pending':
+        return 'text-warning'; // CSS class for yellow text
+      case 'Shipped':
+        return 'text-info';    // CSS class for blue text
+      case 'Delivered':
+        return 'text-success'; // CSS class for green text
+      default:
+        return '';              // Default CSS class
+    }
+  }
   getUserOrders(userId: string) {
     this.notification.startSpinner()
 

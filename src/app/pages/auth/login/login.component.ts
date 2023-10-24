@@ -61,13 +61,13 @@ export class LoginComponent implements OnInit {
   }
   createRegisterForm() {
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      phone_number: ['', Validators.required],
+      name: ['',  [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
+      phone_number: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       address: ['', Validators.required],
       postal_code: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       check: [false, Validators.requiredTrue],
     })

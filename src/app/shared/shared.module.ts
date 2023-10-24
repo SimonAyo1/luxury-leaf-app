@@ -56,6 +56,7 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { DiscountPipe } from './pipes/discount.pipe';
 import { NoAccessComponent } from './components/no-access/no-access.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     }),
     NgxSkeletonLoaderModule,
     TranslateModule,
+    NgxPayPalModule,
     NgxStripeModule.forRoot('pk_test_51MlgVWKmVAeVumT0L8gwahBkFhg9veVsd4bld8usSjuCSj9mIrmc4GquJbqFpiy5KL3f13Wy6anMRFMOulmKNT5000rXdolecx'),
   ],
   exports: [

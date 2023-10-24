@@ -242,25 +242,14 @@
                             <input
                               type="radio"
                               [(ngModel)]="payment"
-                              [value]="'Stripe'"
+                              [value]="'paypal'"
                               name="payment-group"
                               id="payment-2"
                             />
-                            <label for="payment-2">Stripe </label>
+                            <label for="payment-2">Paypal </label>
                           </div>
                         </li>
-                        <li>
-                          <div class="radio-option paypal">
-                            <input
-                              type="radio"
-                              [(ngModel)]="payment"
-                              [value]="'pay_delivery'"
-                              name="payment-group"
-                              id="payment-3"
-                            />
-                            <label for="payment-3">Pay on delivery</label>
-                          </div>
-                        </li>
+                      
                         <li>
                           <div class="radio-option paypal">
                             <input
@@ -280,7 +269,7 @@
                     <button
                       type="button"
                       class="btn-solid btn"
-                      (click)="open()"
+                      (click)="handlePaymentType()"
                     >
                       Place Order
                     </button>

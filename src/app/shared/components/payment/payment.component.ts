@@ -6,6 +6,10 @@ import {
 } from '@stripe/stripe-js';
 import { OrderService } from '../../services/order.service';
 import { NotificationService } from '../../services/notification.service';
+import {
+  IPayPalConfig,
+  ICreateOrderRequest 
+} from 'ngx-paypal';
 
 @Component({
   selector: 'app-payment',
@@ -26,17 +30,83 @@ export class PaymentComponent implements OnInit {
     locale: 'en'
   };
   paying: boolean
+  public payPalConfig ? : IPayPalConfig;
+
   constructor(private stripeService: StripeService, private orderService: OrderService, private notify: NotificationService) { }
 
   ngOnInit(): void {
-
+      this.initConfig();
+  
     this.orderService.checkoutSession(this.amount, this.description).subscribe((pi) => {
       this.elementsOptions.clientSecret = pi.client_secret;
    
 
     })
   }
+  private initConfig(): void {
+    this.payPalConfig = {
+        currency: 'USD',
+        clientId: 'sb',
+        createOrderOnClient: (data) => < ICreateOrderRequest > {
+            intent: 'CAPTURE',
+            purchase_units: [{
+                amount: {
+                    currency_code: 'USD',
+                    value: this.amount.toString(),
+                    breakdown: {
+                        item_total: {
+                            currency_code: 'USD',
+                            value: this.amount.toString()
+                        }
+                    }
+                },
+                // items: [{
+                //     name: 'Enterprise Subscription',
+                //     quantity: '1',
+                //     category: 'DIGITAL_GOODS',
+                //     unit_amount: {
+                //         currency_code: 'EUR',
+                //         value: '9.99',
+                //     },
+                // }]
+            }]
+        },
+        advanced: {
+            commit: 'true'
+        },
+        style: {
+            label: 'paypal',
+            layout: 'vertical'
+        },
+        onApprove: (data, actions) => {
+            console.log('onApprove - transaction was approved, but not authorized', data, actions);
+            actions.order.get().then(details => {
+                console.log('onApprove - you can get full order details inside onApprove: ', details);
+                 
+              });
 
+        },
+        onClientAuthorization: (data) => {
+          this.paymentStatus.emit(true)
+
+            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        },
+        onCancel: (data, actions) => {
+            console.log('OnCancel', data, actions);
+            this.paymentStatus.emit(false)
+
+        },
+        onError: err => {
+            console.log('OnError', err);
+            this.paymentStatus.emit(false)
+            this.notify.warningMessage(err)
+
+        },
+        onClick: (data, actions) => {
+            console.log('onClick', data, actions);
+        }
+    };
+}
   handleModalClose() {
     this.closeEvent.emit("close")
   }
@@ -74,6 +144,7 @@ export class PaymentComponent implements OnInit {
         } else {
           // The payment has been processed!
           if (result.paymentIntent.status === 'succeeded') {
+          
             this.notify.hideSpinner()
             this.paymentStatus.emit(true)
           }
