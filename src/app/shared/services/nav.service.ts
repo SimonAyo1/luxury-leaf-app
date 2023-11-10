@@ -156,11 +156,6 @@ export class NavService {
       type: "sub",
       active: false,
     },
-    {
-      title: "News",
-      type: "sub",
-      active: false,
-    },
   ];
 
   // Array

@@ -1,6 +1,6 @@
 <header class="sticky" [ngClass]="class" [class.fixed]="stick && sticky">
   <div class="mobile-fix-option"></div>
-  <div class="top-header" *ngIf="topbar">
+  <!-- <div class="top-header" *ngIf="topbar">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
@@ -23,20 +23,12 @@
               <i class="fa fa-user" aria-hidden="true"></i>My Account
              
             </li>
-            <!-- <li class="onhover-dropdown mobile-account">
-              <i class="fa fa-user" aria-hidden="true"></i> My Account
-              <ul class="onhover-show-div">
-              
-                <li>
-                  <a data-lng="es"> Logout </a>
-                </li>
-              </ul>
-            </li> -->
+          
           </ul>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -49,11 +41,11 @@
             </div>
           </div>
           <div class="menu-right pull-right">
-            <div>
+            <div class="app-menu">
               <app-menu></app-menu>
             </div>
             <div>
-              <app-settings></app-settings>
+              <app-settings isLoggedIn="{{ isLoggedIn }}"></app-settings>
             </div>
           </div>
         </div>

@@ -1,15 +1,25 @@
-<app-header-one [themeLogo]="themeLogo" *ngIf="!isLoading && isActivated"> </app-header-one>
+<app-header-one [themeLogo]="themeLogo" *ngIf="!isLoading && !isActivated">
+</app-header-one>
 
 <!-- Home slider start-->
-<section class="p-0 service_slide" *ngIf="!isLoading && isActivated">
-  <app-slider [class]="'text-white'" [sliders]="sliders" [textClass]="'text-center p-center'" [category]="'CBD'"
-    [buttonClass]="'btn-green'" [buttonText]="'shop now'">
+<section class="p-0 service_slide" *ngIf="!isLoading && !isActivated">
+  <app-slider
+    [class]="'text-white'"
+    [sliders]="sliders"
+    [textClass]="'text-center p-center'"
+    [category]="'CBD'"
+    [buttonClass]="'btn-green'"
+    [buttonText]="'shop now'"
+  >
   </app-slider>
 </section>
 <!-- Home slider End -->
 
 <!-- service section start -->
-<section class="banner-padding absolute-banner pb-0 tools-service" *ngIf="!isLoading && isActivated">
+<section
+  class="banner-padding absolute-banner pb-0 tools-service"
+  *ngIf="!isLoading && !isActivated"
+>
   <div class="container absolute-bg">
     <div class="service p-0">
       <app-services></app-services>
@@ -18,92 +28,196 @@
 </section>
 <!-- service section end -->
 
-<!-- About section start -->
-<section *ngIf="!isLoading && isActivated">
-  <div class="container">
+<section
+  class="about-section-three"
+  style="background-image: url(../../../assets/images/images/background/5.jpg)"
+>
+  <div class="auto-container">
     <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <div class="title3">
-          <h4>what we do</h4>
-          <h2 class="title-inner3">What Luxury Leaf Does</h2>
-          <div class="line"></div>
-        </div>
-        <div class="about-text">
-          <p style="font-size: 16px; color: black;">
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui
-            blanditiis praesentium voluptatum deleniti atque corrupti quos
-            dolores et quas molestias excepturi sint occaecati cupiditate non
-            provident, similique sunt in culpa qui officia deserunt mollitia
-            animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-            est et expedita distinctio. Nam libero tempore, cum soluta nobis est
-            eligendi optio cumque nihil impedit quo minus id quod maxime placeat
-            facere possimus, omnis voluptas assumenda est, omnis dolor
-            repellendus.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- About section end -->
-<!-- section start -->
-<section *ngIf="!isLoading && isActivated" class="section-b-space detail-cannabis bg-grey">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="detail_section">
-          <div>
-            <img src="assets/images/icon/marijuana-scale.svg" class="service-icon" alt="" />
-            <h4>Quality Product</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
-              blanditiis cupiditate deleniti
-            </p>
+      <!-- Content Column -->
+      <div class="content-column col-lg-6 col-md-12 col-sm-12 order-3">
+        <div class="inner-column wow fadeInRight">
+          <div class="sec-title">
+            <span class="sub-title">About Luxury Leaf</span>
+            <h2>High quality smoking experience</h2>
+            <div class="text">
+              Welcome to Luxury Leaf Co., your one-stop destination for all your
+              smoke shop needs. We are dedicated to providing you with a
+              high-quality smoking experience , we offer flower, accessories,
+              and expert advice to our valued customers.
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="detail_section">
-          <div>
-            <img src="assets/images/icon/hookah.svg" class="service-icon" alt="" />
-            <h4>21+ Only</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
-              blanditiis cupiditate deleniti
-            </p>
-          </div>
+
+          <ul class="feature-list">
+            <li>
+              <div class="inner">
+                <i class="fa fa-check-circle"></i> Quality Marijuana
+              </div>
+            </li>
+            <li>
+              <div class="inner">
+                <i class="fa fa-check-circle"></i> Quality Cannabis
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div class="col-md-4">
-        <div class="detail_section">
-          <div>
-            <img src="assets/images/icon/indica.svg" class="service-icon" alt="" />
-            <h4>Trusted Source</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
-              blanditiis cupiditate deleniti
-            </p>
+      <!-- Image Column -->
+      <div class="image-column col-lg-6 col-md-12 col-sm-12">
+        <div class="image-box">
+          <figure class="image-1" data-wow-delay="300ms">
+            <img src="../../../assets/images/cbd-oil.jpg" alt="" />
+          </figure>
+          <figure class="image-2" data-wow-delay="300ms">
+            <img src="../../../assets/images/natural-cannabis.jpg" alt="" />
+          </figure>
+          <div class="exp-box" data-wow-delay="900ms">
+            <div class="inner"><strong>10K +</strong>Monthly Orders</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- section end -->
+<section class="banners-section">
+  <div class="auto-container">
+    <div class="row">
+      <!-- Banner Box Four -->
+      <div class="banner-box-four col-lg-6 col-md-12">
+        <div class="inner-box overlay-anim">
+          <div class="image">
+            <img src="../../../assets/images/banner-2.jpeg" alt="" />
+          </div>
+          <div class="content">
+            <h3>
+              Get <br />Fresh <br />
+              Cannabis
+            </h3>
+            <a href="" class="theme-btn btn-style-one">Shop Now</a>
+          </div>
+        </div>
+      </div>
 
+      <!-- Banner Box Four -->
+      <div class="banner-box-four col-lg-6 col-md-12">
+        <div class="inner-box overlay-anim">
+          <div class="image">
+            <img src="../../../assets/images/banner-1.jpeg" alt="" />
+          </div>
+          <div class="content">
+            <h3>Get <br />Effective <br />Hookahs</h3>
+            <a href="" class="theme-btn btn-style-one">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faqs-section">
+  <div class="auto-container">
+    <div class="anim-icons">
+      <span class="bg-pattern-left"></span>
+      <span class="bg-pattern-right"></span>
+    </div>
+    <div class="row">
+      <!-- FAQ Column -->
+      <div class="faq-column col-lg-7 col-md-12 col-sm-12 order-4">
+        <div class="inner-column">
+          <div class="sec-title">
+            <span class="title">Frequently Asked Questions</span>
+            <h2>Got Any Question?</h2>
+          </div>
+
+          <ul class="accordion-box">
+            <!--Block-->
+            <li class="accordion block">
+              <div class="acc-btn">
+                What is the Difference Between CBD and THC?
+                <div class="icon fa fa-angle-right"></div>
+              </div>
+              <div class="acc-content">
+                <div class="content">
+                  <div class="text">
+                    CBD (Cannabidiol) and THC (Tetrahydrocannabinol) are both
+                    compounds found in cannabis, but they have distinct effects.
+                    While THC is psychoactive and produces a "high," CBD is
+                    non-psychoactive and offers potential therapeutic benefits
+                    without the euphoric sensation.
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!--Block-->
+            <li class="accordion block">
+              <div class="acc-btn ">
+                Can CBD Be Used to Treat Mental Health Conditions?
+                <div class="icon fa fa-angle-right"></div>
+              </div>
+              <div class="acc-content">
+                <div class="content">
+                  <div class="text">
+                    CBD has shown promise in some studies for managing mental
+                    health conditions like anxiety and depression. However, it's
+                    essential to consult with a healthcare professional for
+                    personalized guidance.
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!--Block-->
+            <li class="accordion block">
+              <div class="acc-btn">
+                What Are the Medical Uses of CBD?
+                <div class="icon fa fa-angle-right"></div>
+              </div>
+              <div class="acc-content">
+                <div class="content">
+                  <div class="text">
+                    CBD has been explored for its potential therapeutic applications, including pain management, epilepsy treatment, and alleviating symptoms of conditions like multiple sclerosis and inflammatory disorders.
+
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Image Column -->
+      <div class="image-column col-lg-5 col-md-12 col-sm-12">
+        <div class="inner-column">
+          <figure class="image">
+            <img src="../../../assets/images/images/resource/faq.jpg" alt="" />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--End FAQ Section -->
 <!-- product slider start -->
-<div *ngIf="!isLoading && isActivated" class="title3 section-t-space">
+<div *ngIf="!isLoading && !isActivated" class="title3 section-t-space">
   <h4>special deals</h4>
   <h2 class="title-inner3">new products</h2>
   <div class="line"></div>
 </div>
-<section *ngIf="!isLoading && isActivated" class="p-t-0 section-b-space tools-grey border-box">
+<section
+  *ngIf="!isLoading && !isActivated"
+  class="p-t-0 section-b-space tools-grey border-box"
+>
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let product of products">
         <div class="product-box product-wrap">
-          <app-product-box-three [product]="product" [currency]="productService?.Currency">
+          <app-product-box-three
+            [product]="product"
+            [currency]="productService?.Currency"
+          >
           </app-product-box-three>
         </div>
       </div>
@@ -113,10 +227,13 @@
 <!-- product slider end -->
 
 <app-age-verification *ngIf="!isLoading && isActivated"></app-age-verification>
-<app-cart-variation *ngIf="!isLoading && isActivated" [direction]="'right'"></app-cart-variation>
+<app-cart-variation
+  *ngIf="!isLoading && !isActivated"
+  [direction]="'right'"
+></app-cart-variation>
 <!-- Cart Open To Right Side-->
-<app-footer-one *ngIf="!isLoading && isActivated" ></app-footer-one>
+<app-footer-one *ngIf="!isLoading && !isActivated"></app-footer-one>
 
-<div *ngIf="!isLoading && !isActivated">
+<div *ngIf="!isLoading && isActivated">
   <app-no-access [status]="accountStatus"></app-no-access>
 </div>

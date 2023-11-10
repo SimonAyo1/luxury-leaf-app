@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, Injectable, PLATFORM_ID, Inject, Input } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable } from 'rxjs';
 // import { TranslateService } from '@ngx-translate/core';
@@ -14,7 +14,7 @@ export class SettingsComponent implements OnInit {
 
   public products: Product[] = [];
   public search: boolean = false;
-  
+  @Input() isLoggedIn: boolean
   public languages = [{ 
     name: 'English',
     code: 'en'

@@ -1,6 +1,11 @@
 <div class="icon-nav">
   <ul>
-  
+    <li class="mobile-account" routerLink="/auth/sign-in" *ngIf="!isLoggedIn">
+      <i class="fa fa-sign-in" aria-hidden="true"></i>Login
+    </li>
+    <li class="mobile-account" routerLink="/me/account" *ngIf="isLoggedIn">
+      <i class="fa fa-user" aria-hidden="true"></i>My Account
+    </li>
 
     <li class="onhover-div mobile-cart">
       <div>

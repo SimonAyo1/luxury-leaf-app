@@ -3,6 +3,9 @@
 ==========================*/
 
 header {
+    height: 90px;
+    display: flex;
+    align-items: center;
     .main-navbar {
         text-align: center;
         .nav-menu {
@@ -26,8 +29,8 @@ header {
                     line-height: 23px;
                     text-decoration: none;
                     text-transform: uppercase;
-                    padding-top: 42px;
-                    padding-bottom: 42px;
+                    // padding-top: 25px;
+                    // padding-bottom: 25px;
                     padding-left: 0;
                     letter-spacing: 0.07em;
                     position: relative;

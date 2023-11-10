@@ -1229,7 +1229,7 @@ header {
                                 .media-body {
                                     align-self: center;
                                     h4 {
-                                        color: $font-color;
+                                        color: $font-color !important;
                                         span {
                                             color: $grey;
                                             font-size: 16px;

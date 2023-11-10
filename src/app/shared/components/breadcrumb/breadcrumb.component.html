@@ -1,22 +1,12 @@
-<!-- breadcrumb start -->
-<div class="breadcrumb-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-2" >
-        <nav aria-label="breadcrumb" class="theme-breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="'/'">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb }}</li>
-          </ol>
-        </nav>
-      </div>
-      <div class="col-sm-10">
-        <div class="page-title">
-          <!-- <h2>{{ title }}</h2> -->
-        </div>
-      </div>
-     
+<section class="page-title" style="background-image: url(../../../assets/images/images/background/6.jpg);">
+  <div class="auto-container">
+    <div class="title-outer">
+      <h1 class="title">{{breadcrumb}}</h1>
+      <ul class="page-breadcrumb">
+        <li><a href="">Home</a></li>
+        <li><a href="#">Pages</a></li>
+        <li>{{breadcrumb}}</li>
+      </ul>
     </div>
   </div>
-</div>
-<!-- breadcrumb End -->
+</section>
