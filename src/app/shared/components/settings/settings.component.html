@@ -1,13 +1,10 @@
-<div class="icon-nav">
+<div class="icon-nav d-none d-lg-block">
   <ul>
-    <li class="mobile-account" routerLink="/auth/sign-in" *ngIf="!isLoggedIn">
-      <i class="fa fa-sign-in" aria-hidden="true"></i>Login
-    </li>
-    <li class="mobile-account" routerLink="/me/account" *ngIf="isLoggedIn">
-      <i class="fa fa-user" aria-hidden="true"></i>My Account
+    <li class="mobile-account" routerLink="/me/account" style="cursor: pointer;" *ngIf="isLoggedIn">
+      <i class="fa fa-user" aria-hidden="true"></i>My Account 
     </li>
 
-    <li class="onhover-div mobile-cart">
+    <li class="onhover-div mobile-cart" *ngIf="isLoggedIn">
       <div>
         <a [routerLink]="['/store/cart']">
           <img src="assets/images/icon/cart.png" class="img-fluid" alt="" />
@@ -75,7 +72,7 @@
         <li>
           <div class="buttons">
             <a [routerLink]="['/store/cart']" class="view-cart">view cart</a>
-            <a [routerLink]="['/shop/checkout']" class="checkout">checkout</a>
+            <a [routerLink]="['/store/checkout']" class="checkout">checkout</a>
           </div>
         </li>
       </ul>

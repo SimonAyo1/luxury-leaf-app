@@ -1,0 +1,11 @@
+@media screen and (min-width: 767px) {
+    .a-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .a-row li {
+        max-width: 48%;
+        max-height: inherit;
+    }
+}

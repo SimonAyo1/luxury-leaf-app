@@ -148,12 +148,13 @@ export class NavService {
     },
     {
       title: "Membership",
-      type: "sub",
+      type: "link",
       active: false,
+      path: "/me/my-membership",
     },
     {
       title: "Events",
-      type: "sub",
+      type: "link",
       active: false,
     },
   ];

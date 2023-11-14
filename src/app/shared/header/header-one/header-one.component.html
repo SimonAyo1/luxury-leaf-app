@@ -1,34 +1,4 @@
-<header class="sticky" [ngClass]="class" [class.fixed]="stick && sticky">
-  <div class="mobile-fix-option"></div>
-  <!-- <div class="top-header" *ngIf="topbar">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="header-contact">
-            <ul>
-              <li>
-                <i class="fa fa-phone" aria-hidden="true"></i>Reach Us:
-                123-456-7890
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6 text-right">
-          <ul class="header-dropdown">
-            <li class="mobile-account" routerLink="/auth/sign-in" *ngIf="!isLoggedIn">
-              <i class="fa fa-sign-in" aria-hidden="true"></i>Login
-             
-            </li>
-            <li class="mobile-account" routerLink="/me/account" *ngIf="isLoggedIn">
-              <i class="fa fa-user" aria-hidden="true"></i>My Account
-             
-            </li>
-          
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div> -->
+<header class="sticky"  [class.fixed]="stick">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -41,11 +11,24 @@
             </div>
           </div>
           <div class="menu-right pull-right">
+            <div class="d-lg-none" style="display: flex; align-items: center; padding-right: 10px;" >
+              <div class="" style="padding-right: 10px;" *ngIf="isLoggedIn">
+                <div class="">
+                  <a [routerLink]="['/store/cart']">
+                    <i class="ti-shopping-cart"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="mobile-account" routerLink="/me/account" style="cursor: pointer;"  *ngIf="isLoggedIn">
+                <i class="fa fa-user" aria-hidden="true"></i>My Account
+              </div>
+            </div>
+            
             <div class="app-menu">
               <app-menu></app-menu>
             </div>
             <div>
-              <app-settings isLoggedIn="{{ isLoggedIn }}"></app-settings>
+              <app-settings [isLoggedIn]="isLoggedIn"></app-settings>
             </div>
           </div>
         </div>

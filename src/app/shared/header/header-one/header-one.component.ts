@@ -18,6 +18,7 @@ export class HeaderOneComponent implements OnInit {
   constructor(private afAuth: Auth) {
     this.afAuth.onAuthStateChanged((user) => {
       this.isLoggedIn = !!user
+      console.log(this.isLoggedIn, user)
     });
   }
 
@@ -29,7 +30,7 @@ export class HeaderOneComponent implements OnInit {
   // @HostListener Decorator
   @HostListener("window:scroll", [])
   onWindowScroll() {
-    let number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    let number = window.screenY || document.documentElement.scrollTop || document.body.scrollTop || 0;
     if (number >= 150 && window.innerWidth > 400) {
       this.stick = true;
     } else {

@@ -73,10 +73,21 @@ export class LoginComponent implements OnInit {
     })
   }
   async signup() {
-    console.log(this.registerForm.value)
+    if(this.registerForm.get("check").invalid) {
+      this.notificationService.errorMessage("Please accept terms and condition before proceeding!")
+      return
+    }
+    if(this.registerForm.invalid) {
+      this.notificationService.errorMessage("Please fill the form properly!")
+      return
+    }
     await this._auth.signUp(this.registerForm.value, this.refId, this.referrerCurrentPoints)
   }
   async signIn() {
+    if(this.loginForm.invalid) {
+      this.notificationService.errorMessage("Invalid credentials!")
+      return
+    }
     await this._auth.signIn(this.loginForm.get("email").value, this.loginForm.get('password').value)
   }
   doesLinkExist(linkArray, targetLink) {
@@ -128,6 +139,7 @@ export class LoginComponent implements OnInit {
         this.isLoading = false
       }
     })
+    
   }
 
   // onSubmit() {

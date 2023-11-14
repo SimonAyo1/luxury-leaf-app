@@ -1,129 +1,25 @@
 <app-breadcrumb [title]="'FAQ'" [breadcrumb]="'FAQ'"></app-breadcrumb>
-<!-- section start-->
-<!-- <section class="faq-section section-b-space">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 col-sm-12">
-        <ngb-accordion
-          [closeOthers]="true"
-          activeIds="static-1"
-          class="accordion theme-accordion"
-          id="accordionExample"
-        >
-          <ngb-panel
-            *ngFor="let faq of marijuanaFAQs; let i = index"
-            [id]="i"
-            [title]="faq.question"
-          >
-            <ng-template ngbPanelContent> {{ faq.answer }} </ng-template>
-          </ngb-panel>
-        </ngb-accordion>
-      </div>
-    </div>
-  </div>
-</section> -->
-<!--Section ends-->
-<!-- Start main-content -->
 
-<!-- end main-content -->
-
-<!-- FAQ Section -->
 <section class="">
-  <div class="container" style="margin-top: -50px;">
+  <div class="container" style="margin-top: -100px;">
     <div class="row">
       <div class="col">
-        <ul class="accordion-box wow fadeInRight justify-content-space-between row d-flex">
-          <!--Block-->
-          <li class="accordion block col-lg-6 col-sm-12">
-            <div class="acc-btn ">                What Are the Medical Uses of CBD?
-
-              <div class="icon fa fa-plus"></div>
+        <ul class="accordion-box a-row">
+          <li *ngFor="let faq of faqs; let i = index" class="accordion block col-sm-12" [class.active-block]="faq.isOpen">
+            <div class="acc-btn" [class.active]="faq.isOpen" (click)="toggleFaq(i)">
+              {{faq.question}}
+              <div class="icon fa fa-angle-right"></div>
             </div>
-            <div class="acc-content">
+            <div class="acc-content" [class.current]="faq.isOpen">
               <div class="content">
-                <div class="text">There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.</div>
+                <div class="text">
+                  {{faq.answer}}
+                </div>
               </div>
             </div>
           </li>
-          <li class="accordion block col-lg-6 col-sm-12">
-            <div class="acc-btn">                What Are the Medical Uses of CBD?
-
-              <div class="icon fa fa-plus"></div>
-            </div>
-            <div class="acc-content">
-              <div class="content">
-                <div class="text">There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.</div>
-              </div>
-            </div>
-          </li>
-          <li class="accordion block col-lg-6 col-sm-12">
-            <div class="acc-btn">                What Are the Medical Uses of CBD?
-
-              <div class="icon fa fa-plus"></div>
-            </div>
-            <div class="acc-content">
-              <div class="content">
-                <div class="text">There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.</div>
-              </div>
-            </div>
-          </li>
-          <li class="accordion block col-lg-6 col-sm-12">
-            <div class="acc-btn">                What Are the Medical Uses of CBD?
-
-              <div class="icon fa fa-plus"></div>
-            </div>
-            <div class="acc-content">
-              <div class="content">
-                <div class="text">There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.</div>
-              </div>
-            </div>
-          </li>
-          <li class="accordion block col-lg-6 col-sm-12">
-            <div class="acc-btn">                What Are the Medical Uses of CBD?
-
-              <div class="icon fa fa-plus"></div>
-            </div>
-            <div class="acc-content">
-              <div class="content">
-                <div class="text">There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.</div>
-              </div>
-            </div>
-          </li>
-          <li class="accordion block col-lg-6 col-sm-12">
-            <div class="acc-btn">                What Are the Medical Uses of CBD?
-
-              <div class="icon fa fa-plus"></div>
-            </div>
-            <div class="acc-content">
-              <div class="content">
-                <div class="text">There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.</div>
-              </div>
-            </div>
-          </li>
-          <li class="accordion block col-lg-6 col-sm-12">
-            <div class="acc-btn">                What Are the Medical Uses of CBD?
-
-              <div class="icon fa fa-plus"></div>
-            </div>
-            <div class="acc-content">
-              <div class="content">
-                <div class="text">There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.</div>
-              </div>
-            </div>
-          </li>
-          <li class="accordion block col-lg-6 col-sm-12">
-            <div class="acc-btn">                What Are the Medical Uses of CBD?
-
-              <div class="icon fa fa-plus"></div>
-            </div>
-            <div class="acc-content">
-              <div class="content">
-                <div class="text">There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.</div>
-              </div>
-            </div>
-          </li>
-         
         </ul>
+
       </div>
     </div>
   </div>

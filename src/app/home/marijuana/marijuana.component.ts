@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, } from "@angular/core";
 import { ProductSlider } from "../../shared/data/slider";
 import { Product } from "../../shared/classes/product";
 import { ProductService } from "../../shared/services/product.service";
@@ -19,7 +19,23 @@ export class MarijuanaComponent implements OnInit, OnDestroy {
   public isActivated: boolean = false;
   public ProductSliderConfig: any = ProductSlider;
   public accountStatus: string
-
+  faqs = [
+    {
+      question: 'What is the Difference Between CBD and THC?',
+      answer: 'CBD (Cannabidiol) and THC (Tetrahydrocannabinol) are both compounds found in cannabis, but they have distinct effects. While THC is psychoactive and produces a "high," CBD is non-psychoactive and offers potential therapeutic benefits without the euphoric sensation.',
+      isOpen: true
+    },
+    {
+      question: 'Can CBD Be Used to Treat Mental Health Conditions?',
+      answer: 'CBD has shown promise in some studies for managing mental health conditions like anxiety and depression. However, it\'s essential to consult with a healthcare professional for personalized guidance.',
+      isOpen: false
+    },
+    {
+      question: 'What Are the Medical Uses of CBD?',
+      answer: 'CBD has been explored for its potential therapeutic applications, including pain management, epilepsy treatment, and alleviating symptoms of conditions like multiple sclerosis and inflammatory disorders.',
+      isOpen: false
+    }
+  ];
   constructor(public productService: ProductService, private _notification: NotificationService, private _user: UserService) {
     this.productService.getProducts.subscribe((response) => {
       this.products = response.filter(
@@ -148,15 +164,22 @@ export class MarijuanaComponent implements OnInit, OnDestroy {
 
     // })
 
-  }
-
+    }
   ngOnDestroy(): void {
     // Remove Color
     document.documentElement.style.removeProperty("--theme-deafult");
     document.documentElement.style.removeProperty("--theme-gradient1");
     document.documentElement.style.removeProperty("--theme-gradient2");
   }
-
+  toggleFaq(index: number): void {
+    this.faqs.forEach((faq, i) => {
+      if(faq.isOpen) {
+        faq.isOpen = false
+        return
+      }
+      faq.isOpen = i === index;
+    });
+  }
   // Product Tab collection
   getCollectionProducts(collection) {
     return this.products.filter((item) => {

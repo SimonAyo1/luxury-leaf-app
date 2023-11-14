@@ -5,3 +5,12 @@
   margin-top: -100px !important;
 }
 
+.heromain {
+  font-size: 75px;
+}
+
+@media screen and (max-width: 767px) {
+  .heromain {
+    font-size: 55px !important;
+  }
+}

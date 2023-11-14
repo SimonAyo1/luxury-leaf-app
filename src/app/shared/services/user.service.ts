@@ -62,8 +62,7 @@ export class UserService {
     this.userCollection = collection(this.firestore, 'users');
     this._auth.onAuthStateChanged((user) => {
       this.userId = user?.uid
-      console.log(user.uid)
-      this.user = user?.uid ? this.getUserById(user.uid) : null
+      this.user = user?.uid ? this.getUserById(user?.uid) : null
     });
   }
 

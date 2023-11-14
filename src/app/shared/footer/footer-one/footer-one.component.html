@@ -4,7 +4,7 @@
     <div class="container">
       <section class="small-section border-section border-top-0">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-6 col-sm-12">
             <div class="subscribe">
               <div>
                 <h4>HEAR THE INFO FIRST!</h4>
@@ -12,7 +12,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 col-sm-12">
             <form class="form-inline subscribe-form">
               <div class="form-group mx-sm-3">
                 <input
@@ -24,28 +24,25 @@
                   placeholder="Enter your email"
                 />
               </div>
-              <button type="submit" class="btn btn-solid">subscribe</button>
+              <button type="submit" class="btn btn-solid mt-2">subscribe</button>
             </form>
           </div>
         </div>
       </section>
     </div>
   </div>
-  <section class="section-b-space light-layout">
+  <section class="section-b-space light-layout" style="max-height: fit-content !important; background-image: url(../../../assets/images/images/background/5.jpg)"
+  >
     <div class="container">
       <div class="row footer-theme partition-f">
         <div class="col-lg-4 col-md-6">
-          <div class="footer-title footer-mobile-title">
-            <h4>about</h4>
-          </div>
+          
           <div class="footer-contant">
             <div class="footer-logo">
               <img [src]="themeLogo" alt="logo" class="logo" />
             </div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam,
+              We are dedicated to providing you with a high-quality smoking experience , we offer flower, accessories, and expert advice to our valued customers.
             </p>
             <div class="footer-social">
               <ul>
@@ -77,10 +74,10 @@
             </div>
             <div class="footer-contant">
               <ul>
-                <li><a href="javascript:void(0)">Indica</a></li>
-                <li><a href="javascript:void(0)">Hybrid</a></li>
-                <li><a href="javascript:void(0)">Sativa</a></li>
-                <li><a href="javascript:void(0)">Wax</a></li>
+                <li><a routerLink="/store/collections?category=indica">Indica</a></li>
+                <li><a routerLink="/store/collections?category=hybrid">Hybrid</a></li>
+                <li><a routerLink="/store/collections?category=sativa">Sativa</a></li>
+                <li><a routerLink="/store/collections?category=wax">Wax</a></li>
               </ul>
             </div>
           </div>
@@ -92,11 +89,11 @@
             </div>
             <div class="footer-contant">
               <ul>
-                <li><a href="javascript:void(0)">Home</a></li>
-                <li><a href="javascript:void(0)">My Account</a></li>
-                <li><a href="javascript:void(0)">Membership</a></li>
-                <li><a href="javascript:void(0)">FAQ</a></li>
-                <li><a href="javascript:void(0)">Contact Us</a></li>
+                <li><a routerLink="/">Home</a></li>
+                <li><a routerLink="/me/account">My Account</a></li>
+                <li><a routerLink="/me/my-membership">Membership</a></li>
+                <li><a routerLink="/l/faq">FAQ</a></li>
+                <li><a routerLink="/l/contact">Contact Us</a></li>
               </ul>
             </div>
           </div>

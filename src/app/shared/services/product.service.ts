@@ -106,8 +106,9 @@ export class ProductService {
         this.notification.hideSpinner()
         this.notification.successMessage('Product added to wishlist.');
       }).catch((e) => {
+        console.log(e)
         this.notification.hideSpinner()
-        this.toastrService.success(e.code);
+        this.toastrService.error(e.code);
       })
       return true
     }

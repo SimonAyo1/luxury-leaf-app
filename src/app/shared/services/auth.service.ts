@@ -56,10 +56,10 @@ export class AuthService {
     }
     return createUserWithEmailAndPassword(this.afAuth, form?.email, form?.password)
       .then((credential) => {
-        new_user["id"] = credential.user.uid
+        new_user["id"] = credential?.user?.uid
         this._user.addUser(new_user).then(() => {
 
-          this.userSubject.next(credential.user)
+          this.userSubject.next(credential?.user)
           let pointToGive = currentPoint ? currentPoint + 5 : 5
           this._user.awardPoint(pointToGive, refId).then(() => {
             this.router.navigate(["/"])
@@ -121,6 +121,7 @@ export class AuthService {
     this.afAuth
       .signOut()
       .then(() => {
+        localStorage.clear()
         this.notification.hideSpinner();
         this.router.navigate(['/auth']);
       })

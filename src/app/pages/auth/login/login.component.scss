@@ -1,9 +1,21 @@
-.logo img {
-  background-color: white;
-  width: 90px;
-}
 .logo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
+  width: 77px;
+  height: 40px;
+  padding-left: 10px;
+}
+
+
+@media screen and (max-width: 767px) {
+  .heromain {
+    font-size: 52px !important;
+  }
+  .login-tab-a {
+    margin-bottom: 70px;
+  }
+}
+.luxury-aa {
+  font-size: 28px;
+    font-weight: 600;
+    margin-left: 10px;
+    color: #000;
 }

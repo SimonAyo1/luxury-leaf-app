@@ -71,6 +71,10 @@ export class NotificationService {
       case 'auth/weak-password':
         customErrorMessage = 'Weak password!';
         break;
+
+      case 'not-found': 
+        customErrorMessage = "Error code: 404";
+        break;
       default:
         // Use a generic error message if the Firebase error is not explicitly handled
         customErrorMessage = message;
