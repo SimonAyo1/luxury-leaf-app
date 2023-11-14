@@ -6,8 +6,9 @@
 
 
 @media screen and (max-width: 767px) {
+  
   .heromain {
-    font-size: 52px !important;
+    font-size: 50px !important;
   }
   .login-tab-a {
     margin-bottom: 70px;
@@ -18,4 +19,9 @@
     font-weight: 600;
     margin-left: 10px;
     color: #000;
+}
+@media (max-width: 577px) {
+  .brand-logo {
+    left: 38% !important;
+  }
 }
