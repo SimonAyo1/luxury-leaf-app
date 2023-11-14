@@ -1,8 +1,8 @@
-<app-header-one [themeLogo]="themeLogo" *ngIf="!isLoading && !isActivated">
+<app-header-one [themeLogo]="themeLogo" *ngIf="!isLoading && isActivated">
 </app-header-one>
 
 
-<section class="py-1"   style="background-image: url(../../../assets/images/images/background/5.jpg)"
+<section class="py-1"  *ngIf="!isLoading && isActivated" style="background-image: url(../../../assets/images/images/background/5.jpg)"
 >
 
  <div class="container">
@@ -40,7 +40,7 @@
 <!-- service section start -->
 <section
   class="banner-padding absolute-banner pb-0 tools-service"
-  *ngIf="!isLoading && !isActivated"
+  *ngIf="!isLoading && isActivated"
 >
   <div class="container absolute-bg">
     <div class="service p-0">
@@ -49,7 +49,7 @@
   </div>
 </section>
 <!-- service section end -->
-<section class="banners-section">
+<section class="banners-section" *ngIf="!isLoading && isActivated">
   <div class="auto-container">
     <div class="row">
       <!-- Banner Box Four -->
@@ -84,6 +84,7 @@
   </div>
 </section>
 <section
+*ngIf="!isLoading && isActivated"
   class="about-section-three"
   style="background-image: url(../../../assets/images/images/background/5.jpg)"
 >
@@ -138,7 +139,7 @@
 
 
 <!-- FAQ Section -->
-<section class="faqs-section">
+<section class="faqs-section" *ngIf="!isLoading && isActivated">
   <div class="auto-container">
     <div class="anim-icons">
       <span class="bg-pattern-left"></span>
@@ -187,13 +188,13 @@
 </section>
 <!--End FAQ Section -->
 <!-- product slider start -->
-<div *ngIf="!isLoading && !isActivated" style="margin-top: -50px;" class="title3 section-t-space">
+<div *ngIf="!isLoading && isActivated" style="margin-top: -50px;" class="title3 section-t-space">
   <h4>special deals</h4>
   <h2 class="title-inner3">new products</h2>
   <div class="line"></div>
 </div>
 <section
-  *ngIf="!isLoading && !isActivated"
+  *ngIf="!isLoading && isActivated"
   class="p-t-0 section-b-space tools-grey border-box"
   style="margin-top: -60px; max-height: fit-content !important;"
 >
@@ -215,12 +216,12 @@
 
 <app-age-verification *ngIf="!isLoading && isActivated"></app-age-verification>
 <app-cart-variation
-  *ngIf="!isLoading && !isActivated"
+  *ngIf="!isLoading && isActivated"
   [direction]="'right'"
 ></app-cart-variation>
 <!-- Cart Open To Right Side-->
-<app-footer-one *ngIf="!isLoading && !isActivated"></app-footer-one>
+<app-footer-one *ngIf="!isLoading && isActivated"></app-footer-one>
 
-<div *ngIf="!isLoading && isActivated">
+<div *ngIf="!isLoading && !isActivated">
   <app-no-access [status]="accountStatus"></app-no-access>
 </div>
