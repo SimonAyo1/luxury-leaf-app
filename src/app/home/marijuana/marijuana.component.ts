@@ -13,7 +13,7 @@ import { NotificationService } from "src/app/shared/services/notification.servic
 export class MarijuanaComponent implements OnInit, OnDestroy {
   public themeLogo: string = "assets/images/logos/luxury-logo.png";
   public themeFooterLogo: string = "assets/images/logos/luxury-logo.png";
-  public isLoading: boolean = false;
+  public isLoading: boolean = true;
   public products: Product[] = [];
   public productCollections: any[] = [];
   public isActivated: boolean = false;
