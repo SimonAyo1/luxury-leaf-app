@@ -148,21 +148,21 @@ export class MarijuanaComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = false
-    // this._notification.startSpinner()
-    // this._user?.user?.subscribe((data: UserI[]) => {
-    //   this.isActivated = data[0]?.status == 'activated' || data[0]?.status == 'approved'
+    this._notification.startSpinner()
+    this._user?.user?.subscribe((data: UserI[]) => {
+      this.isActivated = data[0]?.status == 'activated' || data[0]?.status == 'approved'
 
-    //   this.accountStatus = data[0]?.status
+      this.accountStatus = data[0]?.status
 
-    //   // Change color for this layout
-    //   document.documentElement.style.setProperty("--theme-deafult", "#5d7227");
-    //   document.documentElement.style.setProperty("--theme-gradient1", "#5d7227");
-    //   document.documentElement.style.setProperty("--theme-gradient2", "#203f15");
-    //   this._notification.hideSpinner()
+      // Change color for this layout
+      document.documentElement.style.setProperty("--theme-deafult", "#5d7227");
+      document.documentElement.style.setProperty("--theme-gradient1", "#5d7227");
+      document.documentElement.style.setProperty("--theme-gradient2", "#203f15");
+      this._notification.hideSpinner()
 
-    //   this.isLoading = false
+      this.isLoading = false
 
-    // })
+    })
 
     }
   ngOnDestroy(): void {
