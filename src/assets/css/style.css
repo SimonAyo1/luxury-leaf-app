@@ -319,7 +319,6 @@ ul, li {
   margin-top: -60px;
   background-position: center center;
   background-repeat: no-repeat;
-  background-image: url(../images/images/icons/preloader.gif);
   background-size: 64px;
   content: "";
 }
@@ -1215,7 +1214,6 @@ Section Title
   display: inline-block;
   height: 31px;
   width: 27px;
-  background-image: url(../images/images/icons/divider.png);
   background-repeat: no-repeat;
   margin-top: 10px;
   -webkit-animation: wind 4s infinite linear;
@@ -1520,7 +1518,6 @@ Page Title
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../images/images/icons/pattern-6.png);
   opacity: 0.02;
   content: "";
   pointer-events: none;
@@ -1590,7 +1587,6 @@ Page Title
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../images/images/icons/lines.png);
   content: "";
   pointer-events: none;
 }
@@ -1609,7 +1605,6 @@ Page Title
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../images/images/icons/left-2.png);
   -webkit-animation: zoom-one 5s infinite linear;
           animation: zoom-one 5s infinite linear;
 }
@@ -2023,7 +2018,6 @@ Page Title
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../images/images/icons/leaf-3.png);
   content: "";
   -webkit-animation: bounce-y 30s infinite linear;
           animation: bounce-y 30s infinite linear;
@@ -2068,7 +2062,6 @@ Page Title
   bottom: 0;
   height: 16px;
   width: 100%;
-  background-image: url(../images/images/icons/shape-7.png);
   content: "";
 }
 .features-section::after {
@@ -2077,7 +2070,6 @@ Page Title
   bottom: 0;
   height: 165px;
   width: 100%;
-  background-image: url(../images/images/icons/pattern-9.png);
   opacity: 0.5;
   content: "";
 }
@@ -2927,7 +2919,6 @@ Page Title
   top: -50px;
   height: 130px;
   width: 130px;
-  background-image: url(../images/images/icons/object-2.png);
   background-repeat: no-repeat;
   background-position: center;
   content: "";
@@ -2937,7 +2928,6 @@ Page Title
 .video-section .content-box .with-icons:after {
   left: auto;
   right: -130px;
-  background-image: url(../images/images/icons/object-3.png);
   -webkit-animation-delay: 2.5s;
           animation-delay: 2.5s;
 }
@@ -2985,7 +2975,6 @@ Page Title
   height: 100%;
   width: 620px;
   margin-right: -240px;
-  background-image: url(../images/images/icons/pattern-3.png);
   background-repeat: no-repeat;
   background-position: center left;
 }
@@ -3119,7 +3108,6 @@ Page Title
   top: 0;
   height: 540px;
   width: 100%;
-  background-image: url(../images/images/icons/pattern-4.jpg);
   background-position: center top;
   background-size: cover;
   content: "";
@@ -3156,7 +3144,6 @@ Page Title
   bottom: 0;
   height: 215px;
   width: 168px;
-  background-image: url(../images/images/icons/shape-1.png);
   content: "";
   opacity: 0.05;
 }
@@ -3263,7 +3250,6 @@ Page Title
 
 .testimonial-section-two .icon-leaf {
   position: absolute;
-  background-image: url(../images/images/icons/leaf.png);
   background-size: cover;
 }
 .testimonial-section-two .icon-leaf.leaf-1 {
@@ -3457,7 +3443,6 @@ Contact Section
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../images/images/icons/shape-5.png);
   max-height: 16px;
   content: "";
   top: -16px;
@@ -3500,7 +3485,6 @@ Contact Section
   max-height: 340px;
   top: auto;
   bottom: -120px;
-  background-image: url(../images/images/icons/pattern-7.png);
 }
 .contact-section .outer-box {
   position: relative;
@@ -3528,7 +3512,6 @@ Contact Section
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../images/images/icons/shape-4.png);
   content: "";
 }
 .contact-section .image-column .image {
@@ -3657,7 +3640,6 @@ Contact Section
   background-size: cover;
   max-height: 250px;
   border-radius: 10px;
-  background-image: url(../images/images/icons/shape-6.png);
   content: "";
   z-index: 8;
   pointer-events: none;
@@ -3671,7 +3653,6 @@ Contact Section
   height: 100%;
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-image: url(../images/images/icons/pattern-8.png);
   content: "";
   z-index: 8;
   pointer-events: none;
@@ -3810,7 +3791,6 @@ Contact Section
   background-size: cover;
   height: 50px;
   width: 124px;
-  background-image: url(../images/images/icons/arrow.png);
   z-index: 1;
   content: "";
 }
@@ -3922,7 +3902,6 @@ Contact Section
   top: -140px;
   height: 100%;
   width: 100%;
-  background-image: url(../images/images/icons/pattern-5.png);
   background-repeat: no-repeat;
   background-position: center top;
   content: "";
@@ -4120,7 +4099,6 @@ Contact Section
 
 .clients-section .icon-leaf {
   position: absolute;
-  background-image: url(../images/images/icons/leaf.png);
   background-size: cover;
 }
 .clients-section .icon-leaf.leaf-1 {
@@ -4362,7 +4340,6 @@ Contact Section
   background-position: center top;
   margin-top: -375px;
   min-height: 200%;
-  background-image: url(../images/images/icons/pattern-20.html);
   content: "";
 }
 
@@ -5002,7 +4979,6 @@ Contact Section
   width: 100%;
   height: 100%;
   content: "";
-  background-image: url(../images/images/icons/pattern-7.png);
   background-repeat: no-repeat;
   background-position: left top;
   z-index: -1;
@@ -5025,7 +5001,6 @@ Contact Section
   width: 100%;
   z-index: 2;
   content: "";
-  background-image: url(../images/images/icons/pattern-3.png);
   background-repeat: no-repeat;
   background-position: center bottom;
 }
@@ -5066,18 +5041,7 @@ Contact Section
   -webkit-transform: rotate(10deg) scale(1.2);
   transform: rotate(10deg) scale(1.2);
 }
-.category-block .inner-box.cat-bg-1:before {
-  background-image: url(../images/images/icons/cat-1-bg.html);
-}
-.category-block .inner-box.cat-bg-2:before {
-  background-image: url(../images/images/icons/cat-2-bg.html);
-}
-.category-block .inner-box.cat-bg-3:before {
-  background-image: url(../images/images/icons/cat-3-bg.html);
-}
-.category-block .inner-box.cat-bg-4:before {
-  background-image: url(../images/images/icons/cat-4-bg.html);
-}
+
 .category-block .image {
   position: relative;
   display: inline-block;
@@ -5366,7 +5330,6 @@ Contact Section
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../images/images/icons/pattern-1.png);
   height: 301px;
   width: 532px;
   content: "";
