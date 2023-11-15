@@ -77,10 +77,12 @@ export class StoreService {
 
   private productsCollection: CollectionReference<DocumentData>;
   private categoriesCollection: CollectionReference<DocumentData>;
+  private eventCollection: CollectionReference<DocumentData>;
 
   constructor() {
     this.productsCollection = collection(this.firestore, 'products');
     this.categoriesCollection = collection(this.firestore, 'categories');
+    this.eventCollection = collection(this.firestore, 'events');
 
     this.products = collectionData(this.productsCollection).pipe(
       map((products) =>
@@ -101,7 +103,9 @@ export class StoreService {
   getAllProducts(): Observable<any> {
     return collectionData(this.productsCollection);
   }
-
+  getAllEvents(): Observable<any> {
+    return collectionData(this.eventCollection);
+  }
   // Get product by ID
   getProductById(productId: string): Observable<any> {
     return collectionData(this.productsCollection, { idField: productId });

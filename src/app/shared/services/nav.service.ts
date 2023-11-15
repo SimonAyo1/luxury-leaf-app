@@ -156,6 +156,8 @@ export class NavService {
       title: "Events",
       type: "link",
       active: false,
+      path: "/l/events",
+
     },
   ];
 

@@ -92,11 +92,19 @@ export class OrderService {
     const orderDocRef = doc(this.orderCollection, orderId);
 
     return setDoc(orderDocRef, item).then((response) => {
-      this.notify.hideSpinner()
       state.checkoutItems = item;
-      this.router.navigate(['/store/checkout/success', orderId]);
-      this.product_service.deleteCart()
-
+      this.http.post("https://luxuryleaf-api.vercel.app/api/order-mail", { email: 'ayosimon.dev@gmail.com', orderLink: `https://luxury-leaf-v2.vercel.app/store/checkout/success/${orderId}` }).subscribe({
+        next: () => {
+          this.router.navigate(['/store/checkout/success', orderId]);
+          this.product_service.deleteCart()
+          this.notify.hideSpinner()
+        },
+        error: () => {
+          this.router.navigate(['/store/checkout/success', orderId]);
+          this.product_service.deleteCart()
+          this.notify.hideSpinner()
+        }
+      })
     }).catch((err) => {
       this.notify.hideSpinner()
     })

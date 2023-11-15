@@ -41,6 +41,7 @@ import { MasonryGridFourComponent } from './portfolio/masonry-grid-four/masonry-
 import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonry-full-width.component';
 import { MeComponent } from './me/me.component';
 import { EventsComponent } from './events/events.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { EventsComponent } from './events/events.component';
     CommonModule,
     GalleryModule.forRoot(),
     SharedModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    HttpClientModule
   ]
 })
 export class PagesModule { }

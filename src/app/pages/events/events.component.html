@@ -1,1 +1,26 @@
-<p>events works!</p>
+<app-breadcrumb breadcrumb="Our Events"></app-breadcrumb>
+<section class="news-section" style="margin-top: -50px;">
+    <div class="auto-container">
+        <div class="row">
+            <!-- News Block -->
+            <div *ngFor="let event of events" class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                <div class="inner-box">
+                    <span class="date">View</span>
+                    <div class="image-box">
+                        <figure class="image"><a ><img [src]="event?.image" alt="" style="height: 250px;"></a></figure>
+                    </div>
+                    <div class="lower-content">
+                        <ul class="post-info">
+                            <li><i class="fa fa-bell"></i>{{event?.eventDate}}</li>
+                        </ul>
+                        <h4><a >{{event?.eventName}}</a></h4>
+                        
+                    </div>
+                </div>
+            </div>
+
+          
+        </div>
+
+    </div>
+</section>

@@ -62,7 +62,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this._user?.user?.subscribe((data: UserI[]) => {
         const user = data[0]
-        console.log(user, "CHECKOUT")
         this.checkoutForm.patchValue({
           userId: user.id,
           name: user.name,
@@ -76,7 +75,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         this._notification.hideSpinner()
         this.isLoading = false
       }, (error) => {
-        console.log(error, "CHECKOUT")
         this.isLoading = false
       })
     }, 2000);

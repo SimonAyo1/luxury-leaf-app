@@ -4,14 +4,28 @@
   padding-left: 10px;
 }
 
-
+.login-tab-a {
+  margin-top: 50px !important;
+}
 @media screen and (max-width: 767px) {
   
   .heromain {
     font-size: 50px !important;
   }
   .login-tab-a {
-    margin-bottom: 70px;
+    margin-top: -20px !important; 
+  }
+  .bann-a {
+    width: 320px !important;
+    height: 320px !important;
+  }
+  .title
+  {
+    text-align: center !important;
+  }
+  .title h2 {
+    font-size: 24px !important;
+    margin-bottom: -10px;
   }
 }
 .luxury-aa {

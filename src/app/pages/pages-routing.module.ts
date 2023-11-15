@@ -33,136 +33,98 @@ import { MasonryGridTwoComponent } from './portfolio/masonry-grid-two/masonry-gr
 import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonry-grid-three.component';
 import { MasonryGridFourComponent } from './portfolio/masonry-grid-four/masonry-grid-four.component';
 import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonry-full-width.component';
+import { EventsComponent } from './events/events.component';
 
 const routes: Routes = [
-  { 
-    path: 'wishlist', 
-    component: WishlistComponent 
+  {
+    path: 'wishlist',
+    component: WishlistComponent
   },
-  { 
-    path: 'cart', 
-    component: CartComponent 
+  {
+    path: 'cart',
+    component: CartComponent
   },
-  { 
-    path: 'dashboard', 
-    component: DashboardComponent 
+  {
+    path: 'dashboard',
+    component: DashboardComponent
   },
-  { 
-    path: 'login', 
-    component: LoginComponent 
+  {
+    path: 'login',
+    component: LoginComponent
   },
-  { 
-    path: 'register', 
-    component: RegisterComponent 
+  {
+    path: 'register',
+    component: RegisterComponent
   },
-  { 
-    path: 'forget/password', 
-    component: ForgetPasswordComponent 
-  },   
-  { 
-    path: 'profile', 
-    component: ProfileComponent 
+  {
+    path: 'forget/password',
+    component: ForgetPasswordComponent
   },
-  { 
-    path: 'contact', 
-    component: ContactComponent 
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
-  { 
-    path: 'checkout', 
-    component: CheckoutComponent 
+  {
+    path: 'contact',
+    component: ContactComponent
   },
-  { 
-    path: 'aboutus', 
-    component: AboutUsComponent 
+  {
+    path: 'checkout',
+    component: CheckoutComponent
   },
-  { 
-    path: 'search', 
-    component: SearchComponent 
+  {
+    path: 'aboutus',
+    component: AboutUsComponent
   },
-  { 
-    path: 'typography', 
-    component: TypographyComponent 
+  {
+    path: 'search',
+    component: SearchComponent
   },
-  { 
-    path: 'review', 
-    component: ReviewComponent 
+  {
+    path: 'typography',
+    component: TypographyComponent
   },
-  { 
-    path: 'order/success', 
-    component: OrderSuccessComponent 
+  {
+    path: 'review',
+    component: ReviewComponent
   },
-  { 
-    path: 'compare/one', 
-    component: CompareOneComponent 
+  {
+    path: 'order/success',
+    component: OrderSuccessComponent
   },
-  { 
-    path: 'compare/two', 
-    component: CompareTwoComponent 
+  {
+    path: 'compare/one',
+    component: CompareOneComponent
   },
-  { 
-    path: 'collection', 
-    component: CollectionComponent 
+  {
+    path: 'compare/two',
+    component: CompareTwoComponent
   },
-  { 
-    path: 'lookbook', 
-    component: LookbookComponent 
+  {
+    path: 'collection',
+    component: CollectionComponent
   },
-  { 
-    path: '404', 
-    component: ErrorComponent 
+  {
+    path: 'lookbook',
+    component: LookbookComponent
   },
-  { 
-    path: 'comingsoon', 
-    component: ComingSoonComponent 
+  {
+    path: '404',
+    component: ErrorComponent
   },
-  { 
-    path: 'faq', 
-    component: FaqComponent 
+  {
+    path: 'comingsoon',
+    component: ComingSoonComponent
   },
-  { 
-    path: 'blog/left/sidebar', 
-    component: BlogLeftSidebarComponent 
+  {
+    path: 'faq',
+    component: FaqComponent
   },
-  { 
-    path: 'blog/right/sidebar', 
-    component: BlogRightSidebarComponent 
-  },
-  { 
-    path: 'blog/no/sidebar', 
-    component: BlogNoSidebarComponent 
-  },
-  { 
-    path: 'blog/details', 
-    component: BlogDetailsComponent 
-  },
-  { 
-    path: 'portfolio/grid/two', 
-    component: GridTwoComponent 
-  },
-  { 
-    path: 'portfolio/grid/three', 
-    component: GridThreeComponent 
-  },
-  { 
-    path: 'portfolio/grid/four', 
-    component: GridFourComponent 
-  },
-  { 
-    path: 'portfolio/masonry/grid/two', 
-    component: MasonryGridTwoComponent 
-  },
-  { 
-    path: 'portfolio/masonry/grid/three', 
-    component: MasonryGridThreeComponent 
-  },
-  { 
-    path: 'portfolio/masonry/grid/four', 
-    component: MasonryGridFourComponent 
-  },
-  { 
-    path: 'portfolio/masonry/full-width', 
-    component: MasonryFullWidthComponent 
+  {
+    path: 'events',
+    component: EventsComponent
   }
+
 ];
 
 @NgModule({
