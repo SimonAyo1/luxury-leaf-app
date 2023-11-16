@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   public isRefValid: boolean
   public isLoading: boolean
   public referrerCurrentPoints: number
+  public forgotPassword: boolean
+  public resetEmail: string
   constructor(private formBuilder: FormBuilder,
     // private authenticationService: AuthenticationService,
     private _auth: AuthService,
@@ -52,6 +54,10 @@ export class LoginComponent implements OnInit {
     items: 1,
     dots: true
   };
+
+  showForgotPassword(status: boolean) {
+    this.forgotPassword = status
+  }
 
   createLoginForm() {
     this.loginForm = this.formBuilder.group({
@@ -141,7 +147,13 @@ export class LoginComponent implements OnInit {
     })
     
   }
-
+  resetPassword() {
+   if(!this.resetEmail) {
+    this.notificationService.errorMessage("Enter a valid email address!")
+    return
+   }
+    this._auth.resetPassword(this.resetEmail)
+  }
   // onSubmit() {
   //   console.log(this.loginForm.value);
   //   this.authenticationService.login(this.loginForm.value.userName, this.loginForm.value.password)

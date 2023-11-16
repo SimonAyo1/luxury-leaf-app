@@ -81,10 +81,9 @@ export class AuthService {
     this.notification.startSpinner()
     return sendPasswordResetEmail(this.afAuth, email).then(() => {
       this.notification.hideSpinner()
-      this.notification.successMessage("Password reset link sent to your email")
+      this.notification.successMessage(`Password reset link sent to ${email}`)
     }).catch((e) => {
       this.notification.hideSpinner()
-
       this.notification.errorMessage(e.code)
     })
   }

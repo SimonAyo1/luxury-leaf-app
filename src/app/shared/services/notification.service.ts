@@ -60,7 +60,7 @@ export class NotificationService {
         customErrorMessage = 'Invalid Email.';
         break;
       case 'auth/user-not-found':
-        customErrorMessage = 'Email does not belong to this account.';
+        customErrorMessage = 'This email does not exist on luxury leaf.';
         break;
       case 'auth/wrong-password':
         customErrorMessage = 'Invalid Email or Password.';

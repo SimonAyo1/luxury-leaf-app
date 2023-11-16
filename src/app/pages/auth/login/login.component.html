@@ -30,7 +30,7 @@
                   <ng-template ngbTabTitle><i class="icon-user mr-2"></i>Sign In</ng-template>
                   <ng-template ngbTabContent>
                     <div class="tab-pane fade active show" id="account" role="tabpanel" aria-labelledby="account-tab">
-                      <form [formGroup]="loginForm" class="form-horizontal auth-form"(ngSubmit)="signIn()">
+                      <form [formGroup]="loginForm" class="form-horizontal auth-form"(ngSubmit)="signIn()" *ngIf="!forgotPassword">
                         <div class="form-group">
                           <input required name="email" type="email" formControlName="email" class="form-control"
                             placeholder="Username" id="exampleInputEmail1" />
@@ -47,7 +47,7 @@
                       for="customControlAutosizing"
                       >Remember me</label
                     > -->
-                            <a href="javascript:void(0)" class="btn btn-default forgot-pass" style="font-size: 11px;">forgot password?</a>
+                            <a (click)="showForgotPassword(true)" class="btn btn-default forgot-pass" style="font-size: 11px;">forgot password?</a>
                           </div>
                         </div>
                         <div class="form-button" style="display: flex; justify-content: center;">
@@ -70,6 +70,19 @@
                         </div> -->
   
                       </form>
+                      <div  *ngIf="forgotPassword">
+                        <h4>Forget Your Password</h4>
+                        <form class="form-horizontal auth-form">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <input type="email" class="form-control" name="email" [(ngModel)]="resetEmail" placeholder="Enter Your Email">
+                                </div>
+                                <button class="theme-btn btn-style-one mt-3" (click)="resetPassword()">Send Reset Link</button>
+                                <button class="theme-btn btn-style-one mt-3" style="margin-left: 10px;" (click)="showForgotPassword(false)">Login</button>
+
+                            </div>
+                        </form>
+                    </div>
                       <p class="mt-2" style="font-size: 13px; text-align: center;">Note: To access our store and exclusive products you must be logged in.</p>
                     </div>
                   </ng-template>
@@ -116,19 +129,27 @@
                           </div>
                         </div>
   
-                        <div class="form-terms">
+                        <div class="form-terms" style="text-align: center;">
                           <div class="custom-control custom-checkbox mr-sm-2">
                             <input type="checkbox" class="custom-control-input" id="customControlAutosizing1" name="check"
                               formControlName="check" />
                             <label class="custom-control-label" for="customControlAutosizing1"><span>I agree to the
-                                <a href="javascript:void(0)" class="pull-right">Terms &amp;
+                                <a href="javascript:void(0)" class="pull-right" style="color: green;">Terms &amp;
                                   Conditions</a></span></label>
                           </div>
                         </div>
-                        <div class="form-button" style="display: flex; justify-content: center;">
+                        
+                        <div class="form-button mt-2" style="display: flex; justify-content: center;">
                           <button  class="theme-btn btn-style-one" type="submit">
                             Sign Up
                           </button>
+                        </div>
+                        <div>
+                          <div class="">
+                           
+                            <p class="text-center mt-2" style="text-align: center; font-size: 15px;" for=""><span>Have an account?
+                                <a routerLink="/auth" style="color: green;"> sign in</a></span></p>
+                          </div>
                         </div>
                         <!-- <div class="form-footer">
                           <ul class="social">
