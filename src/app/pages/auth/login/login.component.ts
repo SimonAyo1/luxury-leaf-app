@@ -76,11 +76,16 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       check: [false, Validators.requiredTrue],
+      checkage: [false, Validators.requiredTrue],
     })
   }
   async signup() {
     if(this.registerForm.get("check").invalid) {
       this.notificationService.errorMessage("Please accept terms and condition before proceeding!")
+      return
+    }
+    if(this.registerForm.get("checkage").invalid) {
+      this.notificationService.errorMessage("Please your age must be 21+ to access this website!")
       return
     }
     if(this.registerForm.invalid) {
