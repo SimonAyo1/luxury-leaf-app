@@ -93,7 +93,7 @@ export class OrderService {
 
     return setDoc(orderDocRef, item).then((response) => {
       state.checkoutItems = item;
-      this.http.post("https://luxuryleaf-api.vercel.app/api/order-mail", { email: 'ayosimon.dev@gmail.com', orderLink: `https://luxury-leaf-v2.vercel.app/store/checkout/success/${orderId}` }).subscribe({
+      this.http.post("https://luxuryleaf-api.vercel.app/api/order-mail", { email: details?.email, orderLink: `https://luxury-leaf-v2.vercel.app/store/checkout/success/${orderId}` }).subscribe({
         next: () => {
           this.router.navigate(['/store/checkout/success', orderId]);
           this.product_service.deleteCart()
