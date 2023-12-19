@@ -1,11 +1,17 @@
 <section class="page-title" style="background-image: url(../../../assets/images/breadcrumb.jpeg);">
-  <div class="auto-container">
+  <div class="auto-container" [ngClass]="{'text-center' : title == 'auth'}">
     <div class="title-outer">
-      <h1 class="title">{{breadcrumb}}</h1>
-      <ul class="page-breadcrumb">
+      
+      <h1 class="title" [ngClass]="{'auth-title' : title == 'auth'}">{{breadcrumb}}</h1>
+      <ul class="page-breadcrumb" *ngIf="title !== 'auth';">
         <li><a href="">Home</a></li>
         <li><a href="#">Pages</a></li>
         <li>{{breadcrumb}}</li>
+      </ul>
+      <ul class="page-breadcrumb" *ngIf="title == 'auth';">
+        <li>Welcome to Luxury Leaf Co., your one-stop destination for all your
+          smoke shop needs.</li>
+       
       </ul>
     </div>
   </div>

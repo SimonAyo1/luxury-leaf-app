@@ -1,36 +1,52 @@
-
-<app-breadcrumb
-  title="auth"
-  [breadcrumb]="'Luxury Leaf'"
-></app-breadcrumb>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+  <path
+    fill="#93bb57"
+    fill-opacity="1"
+    d="M0,288L10,256C20,224,40,160,60,160C80,160,100,224,120,234.7C140,245,160,203,180,176C200,149,220,139,240,160C260,181,280,235,300,256C320,277,340,267,360,256C380,245,400,235,420,197.3C440,160,460,96,480,106.7C500,117,520,203,540,213.3C560,224,580,160,600,138.7C620,117,640,139,660,144C680,149,700,139,720,128C740,117,760,107,780,112C800,117,820,139,840,128C860,117,880,75,900,53.3C920,32,940,32,960,42.7C980,53,1000,75,1020,85.3C1040,96,1060,96,1080,122.7C1100,149,1120,203,1140,208C1160,213,1180,171,1200,138.7C1220,107,1240,85,1260,90.7C1280,96,1300,128,1320,122.7C1340,117,1360,75,1380,69.3C1400,64,1420,96,1430,112L1440,128L1440,0L1430,0C1420,0,1400,0,1380,0C1360,0,1340,0,1320,0C1300,0,1280,0,1260,0C1240,0,1220,0,1200,0C1180,0,1160,0,1140,0C1120,0,1100,0,1080,0C1060,0,1040,0,1020,0C1000,0,980,0,960,0C940,0,920,0,900,0C880,0,860,0,840,0C820,0,800,0,780,0C760,0,740,0,720,0C700,0,680,0,660,0C640,0,620,0,600,0C580,0,560,0,540,0C520,0,500,0,480,0C460,0,440,0,420,0C400,0,380,0,360,0C340,0,320,0,300,0C280,0,260,0,240,0C220,0,200,0,180,0C160,0,140,0,120,0C100,0,80,0,60,0C40,0,20,0,10,0L0,0Z"
+  ></path>
+</svg>
 
 <section
-
   class="py-1 bg-login-a"
   *ngIf="!isLoading"
-  style="background-image: url(../../../assets/images/images/background/5.jpg); min-height: 70vh;"
+  style="
+    background-image: url(../../../assets/images/images/background/5.jpg);
+    margin-top: -21%;
+  "
 >
   <section class="about-section">
     <div class="auto-container">
-      <div class="row justify-content-center">
+      <div class="row">
         <!-- Image Column -->
         <div class="image-column col-lg-6 col-md-12 col-sm-12">
           <div class="about-image-wrapper">
-            <figure
-              class="image-2 wow zoomIn"
-            >
+            <figure class="image-1" data-wow-delay="300ms">
+              <img
+                class="bann-a"
+                src="../../../../assets/images/banner-1.jpeg"
+                alt=""
+              />
+            </figure>
+            <figure class="image-2 wow zoomIn" data-wow-delay="900ms">
               <img
                 src="../../../../assets/images/resource/about-img-2.png"
                 alt=""
-                style="width: 200px;"
               />
             </figure>
           </div>
         </div>
 
         <!-- Content Column -->
-        <div class="login-tab-a" >
-          <div class="card tab2-card" style="">
+        <div class="col-lg-6 login-tab-a" style="z-index: 1">
+          <div class="sec-title title">
+            <h2>Luxury Leaf</h2>
+            <div class="text">
+              Welcome to Luxury Leaf Co., your one-stop destination for all your
+              smoke shop needs.
+            </div>
+          </div>
+
+          <div class="card tab2-card">
             <div class="card-body">
               <ngb-tabset class="tab-coupon mb-0" [activeId]="authType">
                 <ngb-tab id="sign-in" *ngIf="!refId || !isRefValid">
@@ -91,7 +107,7 @@
                           </div>
                         </div>
                         <div
-                          class="form-button mt-2"
+                          class="form-button"
                           style="display: flex; justify-content: center"
                         >
                           <button class="theme-btn btn-style-one" type="submit">
@@ -113,6 +129,7 @@
                         </div> -->
                       </form>
                       <div *ngIf="forgotPassword">
+                        <h4>Forget Your Password</h4>
                         <form class="form-horizontal auth-form">
                           <div class="form-row">
                             <div class="col-md-12">
@@ -121,37 +138,22 @@
                                 class="form-control"
                                 name="email"
                                 [(ngModel)]="resetEmail"
-                                placeholder="Enter your email address"
+                                placeholder="Enter Your Email"
                               />
                             </div>
-
-                            <a
-                            (click)="showForgotPassword(false)"
-                            class="btn btn-default forgot-pass text-right mt-3"
-                            style="font-size: 11px; width: 100%;"
-                            >Remember password? Login</a
-                          >
-                            <div
-                            class="form-button"
-                            style="display: flex; justify-content: center; width: 100%;"
-                          >
-                       
                             <button
-                            class="theme-btn btn-style-one mt-3"
-                            (click)="resetPassword()"
-                          >
-                            Send Reset Link
-                          </button>
-                         
-                          
-                            <!-- <button
+                              class="theme-btn btn-style-one mt-3"
+                              (click)="resetPassword()"
+                            >
+                              Send Reset Link
+                            </button>
+                            <button
                               class="theme-btn btn-style-one mt-3"
                               style="margin-left: 10px"
                               (click)="showForgotPassword(false)"
                             >
                               Login
-                            </button> -->
-                          </div>
+                            </button>
                           </div>
                         </form>
                       </div>

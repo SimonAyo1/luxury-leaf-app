@@ -14,3 +14,33 @@
     font-size: 55px !important;
   }
 }
+
+.typewriter-text {
+  overflow: hidden; /* Hide the overflow to create the typewriter effect */
+  border-right: 0.15em solid orange; /* Add a blinking cursor effect */
+  white-space: nowrap; /* Prevent text from wrapping */
+  margin: 0 auto; /* Center the text */
+  font-size: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
