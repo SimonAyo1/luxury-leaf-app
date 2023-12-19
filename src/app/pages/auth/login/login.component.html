@@ -31,7 +31,7 @@
                     style="height: 100px"
                   />
                 </div>
-                <div *ngIf="authType == 'sign-in'">
+                <div *ngIf="!isRefValid">
                   <form
                     [formGroup]="loginForm"
                     class="form-horizontal auth-form"
