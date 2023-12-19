@@ -116,6 +116,9 @@ export class LoginComponent implements OnInit {
         referrer.links || [],
         window.location.href
       );
+      if(this.isRefValid) {
+        this.authType == 'sign-up'
+      }
       if (!this.isRefValid) {
         this.notificationService.errorMessage(
           "Invalid registration link!, if you have an account kindly login"
@@ -139,7 +142,6 @@ export class LoginComponent implements OnInit {
           this.checkIfRefLinkIsValid(this.refId);
           return;
         }
-        this.authType = e.type;
         this.notificationService.hideSpinner();
         this.isLoading = false;
       }
