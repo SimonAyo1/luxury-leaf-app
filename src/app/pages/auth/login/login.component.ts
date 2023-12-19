@@ -135,7 +135,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["/auth"]);
         }
         if (e.type == "sign-up" && e.code1 && e.code3) {
-          console.log(e.code1);
           this.refId = this._userService.decrypt(e.code1, 3);
           this.checkIfRefLinkIsValid(this.refId);
           return;
