@@ -1,104 +1,104 @@
-
+<!-- 
 <app-breadcrumb
   title="auth"
   [breadcrumb]="'Luxury Leaf'"
-></app-breadcrumb>
+></app-breadcrumb> -->
 
 <section
-
-  class="py-1 bg-login-a"
+  class="py-1"
   *ngIf="!isLoading"
-  style="background-image: url(../../../assets/images/images/background/5.jpg); min-height: 70vh;"
+  style="
+    background-image: url(../../../../assets/images/mainbg.jpg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
 >
   <section class="about-section">
     <div class="auto-container">
       <div class="row justify-content-center">
         <!-- Image Column -->
-        <div class="image-column col-lg-6 col-md-12 col-sm-12">
-          <div class="about-image-wrapper">
-            <figure
-              class="image-2 wow zoomIn"
-            >
-              <img
-                src="../../../../assets/images/resource/about-img-2.png"
-                alt=""
-                style="width: 200px;"
-              />
-            </figure>
-          </div>
-        </div>
 
         <!-- Content Column -->
-        <div class="login-tab-a" >
-          <div class="card tab2-card" style="">
+        <div class="login-tab-a">
+          <div class="card tab2-card glass-login" style="">
             <div class="card-body">
-              <ngb-tabset class="tab-coupon mb-0" [activeId]="authType">
-                <ngb-tab id="sign-in" >
-                  <ng-template ngbTabTitle
-                    ><i class="fa-solid fa-user mr-2"></i> Sign In</ng-template
+              <div class="p-1 py-5">
+                <div class="text-center mt-2 mb-4">
+                  <img
+                    src="../../../../assets/images/logos/luxury-logo.png"
+                    style="height: 100px"
+                  />
+                </div>
+                <div *ngIf="authType == 'sign-in'">
+                  <form
+                    [formGroup]="loginForm"
+                    class="form-horizontal auth-form"
+                    (ngSubmit)="signIn()"
+                    *ngIf="!forgotPassword"
                   >
-                  <ng-template ngbTabContent>
-                    <div
-                      class="tab-pane fade active show"
-                      id="account"
-                      role="tabpanel"
-                      aria-labelledby="account-tab"
-                    >
-                      <form
-                        [formGroup]="loginForm"
-                        class="form-horizontal auth-form"
-                        (ngSubmit)="signIn()"
-                        *ngIf="!forgotPassword"
-                      >
-                        <div class="form-group">
-                          <input
-                            required
-                            name="email"
-                            type="email"
-                            formControlName="email"
-                            class="form-control"
-                            placeholder="Username"
-                            id="exampleInputEmail1"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <input
-                            required
-                            name="password"
-                            type="password"
-                            formControlName="password"
-                            class="form-control"
-                            placeholder="Password"
-                          />
-                        </div>
-                        <div class="form-terms">
-                          <div class="custom-control custom-checkbox mr-sm-2">
-                            <input
-                              type="checkbox"
-                              class="custom-control-input"
-                            />
-                            <!-- <label
+                    <div class="form-group">
+                      <input
+                        required
+                        name="email"
+                        type="email"
+                        formControlName="email"
+                        class="form-control"
+                        placeholder="Username"
+                        id="exampleInputEmail1"
+                        style="background-color: transparent; color: #fff"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <input
+                        required
+                        name="password"
+                        type="password"
+                        formControlName="password"
+                        class="form-control"
+                        placeholder="Password"
+                        style="background-color: transparent; color: #fff"
+                      />
+                    </div>
+                    <div class="form-terms">
+                      <div class="custom-control custom-checkbox mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" />
+                        <!-- <label
                       class="custom-control-label"
                       for="customControlAutosizing"
                       >Remember me</label
                     > -->
-                            <a
-                              (click)="showForgotPassword(true)"
-                              class="btn btn-default forgot-pass"
-                              style="font-size: 11px"
-                              >forgot password?</a
-                            >
-                          </div>
-                        </div>
-                        <div
-                          class="form-button mt-2"
-                          style="display: flex; justify-content: center"
-                        >
-                          <button class="theme-btn btn-style-one" type="submit">
-                            Sign In
-                          </button>
-                        </div>
-                        <!-- <div class="form-footer">
+                      </div>
+                    </div>
+                    <div
+                      class="form-button mt-2"
+                      style="display: flex; justify-content: center"
+                    >
+                      <button
+                        class="theme-btn btn-style-one"
+                        type="submit"
+                        style="
+                          width: 100%;
+                          font-size: 20px;
+                          background-color: #578b08;
+                        "
+                      >
+                        Sign In
+                      </button>
+                    </div>
+                    <a
+                      (click)="showForgotPassword(true)"
+                      class="btn btn-default mt-2"
+                      style="
+                        font-size: 11px;
+                        text-align: center;
+                        width: 100%;
+                        color: #fff;
+                      "
+                      >forgot password?</a
+                    >
+                    <!-- <div class="form-footer">
                           <ul class="social">
                             <li>
                               <a class="fas fa-twitter" href="javascript:void(0)"></a>
@@ -111,219 +111,261 @@
                             </li>
                           </ul>
                         </div> -->
-                      </form>
-                      <div *ngIf="forgotPassword">
-                        <form class="form-horizontal auth-form">
-                          <div class="form-row">
-                            <div class="col-md-12">
-                              <input
-                                type="email"
-                                class="form-control"
-                                name="email"
-                                [(ngModel)]="resetEmail"
-                                placeholder="Enter your email address"
-                              />
-                            </div>
+                  </form>
+                  <div *ngIf="forgotPassword">
+                    <form class="form-horizontal auth-form">
+                      <div class="form-row">
+                        <div class="col-md-12">
+                          <input
+                            type="email"
+                            class="form-control"
+                            name="email"
+                            [(ngModel)]="resetEmail"
+                            style="background-color: transparent; color: #fff"
+                            placeholder="Enter your email address"
+                          />
+                        </div>
 
-                            <a
-                            (click)="showForgotPassword(false)"
-                            class="btn btn-default forgot-pass text-right mt-3"
-                            style="font-size: 11px; width: 100%;"
-                            >Remember password? Login</a
-                          >
-                            <div
-                            class="form-button"
-                            style="display: flex; justify-content: center; width: 100%;"
-                          >
-                       
-                            <button
+                        <div
+                          class="form-button"
+                          style="
+                            display: flex;
+                            justify-content: center;
+                            width: 100%;
+                          "
+                        >
+                          <button
                             class="theme-btn btn-style-one mt-3"
+                            style="
+                              width: 100%;
+                              font-size: 17px;
+                              background-color: #578b08;
+                            "
                             (click)="resetPassword()"
                           >
                             Send Reset Link
                           </button>
-                         
-                          
-                            <!-- <button
+
+                          <!-- <button
                               class="theme-btn btn-style-one mt-3"
                               style="margin-left: 10px"
                               (click)="showForgotPassword(false)"
                             >
                               Login
                             </button> -->
-                          </div>
-                          </div>
-                        </form>
-                      </div>
-                      <p
-                        class="mt-2"
-                        style="font-size: 13px; text-align: center"
-                      >
-                        Note: To access our store and exclusive products you
-                        must be logged in.
-                      </p>
-                    </div>
-                  </ng-template>
-                </ngb-tab>
-                <!-- *ngIf="isRefValid" -->
-                <ngb-tab id="sign-up" >
-                  <ng-template ngbTabTitle
-                    ><i class="fa-solid fa-right-to-bracket mr-2"></i> Sign Up
-                    <ng-template ngbTabContent>
-                      <form
-                        [formGroup]="registerForm"
-                        class="form-horizontal auth-form"
-                        (ngSubmit)="signup()"
-                      >
-                        <div class="d-flex row">
-                          <div class="form-group col-lg-6 col-sm-12">
-                            <input
-                              required
-                              name="name"
-                              type="text"
-                              formControlName="name"
-                              class="form-control"
-                              placeholder="Name"
-                            />
-                          </div>
-                          <div class="form-group col-lg-6 col-sm-12">
-                            <input
-                              required
-                              name="phone_number"
-                              type="number"
-                              formControlName="phone_number"
-                              class="form-control"
-                              placeholder="Phone Number"
-                            />
-                          </div>
-                          <div class="form-group col-lg-6 col-sm-12">
-                            <input
-                              required
-                              name="address"
-                              type="text"
-                              formControlName="address"
-                              class="form-control"
-                              placeholder="Address"
-                            />
-                          </div>
-                          <div class="form-group col-lg-6 col-sm-12">
-                            <input
-                              required
-                              name="postal_code"
-                              type="text"
-                              formControlName="postal_code"
-                              class="form-control"
-                              placeholder="Postal Code"
-                            />
-                          </div>
-                          <div class="form-group col-lg-6 col-sm-12">
-                            <input
-                              required
-                              name="city"
-                              type="text"
-                              formControlName="city"
-                              class="form-control"
-                              placeholder="City"
-                            />
-                          </div>
-                          <div class="form-group col-lg-6 col-sm-12">
-                            <input
-                              required
-                              name="state"
-                              type="text"
-                              formControlName="state"
-                              class="form-control"
-                              placeholder="State"
-                            />
-                          </div>
-                          <div class="form-group col-lg-6 col-sm-12">
-                            <input
-                              required
-                              name="email"
-                              type="email"
-                              formControlName="email"
-                              class="form-control"
-                              placeholder="Email"
-                            />
-                          </div>
-                          <div class="form-group col-lg-6 col-sm-12">
-                            <input
-                              required
-                              name="password"
-                              formControlName="password"
-                              type="password"
-                              class="form-control"
-                              placeholder="Password"
-                            />
-                          </div>
-                        </div>
-                        <div class="row d-flex">
-                          <div class="form-terms col-lg-6 col-sm-12">
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                              <input
-                                type="checkbox"
-                                class="custom-control-input"
-                                id="customControlAutosizing1"
-                                name="check"
-                                formControlName="check"
-                              />
-                              <label
-                                class="custom-control-label"
-                                for="customControlAutosizing1"
-                                ><span
-                                  >I agree to the
-                                  <a
-                                    href="javascript:void(0)"
-                                    style="color: green"
-                                    >Terms &amp; Conditions
-                                  </a></span
-                                ></label
-                              >
-                            </div>
-                          </div>
-                          <div class="form-terms col-lg-6 col-sm-12">
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                              <input
-                                type="checkbox"
-                                class="custom-control-input"
-                                id="agereq"
-                                name="checkage"
-                                formControlName="checkage"
-                              />
-                              <label class="custom-control-label" for="agereq"
-                                ><span
-                                  >I confirm that I am 21+ years old
-                                </span></label
-                              >
-                            </div>
-                          </div>
                         </div>
 
-                        <div
-                          class="form-button mt-2"
-                          style="display: flex; justify-content: center"
+                        <a
+                          (click)="showForgotPassword(false)"
+                          class="btn btn-default mt-2"
+                          style="
+                            font-size: 11px;
+                            text-align: center;
+                            width: 100%;
+                            color: #fff;
+                          "
+                          >Remember password? Login</a
                         >
-                          <button class="theme-btn btn-style-one" type="submit">
-                            Sign Up
-                          </button>
-                        </div>
-                        <div>
-                          <div class="">
-                            <p
-                              class="text-center mt-2"
-                              style="text-align: center; font-size: 15px"
-                              for=""
-                            >
-                              <span
-                                >Have an account?
-                                <a routerLink="/auth" style="color: green">
-                                  sign in</a
-                                ></span
-                              >
-                            </p>
-                          </div>
-                        </div>
-                        <!-- <div class="form-footer">
+                      </div>
+                    </form>
+                  </div>
+                  <p
+                    class="mt-3"
+                    style="font-size: 13px; text-align: center; color: #fff"
+                  >
+                    Note: To access our store and exclusive products you must be
+                    logged in.
+                  </p>
+                </div>
+              </div>
+
+              <!-- *ngIf="isRefValid" -->
+
+              <div
+                *ngIf="authType == 'sign-up' && isRefValid"
+                style="margin-top: -50px"
+              >
+                <form
+                  [formGroup]="registerForm"
+                  class="form-horizontal auth-form"
+                  (ngSubmit)="signup()"
+                >
+                  <div class="d-flex row">
+                    <div class="form-group col-lg-6 col-sm-12">
+                      <input
+                        required
+                        name="name"
+                        type="text"
+                        formControlName="name"
+                        class="form-control"
+                        placeholder="Name"
+                        style="background-color: transparent; color: #fff"
+                      />
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12">
+                      <input
+                        required
+                        name="phone_number"
+                        type="number"
+                        formControlName="phone_number"
+                        class="form-control"
+                        placeholder="Phone Number"
+                        style="background-color: transparent; color: #fff"
+                      />
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12">
+                      <input
+                        required
+                        name="address"
+                        type="text"
+                        formControlName="address"
+                        class="form-control"
+                        placeholder="Address"
+                        style="background-color: transparent; color: #fff"
+                      />
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12">
+                      <input
+                        required
+                        name="postal_code"
+                        type="text"
+                        formControlName="postal_code"
+                        class="form-control"
+                        placeholder="Postal Code"
+                        style="background-color: transparent; color: #fff"
+                      />
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12">
+                      <input
+                        required
+                        name="city"
+                        type="text"
+                        formControlName="city"
+                        class="form-control"
+                        placeholder="City"
+                        style="background-color: transparent; color: #fff"
+                      />
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12">
+                      <input
+                        required
+                        name="state"
+                        type="text"
+                        formControlName="state"
+                        class="form-control"
+                        placeholder="State"
+                        style="background-color: transparent; color: #fff"
+                      />
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12">
+                      <input
+                        required
+                        name="email"
+                        type="email"
+                        formControlName="email"
+                        class="form-control"
+                        placeholder="Email"
+                        style="background-color: transparent; color: #fff"
+                      />
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12">
+                      <input
+                        required
+                        name="password"
+                        formControlName="password"
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        style="background-color: transparent; color: #fff"
+                      />
+                    </div>
+                  </div>
+                  <div class="row d-flex">
+                    <div class="form-terms col-lg-6 col-sm-12">
+                      <div class="custom-control custom-checkbox mr-sm-2">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="customControlAutosizing1"
+                          name="check"
+                          formControlName="check"
+                          style="background-color: transparent; color: #fff"
+                        />
+                        <label
+                          class="custom-control-label text-white"
+                          for="customControlAutosizing1"
+                          ><span
+                            >I agree to the
+                            <a
+                              href="javascript:void(0)"
+                              style="color: rgb(111, 255, 111)"
+                              >Terms &amp; Conditions
+                            </a></span
+                          ></label
+                        >
+                      </div>
+                    </div>
+                    <div class="form-terms col-lg-6 col-sm-12">
+                      <div class="custom-control custom-checkbox mr-sm-2">
+                        <input
+                          type="checkbox"
+                          class="custom-control-input"
+                          id="agereq"
+                          name="checkage"
+                          formControlName="checkage"
+                          style="background-color: transparent; color: #fff"
+                        />
+                        <label
+                          class="custom-control-label text-white"
+                          for="agereq"
+                          ><span
+                            >I confirm that I am 21+ years old
+                          </span></label
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="form-button mt-2"
+                    style="display: flex; justify-content: center"
+                  >
+                    <button
+                      class="theme-btn btn-style-one"
+                      type="submit"
+                      style="
+                        width: 100%;
+                        font-size: 20px;
+                        background-color: #578b08;
+                      "
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                  <div>
+                    <div class="">
+                      <p
+                        class="text-center mt-2"
+                        style="
+                          text-align: center;
+                          font-size: 15px;
+                          color: white;
+                        "
+                        for=""
+                      >
+                        <span
+                          >Have an account?
+                          <a
+                            routerLink="/auth"
+                            style="color: rgb(111, 255, 111)"
+                          >
+                            sign in</a
+                          ></span
+                        >
+                      </p>
+                    </div>
+                  </div>
+                  <!-- <div class="form-footer">
                           <ul class="social">
                             <li>
                               <a class="fas fa-twitter" href="javascript:void(0)"></a>
@@ -336,11 +378,8 @@
                             </li>
                           </ul>
                         </div> -->
-                      </form>
-                    </ng-template>
-                  </ng-template>
-                </ngb-tab>
-              </ngb-tabset>
+                </form>
+              </div>
             </div>
           </div>
         </div>

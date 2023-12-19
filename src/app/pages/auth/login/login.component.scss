@@ -1,43 +1,40 @@
 .logo {
-  width: 77px;
-  height: 40px;
+  width: 100px;
+  height: 60px;
   padding-left: 10px;
 }
-
+input::placeholder {
+  color: white;
+}
 .login-tab-a {
-  margin-top: -50px;
 }
 .about-section:before {
   height: fit-content !important;
 }
 @media screen and (max-width: 767px) {
- 
   .heromain {
     font-size: 50px !important;
   }
   .login-tab-a {
-    margin-top: -20px !important; 
     padding: 20px;
   }
   .bann-a {
     width: 320px !important;
     height: 320px !important;
   }
-  .title
-  {
+  .title {
     text-align: center !important;
   }
   .title h2 {
     font-size: 24px !important;
     margin-bottom: -10px;
   }
-  
 }
 .luxury-aa {
   font-size: 28px;
-    font-weight: 600;
-    margin-left: 10px;
-    color: #000;
+  font-weight: 600;
+  margin-left: 10px;
+  color: #000;
 }
 @media (max-width: 577px) {
   .brand-logo {
@@ -46,11 +43,10 @@
 }
 
 .login-bg {
-  background-image: url('https://img.freepik.com/free-photo/marijuana-buds-with-marijuana-joints-cannabis-oil_1150-20687.jpg?w=1800&t=st=1702588728~exp=1702589328~hmac=80b41ae7d1175e666cae6b9453a461d93799c12ab69c86d5db88a80207d17b81');
+  background-image: url("https://img.freepik.com/free-photo/marijuana-buds-with-marijuana-joints-cannabis-oil_1150-20687.jpg?w=1800&t=st=1702588728~exp=1702589328~hmac=80b41ae7d1175e666cae6b9453a461d93799c12ab69c86d5db88a80207d17b81");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  
 }
 
 .curved-bg {
@@ -59,7 +55,6 @@
   width: 100%;
   border-top-right-radius: 400px;
   border-top-left-radius: 10px;
-
 }
 .top-sec {
   height: 400px;
@@ -69,5 +64,14 @@
   background-color: unset !important;
 }
 
-.about-section {}
+.about-section {
+}
 
+.glass-login {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
