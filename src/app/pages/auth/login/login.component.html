@@ -33,9 +33,9 @@
           <div class="card tab2-card" style="">
             <div class="card-body">
               <ngb-tabset class="tab-coupon mb-0" [activeId]="authType">
-                <ngb-tab id="sign-in" *ngIf="!refId || !isRefValid">
+                <ngb-tab id="sign-in" >
                   <ng-template ngbTabTitle
-                    ><i class="icon-user mr-2"></i>Sign In</ng-template
+                    ><i class="fa-solid fa-user mr-2"></i> Sign In</ng-template
                   >
                   <ng-template ngbTabContent>
                     <div
@@ -168,7 +168,7 @@
                 <!-- *ngIf="isRefValid" -->
                 <ngb-tab id="sign-up" *ngIf="isRefValid">
                   <ng-template ngbTabTitle
-                    ><i class="icon-unlock mr-2"></i> Sign Up
+                    ><i class="fa-solid fa-right-to-bracket mr-2"></i> Sign Up
                     <ng-template ngbTabContent>
                       <form
                         [formGroup]="registerForm"
