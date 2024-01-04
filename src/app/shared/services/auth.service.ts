@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import {
   Auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   updatePassword,
-  user
-} from '@angular/fire/auth';
-import { User } from 'firebase/auth';
-import { Observable, BehaviorSubject } from 'rxjs'; // Use BehaviorSubject instead of Subject
-import { map, take } from 'rxjs/operators';
-import { NotificationService } from './notification.service';
-import { Router } from '@angular/router';
-import { UserService, UserI } from './user.service';
+  user,
+} from "@angular/fire/auth";
+import { User } from "firebase/auth";
+import { Observable, BehaviorSubject } from "rxjs"; // Use BehaviorSubject instead of Subject
+import { map, take } from "rxjs/operators";
+import { NotificationService } from "./notification.service";
+import { Router } from "@angular/router";
+import { UserService, UserI } from "./user.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
   private userSubject: BehaviorSubject<User | null>; // Use BehaviorSubject
@@ -30,16 +30,16 @@ export class AuthService {
     this.afAuth.onAuthStateChanged((user) => {
       this.userSubject = new BehaviorSubject<User | null>(user);
       this.user$ = this.userSubject.asObservable();
-      console.log("1")
+      console.log("1");
     });
   }
 
   // Sign up with email and password
   async signUp(form: any, refId: string, currentPoint: number) {
-    this.notification.startSpinner()
+    this.notification.startSpinner();
     let new_user: UserI = {
       name: form?.name,
-      id: '',
+      id: "",
       email: form?.email,
       address: form?.address,
       city: form?.city,
@@ -51,25 +51,26 @@ export class AuthService {
       state: form?.state,
       points: 0,
       wishlist: null,
-      links: null
-
-    }
-    return createUserWithEmailAndPassword(this.afAuth, form?.email, form?.password)
+      links: null,
+    };
+    return createUserWithEmailAndPassword(
+      this.afAuth,
+      form?.email,
+      form?.password
+    )
       .then((credential) => {
-        new_user["id"] = credential?.user?.uid
+        new_user["id"] = credential?.user?.uid;
         this._user.addUser(new_user).then(() => {
-
-          this.userSubject.next(credential?.user)
-          let pointToGive = currentPoint ? currentPoint + 5 : 5
+          this.userSubject.next(credential?.user);
+          let pointToGive = currentPoint ? currentPoint + 5 : 5;
           this._user.awardPoint(pointToGive, refId).then(() => {
-            this.router.navigate(["/"])
-            this.notification.hideSpinner()
-          })
-        })
-
+            this.router.navigate(["/"]);
+            this.notification.hideSpinner();
+          });
+        });
       })
       .catch((error) => {
-        this.notification.hideSpinner()
+        this.notification.hideSpinner();
         this.notification.errorMessage(error.code);
         throw new Error(error.code);
       });
@@ -78,24 +79,30 @@ export class AuthService {
   //CHange password
 
   resetPassword(email) {
-    this.notification.startSpinner()
-    return sendPasswordResetEmail(this.afAuth, email).then(() => {
-      this.notification.hideSpinner()
-      this.notification.successMessage(`Password reset link sent to ${email}`)
-    }).catch((e) => {
-      this.notification.hideSpinner()
-      this.notification.errorMessage(e.code)
-    })
+    this.notification.startSpinner();
+    return sendPasswordResetEmail(this.afAuth, email)
+      .then(() => {
+        this.notification.hideSpinner();
+        this.notification.successMessage(
+          `Password reset link sent to ${email}`
+        );
+      })
+      .catch((e) => {
+        this.notification.hideSpinner();
+        this.notification.errorMessage(e.code);
+      });
   }
   changePassword(newPassword) {
-    updatePassword(this._user.user[0], newPassword).then(() => {
-      this.notification.hideSpinner()
-      this.notification.successMessage("Password updated!")
-    }).catch((e) => {
-      this.notification.hideSpinner()
+    updatePassword(this._user.user[0], newPassword)
+      .then(() => {
+        this.notification.hideSpinner();
+        this.notification.successMessage("Password updated!");
+      })
+      .catch((e) => {
+        this.notification.hideSpinner();
 
-      this.notification.errorMessage(e.code)
-    })
+        this.notification.errorMessage(e.code);
+      });
   }
   // Sign in with email and password
   async signIn(email: string, password: string) {
@@ -104,7 +111,7 @@ export class AuthService {
       .then((credential) => {
         this.notification.hideSpinner();
         this.userSubject.next(credential.user); // Manually emit the authenticated user
-        this.router.navigate(['/']);
+        this.router.navigate(["/store/collections"]);
       })
       .catch((error) => {
         this.notification.hideSpinner();
@@ -120,9 +127,9 @@ export class AuthService {
     this.afAuth
       .signOut()
       .then(() => {
-        localStorage.clear()
+        localStorage.clear();
         this.notification.hideSpinner();
-        this.router.navigate(['/auth']);
+        this.router.navigate(["/auth"]);
       })
       .catch((e) => {
         this.notification.hideSpinner();

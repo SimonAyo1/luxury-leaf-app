@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
   public referrerCurrentPoints: number;
   public forgotPassword: boolean;
   public resetEmail: string;
+  signup_step: number = 1;
+
   constructor(
     private formBuilder: FormBuilder,
     // private authenticationService: AuthenticationService,
@@ -33,6 +35,9 @@ export class LoginComponent implements OnInit {
     this.createRegisterForm();
   }
 
+  next(step: number) {
+    this.signup_step = step;
+  }
   showForgotPassword(status: boolean) {
     this.forgotPassword = status;
   }
