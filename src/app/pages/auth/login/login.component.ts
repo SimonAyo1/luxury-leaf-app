@@ -36,6 +36,9 @@ export class LoginComponent implements OnInit {
   }
 
   next(step: number) {
+    if (step == 2) {
+      this.checkIfFirstStageIsInValid();
+    }
     this.signup_step = step;
   }
   showForgotPassword(status: boolean) {

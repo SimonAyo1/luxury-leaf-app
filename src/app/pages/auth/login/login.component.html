@@ -386,9 +386,6 @@
                         type="button"
                         *ngIf="signup_step == 1"
                         (click)="next(2)"
-                        [disabled]="
-                         checkIfFirstStageIsInValid()
-                        "
                         style="
                           width: 100%;
                           font-size: 20px;
