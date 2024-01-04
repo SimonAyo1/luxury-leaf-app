@@ -162,4 +162,31 @@ export class LoginComponent implements OnInit {
     }
     this._auth.resetPassword(this.resetEmail);
   }
+
+  checkIfFirstStageIsInValid() {
+    if (this.registerForm.get("name")?.invalid) {
+      this.notificationService.errorMessage("Please enter a valid name!");
+      return true;
+    }
+    if (this.registerForm.get("phone_number")?.invalid) {
+      this.notificationService.errorMessage(
+        "Please enter a valid phone number!"
+      );
+      return true;
+    }
+    if (this.registerForm.get("address")?.invalid) {
+      this.notificationService.errorMessage("Please enter a valid address!");
+      return true;
+    }
+    if (this.registerForm.get("postal_code")?.invalid) {
+      this.notificationService.errorMessage(
+        "Please enter a valid postal code!"
+      );
+      return true;
+    }
+    if (this.registerForm.get("city")?.invalid) {
+      this.notificationService.errorMessage("Please enter a valid city!");
+      return true;
+    }
+  }
 }

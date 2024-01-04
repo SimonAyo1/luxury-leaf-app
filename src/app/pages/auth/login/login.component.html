@@ -387,11 +387,7 @@
                         *ngIf="signup_step == 1"
                         (click)="next(2)"
                         [disabled]="
-                          registerForm.get('name')?.invalid ||
-                          registerForm.get('phone_number')?.invalid ||
-                          registerForm.get('address')?.invalid ||
-                          registerForm.get('postal_code')?.invalid ||
-                          registerForm.get('city')?.invalid
+                         checkIfFirstStageIsInValid()
                         "
                         style="
                           width: 100%;
