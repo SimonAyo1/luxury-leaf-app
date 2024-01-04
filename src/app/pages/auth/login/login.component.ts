@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
   }
 
   next(step: number) {
-    if (step == 2) {
-      this.checkIfFirstStageIsInValid();
+    if (step == 2 && this.checkIfFirstStageIsInValid()) {
+      return;
     }
     this.signup_step = step;
   }
