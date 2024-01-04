@@ -191,5 +191,9 @@ export class LoginComponent implements OnInit {
       this.notificationService.errorMessage("Please enter a valid city!");
       return true;
     }
+    if (this.registerForm.get("state")?.invalid) {
+      this.notificationService.errorMessage("Please enter a valid state!");
+      return true;
+    }
   }
 }
