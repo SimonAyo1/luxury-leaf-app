@@ -45,6 +45,8 @@ export interface UserI {
     activated: boolean
   }[]
   wishlist: any[]
+  birthdate: string
+  socialHandle: string
 }
 
 
