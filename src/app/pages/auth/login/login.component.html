@@ -192,90 +192,136 @@
                       *ngIf="signup_step == 1"
                       class="form-group col-lg-6 col-sm-12"
                     >
+                      <label for="" class="text-white" style="font-size: 19px"
+                        >Name</label
+                      >
+
                       <input
                         required
                         name="name"
                         type="text"
                         formControlName="name"
                         class="form-control"
-                        placeholder="Name"
-                        style="background-color: transparent; color: #fff"
+                        style="
+                          background-color: transparent;
+                          color: #fff;
+                          border-radius: 2px;
+                        "
                       />
                     </div>
                     <div
                       *ngIf="signup_step == 1"
                       class="form-group col-lg-6 col-sm-12"
                     >
+                      <label for="" class="text-white" style="font-size: 19px"
+                        >Phone number</label
+                      >
+
                       <input
                         required
                         name="phone_number"
                         type="number"
                         formControlName="phone_number"
                         class="form-control"
-                        placeholder="Phone Number"
-                        style="background-color: transparent; color: #fff"
+                        style="
+                          background-color: transparent;
+                          color: #fff;
+                          border-radius: 2px;
+                        "
                       />
                     </div>
                     <div
                       *ngIf="signup_step == 1"
                       class="form-group col-lg-6 col-sm-12"
                     >
+                      <label for="" class="text-white" style="font-size: 19px"
+                        >Address</label
+                      >
+
                       <input
                         required
                         name="address"
                         type="text"
                         formControlName="address"
                         class="form-control"
-                        placeholder="Address"
-                        style="background-color: transparent; color: #fff"
+                        style="
+                          background-color: transparent;
+                          color: #fff;
+                          border-radius: 2px;
+                        "
                       />
                     </div>
                     <div
                       *ngIf="signup_step == 1"
                       class="form-group col-lg-6 col-sm-12"
                     >
+                      <label for="" class="text-white" style="font-size: 19px"
+                        >Postal code</label
+                      >
+
                       <input
                         required
                         name="postal_code"
                         type="text"
                         formControlName="postal_code"
                         class="form-control"
-                        placeholder="Postal Code"
-                        style="background-color: transparent; color: #fff"
+                        style="
+                          background-color: transparent;
+                          color: #fff;
+                          border-radius: 2px;
+                        "
                       />
                     </div>
                     <div
                       *ngIf="signup_step == 1"
                       class="form-group col-lg-6 col-sm-12"
                     >
+                      <label for="" class="text-white" style="font-size: 19px"
+                        >Social media handle</label
+                      >
+
                       <input
                         required
-                        name="city"
+                        name="social_handle"
                         type="text"
-                        formControlName="city"
+                        formControlName="social_handle"
                         class="form-control"
-                        placeholder="City"
-                        style="background-color: transparent; color: #fff"
+                        style="
+                          background-color: transparent;
+                          color: #fff;
+                          border-radius: 2px;
+                        "
                       />
                     </div>
                     <div
                       *ngIf="signup_step == 1"
                       class="form-group col-lg-6 col-sm-12"
                     >
+                      <label for="" class="text-white" style="font-size: 19px"
+                        >Birthday</label
+                      >
                       <input
                         required
-                        name="state"
-                        type="text"
-                        formControlName="state"
+                        name="birthdate"
+                        type="date"
+                        formControlName="birthdate"
                         class="form-control"
-                        placeholder="State"
-                        style="background-color: transparent; color: #fff"
+                        style="
+                          background-color: transparent;
+                          color: #fff;
+                          border-radius: 2px;
+                        "
+                        [max]="maxDate"
                       />
                     </div>
                     <div
                       *ngIf="signup_step == 2"
                       class="form-group col-lg-6 col-sm-12"
                     >
+                      <label for="" class="text-white" style="font-size: 19px"
+                        >Email</label
+                      >
+
                       <input
                         required
                         name="email"
@@ -283,13 +329,21 @@
                         formControlName="email"
                         class="form-control"
                         placeholder="Email"
-                        style="background-color: transparent; color: #fff"
+                        style="
+                          background-color: transparent;
+                          color: #fff;
+                          border-radius: 2px;
+                        "
                       />
                     </div>
                     <div
                       *ngIf="signup_step == 2"
                       class="form-group col-lg-6 col-sm-12"
                     >
+                      <label for="" class="text-white" style="font-size: 19px"
+                        >Password</label
+                      >
+
                       <input
                         required
                         name="password"
@@ -297,7 +351,11 @@
                         type="password"
                         class="form-control"
                         placeholder="Password"
-                        style="background-color: transparent; color: #fff"
+                        style="
+                          background-color: transparent;
+                          color: #fff;
+                          border-radius: 2px;
+                        "
                       />
                     </div>
                   </div>

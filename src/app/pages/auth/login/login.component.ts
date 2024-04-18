@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "src/app/shared/services/auth.service";
@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   public forgotPassword: boolean;
   public resetEmail: string;
   signup_step: number = 1;
+  maxDate: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,6 +32,16 @@ export class LoginComponent implements OnInit {
     private _userService: UserService,
     private notificationService: NotificationService
   ) {
+    const today = new Date();
+    const minAge = 18;
+    const maxBirthDate = new Date(
+      today.getFullYear() - minAge,
+      today.getMonth(),
+      today.getDate()
+    );
+
+    this.maxDate = maxBirthDate.toISOString().split("T")[0];
+
     this.createLoginForm();
     this.createRegisterForm();
   }
@@ -63,8 +74,8 @@ export class LoginComponent implements OnInit {
       phone_number: ["", [Validators.required, Validators.pattern("[0-9]+")]],
       address: ["", Validators.required],
       postal_code: ["", Validators.required],
-      state: ["", Validators.required],
-      city: ["", Validators.required],
+      social_handle: ["", Validators.required],
+      birthdate: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required],
       check: [false, Validators.requiredTrue],
@@ -160,7 +171,7 @@ export class LoginComponent implements OnInit {
   }
   resetPassword() {
     if (!this.resetEmail) {
-      this.notificationService.errorMessage("Enter a valid email address!");
+      this.notificationService.errorMessage("Add a valid email address!");
       return;
     }
     this._auth.resetPassword(this.resetEmail);
@@ -168,31 +179,33 @@ export class LoginComponent implements OnInit {
 
   checkIfFirstStageIsInValid() {
     if (this.registerForm.get("name")?.invalid) {
-      this.notificationService.errorMessage("Please enter a valid name!");
+      this.notificationService.errorMessage("Please add a valid name!");
       return true;
     }
     if (this.registerForm.get("phone_number")?.invalid) {
       this.notificationService.errorMessage(
-        "Please enter a valid phone number!"
+        "Please add a valid phone number!"
       );
       return true;
     }
     if (this.registerForm.get("address")?.invalid) {
-      this.notificationService.errorMessage("Please enter a valid address!");
+      this.notificationService.errorMessage("Please add a valid address!");
       return true;
     }
     if (this.registerForm.get("postal_code")?.invalid) {
       this.notificationService.errorMessage(
-        "Please enter a valid postal code!"
+        "Please add a valid postal code!"
       );
       return true;
     }
-    if (this.registerForm.get("city")?.invalid) {
-      this.notificationService.errorMessage("Please enter a valid city!");
+    if (this.registerForm.get("birthdate")?.invalid) {
+      this.notificationService.errorMessage("Please add your birthday!");
       return true;
     }
-    if (this.registerForm.get("state")?.invalid) {
-      this.notificationService.errorMessage("Please enter a valid state!");
+    if (this.registerForm.get("social_handle")?.invalid) {
+      this.notificationService.errorMessage(
+        "Please add your social media handle!"
+      );
       return true;
     }
   }
