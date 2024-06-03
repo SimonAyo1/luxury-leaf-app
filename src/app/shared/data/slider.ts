@@ -2,7 +2,7 @@
 export let HomeSlider: any = {
     loop: true,
     nav: true,
-    dots: false,
+    dots: true,
     navContainerClass: 'owl-nav',
     navClass: [ 'owl-prev', 'owl-next' ],
     navText: [ '<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>' ],

@@ -1,40 +1,16 @@
 <app-header-one [themeLogo]="themeLogo" *ngIf="!isLoading && isActivated">
 </app-header-one>
-
-
-<section class="py-1"  *ngIf="!isLoading && isActivated" style="background-image: url(../../../assets/images/mainbg.jpeg)"
+<app-slider
+  [class]="'text-white'"
+  [sliders]="sliders"
+  [textClass]="'text-center p-center'"
+  [category]="'CBD'"
+  [buttonClass]="'btn-green'"
+  [buttonText]="'shop now'"
+  *ngIf="!isLoading && isActivated"
 >
+</app-slider>
 
- <div class="container">
-   <div class="row align-items-center">
-      <!-- col -->
-     <div class="col-lg-6 mb-6 mb-lg-0">
-       <div class="">
-          <!-- heading -->
-         <h5 class="text-white mb-2"><i class="fas fa-check text-success "></i>Most
-           trusted weed platform</h5>
-            <!-- heading -->
-         <h1 class="heromain text-white fw-bolder mb-3">Elevate Your <span style="font-size: inherit; color: #d6ff6df2;">Experience</span></h1>
-          <!-- para -->
-         <p class="pe-lg-10 mb-2 text-white" style="font-size: 15px;">We are dedicated to providing you with a high-quality smoking experience , we offer flower, accessories, and expert advice to our valued customers.</p>
-            <!-- btn -->
-            <a routerLink="/store/collections" class="theme-btn btn-style-one">Shop Now</a>
-
-
-       </div>
-     </div>
-      <!-- col -->
-     <div class="col-lg-6 d-flex justify-content-center">
-        <!-- images -->
-      <div class="position-relative">
-       <!-- <img src="../../../assets/images/cartoon.png" alt="" class="img-fluid" style="border-radius: 10px;"> -->
-       <img src="../../../assets/images/icon/jamaica.svg" alt="" style="height: 100px;" class=" position-absolute top-0 ms-lg-n10 ms-n19">
-
-      </div>
-     </div>
-   </div>
- </div>
-</section>
 <!-- Home slider End -->
 
 <!-- service section start -->
@@ -49,7 +25,10 @@
   </div>
 </section>
 <!-- service section end -->
-<section class="banners-section d-none d-lg-block" *ngIf="!isLoading && isActivated">
+<section
+  class="banners-section d-none d-lg-block"
+  *ngIf="!isLoading && isActivated"
+>
   <div class="auto-container">
     <div class="row">
       <!-- Banner Box Four -->
@@ -63,7 +42,9 @@
               Get <br />Fresh <br />
               Cannabis
             </h3>
-            <a routerLink="/store/collections" class="theme-btn btn-style-one">Shop Now</a>
+            <a routerLink="/store/collections" class="theme-btn btn-style-one"
+              >Shop Now</a
+            >
           </div>
         </div>
       </div>
@@ -76,7 +57,9 @@
           </div>
           <div class="content">
             <h3>Get <br />Effective <br />Hookahs</h3>
-            <a routerLink="/store/collections" class="theme-btn btn-style-one">Shop Now</a>
+            <a routerLink="/store/collections" class="theme-btn btn-style-one"
+              >Shop Now</a
+            >
           </div>
         </div>
       </div>
@@ -84,7 +67,7 @@
   </div>
 </section>
 <section
-*ngIf="!isLoading && isActivated"
+  *ngIf="!isLoading && isActivated"
   class="about-section-three"
   style="background-image: url(../../../assets/images/images/background/5.jpg)"
 >
@@ -120,7 +103,7 @@
       </div>
 
       <!-- Image Column -->
-      <div class="image-column col-lg-6 col-md-12 col-sm-12  d-none d-lg-block">
+      <div class="image-column col-lg-6 col-md-12 col-sm-12 d-none d-lg-block">
         <div class="image-box">
           <figure class="image-1" data-wow-delay="300ms">
             <img src="../../../assets/images/cbd-oil.jpg" alt="" />
@@ -136,7 +119,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- FAQ Section -->
 <section class="faqs-section" *ngIf="!isLoading && isActivated">
@@ -155,24 +137,32 @@
           </div>
 
           <ul class="accordion-box">
-            <li *ngFor="let faq of faqs; let i = index" class="accordion block" [class.active-block]="faq.isOpen">
-              <div class="acc-btn" [class.active]="faq.isOpen" (click)="toggleFaq(i)">
-                {{faq.question}}
+            <li
+              *ngFor="let faq of faqs; let i = index"
+              class="accordion block"
+              [class.active-block]="faq.isOpen"
+            >
+              <div
+                class="acc-btn"
+                [class.active]="faq.isOpen"
+                (click)="toggleFaq(i)"
+              >
+                {{ faq.question }}
                 <div class="icon fa fa-angle-right"></div>
               </div>
               <div class="acc-content" [class.current]="faq.isOpen">
                 <div class="content">
                   <div class="text">
-                    {{faq.answer}}
+                    {{ faq.answer }}
                   </div>
                 </div>
               </div>
             </li>
           </ul>
-          <a routerLink="/l/faq" class="theme-btn mt-5 btn-style-one">View More</a>
-
+          <a routerLink="/l/faq" class="theme-btn mt-5 btn-style-one"
+            >View More</a
+          >
         </div>
-
       </div>
 
       <!-- Image Column -->
@@ -188,7 +178,11 @@
 </section>
 <!--End FAQ Section -->
 <!-- product slider start -->
-<div *ngIf="!isLoading && isActivated" style="margin-top: -50px;" class="title3 section-t-space">
+<div
+  *ngIf="!isLoading && isActivated"
+  style="margin-top: -50px"
+  class="title3 section-t-space"
+>
   <h4>special deals</h4>
   <h2 class="title-inner3">new products</h2>
   <div class="line"></div>
@@ -196,7 +190,7 @@
 <section
   *ngIf="!isLoading && isActivated"
   class="p-t-0 section-b-space tools-grey border-box"
-  style="margin-top: -60px; max-height: fit-content !important;"
+  style="margin-top: -60px; max-height: fit-content !important"
 >
   <div class="container">
     <div class="row">

@@ -9,7 +9,7 @@ import { NotificationService } from "src/app/shared/services/notification.servic
   styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent implements OnInit {
-  public isActivated: boolean = false;
+  public isActivated: boolean = true;
   public isLoading: boolean = false;
   public accountStatus: string
 
@@ -27,7 +27,7 @@ export class PagesComponent implements OnInit {
     this.isLoading = true
     this._notification.startSpinner()
     this._user?.user?.subscribe((data: UserI[]) => {
-      this.isActivated = data[0]?.status === 'activated' || data[0]?.status === 'approved'
+      // this.isActivated = data[0]?.status === 'activated' || data[0]?.status === 'approved'
 
       this.accountStatus = data[0]?.status
 

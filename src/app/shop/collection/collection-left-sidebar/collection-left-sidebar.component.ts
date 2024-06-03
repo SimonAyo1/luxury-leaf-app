@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { ProductService } from "../../../shared/services/product.service";
@@ -157,5 +157,14 @@ export class CollectionLeftSidebarComponent implements OnInit {
   toggleMobileSidebar() {
     this.mobileSidebar = !this.mobileSidebar;
   }
+  @HostListener("contextmenu", ["$event"])
+  onRightClick(event: MouseEvent) {
+    event.preventDefault();
+  }
 
+  @HostListener("mousedown", ["$event"])
+  onMouseDown(event: MouseEvent) {
+    if (event.button === 2) {
+    }
+  }
 }

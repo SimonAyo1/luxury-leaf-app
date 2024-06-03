@@ -1,0 +1,13 @@
+@media screen and (min-width: 768px) {
+  .section-carousel-slide {
+    height: 90vh;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+    .section-carousel-slide {
+      height: 76vh;
+    }
+  }
+  

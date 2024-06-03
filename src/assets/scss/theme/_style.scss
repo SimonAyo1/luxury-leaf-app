@@ -310,12 +310,15 @@ del {
     cursor: pointer;
     background: transparent;
     color: transparent;
-    top: 50%;
+    top: 83%;
     -webkit-transform: translate(0, -50%);
     transform: translate(0, -50%);
     padding: 0;
     border: none;
     outline: none;
+    background-color: #7db118 !important;
+
+
 }
 
 .sticky {

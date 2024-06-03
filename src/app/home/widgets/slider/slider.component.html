@@ -3,9 +3,67 @@
   class="home-slider"
   [ngClass]="class"
 >
-  <ng-container *ngFor="let slider of sliders">
+  <ng-container>
     <ng-template carouselSlide>
-      <div
+      <section
+        class="py-1 section-carousel-slide"
+        style="
+          background-image: url(https://www.liftedsmokeshops.com/cdn/shop/files/pro_rolling_tray_slide.jpg?v=1639396847);
+          
+          background-position: center;
+          background-size: cover;
+        "
+      >
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- col -->
+            <div class="col-lg-6 mb-6 mb-lg-0">
+              <div class="">
+                <!-- heading -->
+                <h5 class="text-white mb-2">
+                  <i class="fas fa-check text-success"></i>Most trusted weed
+                  platform
+                </h5>
+                <!-- heading -->
+                <h1 class="heromain text-white fw-bolder mb-3">
+                  Elevate Your
+                  <span style="font-size: inherit; color: #d6ff6df2"
+                    >Experience</span
+                  >
+                </h1>
+                <!-- para -->
+                <p class="pe-lg-10 mb-2 text-white" style="font-size: 15px">
+                  We are dedicated to providing you with a high-quality smoking
+                  experience , we offer flower, accessories, and expert advice
+                  to our valued customers.
+                </p>
+                <!-- btn -->
+                <a
+                  routerLink="/store/collections"
+                  class="theme-btn btn-style-one"
+                  >Shop Now</a
+                >
+              </div>
+            </div>
+            <!-- col -->
+            <div class="col-lg-6 d-flex justify-content-center">
+              <!-- images -->
+              <div class="position-relative">
+                <!-- <img src="../../../assets/images/cartoon.png" alt="" class="img-fluid" style="border-radius: 10px;"> -->
+                <img
+                  src="../../../assets/images/icon/jamaica.svg"
+                  alt=""
+                  style="height: 100px"
+                  class="position-absolute top-0 ms-lg-n10 ms-n19"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </ng-template>
+    <ng-template carouselSlide>
+      <!-- <div
         class="home"
         [ngClass]="textClass"
         [ngStyle]="{ 'background-image': 'url(' + slider.image + ')' }"
@@ -29,7 +87,97 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
+      <section
+        class="py-1 section-carousel-slide"
+        style="
+          background-image: url(https://www.liftedsmokeshops.com/cdn/shop/files/Screenshot_2023-07-19_at_5.14.34_PM_2808x_85477741-d3e4-476b-9f32-1e1dc77359d8.webp?v=1702350767);
+          
+          background-position: center;
+          background-size: cover;
+        "
+      >
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <!-- col -->
+            <div class="col-lg-6 mb-6 mb-lg-0">
+              <div class="row align-items-center justify-content-center mt-5">
+                <!-- heading -->
+
+                <!-- heading -->
+                <h1
+                  class="heromain text-white text-center fw-bolder mb-3"
+                  style="font-size: 35px"
+                >
+                  Our Newest
+                  <span style="font-size: inherit; color: #d6ff6df2"
+                    >Products</span
+                  >
+                </h1>
+                <!-- para -->
+                <p
+                  class="pe-lg-10 mb-2 text-white text-center"
+                  style="font-size: 15px; background-color: black"
+                >
+                  Grinder, Rolling Trays, Air-Tight Jars, + Many more new items
+                  JUST hit the floor.
+                </p>
+                <!-- btn -->
+                <a
+                  routerLink="/store/collections"
+                  class="theme-btn btn-style-one"
+                  >Check Out Our Latests</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </ng-template>
+    <ng-template carouselSlide>
+      <section
+        class="py-1 section-carousel-slide"
+        style="
+          background-image: url(https://www.liftedsmokeshops.com/cdn/shop/files/stash_pro_slide.jpg?v=1639395390);
+          
+          background-position: center;
+          background-size: cover;
+        "
+      >
+        <div class="container">
+          <div class="row align-items-center justify-content-end">
+            <!-- col -->
+            <div class="col-lg-6 mb-6 mb-lg-0">
+              <div class="row align-items-center justify-content-end mt-5" style="text-align: right;">
+                <!-- heading -->
+
+                <!-- heading -->
+                <h1
+                  class="heromain text-white fw-bolder mb-3"
+                >
+                  All New Luxury
+
+                  <span style="font-size: inherit; color: #d6ff6df2"
+                    >Stash Pro</span
+                  >
+                </h1>
+                <!-- para -->
+                <p class="pe-lg-10 mb-2 text-white" style="font-size: 15px">
+                  Luxury's new air-tight Stash Pro is the one you've been
+                  waiting for. Read more about how this jar changes everything.
+                </p>
+                <!-- btn -->
+                <a
+                  routerLink="/store/collections"
+                  class="theme-btn btn-style-one"
+                  >Pick Your Color</a
+                >
+              </div>
+            </div>
+            <!-- col -->
+          </div>
+        </div>
+      </section>
     </ng-template>
   </ng-container>
 </owl-carousel-o>
