@@ -1,48 +1,85 @@
-<app-breadcrumb [title]="'Contact'" [breadcrumb]="'Contact Us'"></app-breadcrumb>
+<app-breadcrumb
+  [title]="'Contact'"
+  [breadcrumb]="'Contact Us'"
+></app-breadcrumb>
 
-<section class="ftco-section" style="margin-top: -150px; margin-bottom: -100px;">
+<section class="ftco-section" style="margin-top: -150px; margin-bottom: -100px">
   <div class="container">
-    <div class="row justify-content-center mt-3 ">
+    <div class="row justify-content-center mt-3">
       <div class="col-md-12">
         <div class="wrapper">
           <div class="row no-gutters">
-            <div class="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch" >
+            <div
+              class="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch"
+            >
               <div class="contact-wrap w-100 p-md-5 p-4">
                 <h3 class="mb-4">Get in touch</h3>
                 <div id="form-message-warning" class="mb-4"></div>
                 <div id="form-message-success" class="mb-4">
                   Your message was sent, thank you!
                 </div>
-                <form  id="contactForm" name="contactForm" class="contactForm">
+                <form id="contactForm" name="contactForm" class="contactForm">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="label" for="name">Full Name</label>
-                        <input type="text" class="form-control" name="name" [(ngModel)]="name" id="name" placeholder="Name">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="name"
+                          [(ngModel)]="name"
+                          id="name"
+                          placeholder="Name"
+                        />
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="label" for="email">Email Address</label>
-                        <input type="email" class="form-control" name="email" id="email" [(ngModel)]="email" placeholder="Email">
+                        <input
+                          type="email"
+                          class="form-control"
+                          name="email"
+                          id="email"
+                          [(ngModel)]="email"
+                          placeholder="Email"
+                        />
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="label" for="phone">Phone Number</label>
-                        <input type="tel" class="form-control" name="phone" id="phone" [(ngModel)]="phone" placeholder="Subject">
+                        <input
+                          type="tel"
+                          class="form-control"
+                          name="phone"
+                          id="phone"
+                          [(ngModel)]="phone"
+                          placeholder="Subject"
+                        />
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="label" for="#">Message</label>
-                        <textarea name="message" class="form-control" id="message" [(ngModel)]="message" cols="30" rows="4"
-                          ></textarea>
+                        <textarea
+                          name="message"
+                          class="form-control"
+                          id="message"
+                          [(ngModel)]="message"
+                          cols="30"
+                          rows="4"
+                        ></textarea>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <button (click)="submit()" class="theme-btn btn-style-one">Send Message</button>
+                        <button
+                          (click)="submit()"
+                          class="theme-btn btn-style-one"
+                        >
+                          Send Message
+                        </button>
                         <div class="submitting"></div>
                       </div>
                     </div>
@@ -51,32 +88,54 @@
               </div>
             </div>
             <div class="col-lg-4 col-md-5 d-flex align-items-stretch">
-              <div class="info-wrap w-100 p-md-5 p-4" style="background-color: #054113;">
+              <div
+                class="info-wrap w-100 p-md-5 p-4"
+                style="background-color: #054113"
+              >
                 <h3>Let's get in touch</h3>
-                <p class="mb-4 text-white">Feel free to share your suggestions or simply engage in a conversation with us.</p>
-                
+                <p class="mb-4 text-white">
+                  Feel free to share your suggestions or simply engage in a
+                  conversation with us.
+                </p>
+
                 <div class="dbox w-100 d-flex align-items-center">
-                  <div class="icon d-flex align-items-center justify-content-center">
+                  <div
+                    class="icon d-flex align-items-center justify-content-center"
+                  >
                     <span class="fa fa-phone"></span>
                   </div>
                   <div class="text pl-3">
-                    <p><span>Phone:</span> <a href="tel://1234567920">+ 1111 2222 3333</a></p>
+                    <p>
+                      <span>Phone:</span>
+                      <a href="tel://1234567920">+ 1111 2222 3333</a>
+                    </p>
                   </div>
                 </div>
                 <div class="dbox w-100 d-flex align-items-center">
-                  <div class="icon d-flex align-items-center justify-content-center">
+                  <div
+                    class="icon d-flex align-items-center justify-content-center"
+                  >
                     <span class="fa fa-paper-plane"></span>
                   </div>
                   <div class="text pl-3">
-                    <p><span>Email:</span> <a href="mailto:info@luxuryleaf.com">info@luxuryleaf.com</a></p>
+                    <p>
+                      <span>Email:</span>
+                      <a href="mailto:info@luxuryleafcompany.com"
+                        >info@luxuryleafcompany.com</a
+                      >
+                    </p>
                   </div>
                 </div>
                 <div class="dbox w-100 d-flex align-items-center">
-                  <div class="icon d-flex align-items-center justify-content-center">
+                  <div
+                    class="icon d-flex align-items-center justify-content-center"
+                  >
                     <span class="fa fa-globe"></span>
                   </div>
                   <div class="text pl-3">
-                    <p><span>Website</span> <a href="#">luxuryleaf.com</a></p>
+                    <p>
+                      <span>Website:</span> <a href="#">luxuryleafcompany.com</a>
+                    </p>
                   </div>
                 </div>
               </div>

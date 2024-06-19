@@ -57,6 +57,7 @@ import { DiscountPipe } from './pipes/discount.pipe';
 import { NoAccessComponent } from './components/no-access/no-access.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { OnramperWidgetComponent } from './components/onramper-widget/onramper-widget.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     TapToTopComponent,
     DiscountPipe,
     NoAccessComponent,
-    PaymentComponent
+    PaymentComponent,
+    OnramperWidgetComponent
   ],
   imports: [
     CommonModule,
@@ -108,7 +110,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     NgxSkeletonLoaderModule,
     TranslateModule,
     NgxPayPalModule,
-    NgxStripeModule.forRoot('pk_test_51MlgVWKmVAeVumT0L8gwahBkFhg9veVsd4bld8usSjuCSj9mIrmc4GquJbqFpiy5KL3f13Wy6anMRFMOulmKNT5000rXdolecx'),
+    NgxStripeModule.forRoot('pk_test_51OAxYZAYThx0GdC1KUuJfT8zzAu07o33Qsk32OX73st7kTtNXW4U8vvCSezeeLXkdiDJHPVmUwUQxSvvr68QLLHv00GZi2yGAs'),
   ],
   exports: [
     CommonModule,
@@ -149,7 +151,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     TapToTopComponent,
     DiscountPipe,
     NoAccessComponent,
-    PaymentComponent
+    PaymentComponent,
+    OnramperWidgetComponent
   ]
 })
 export class SharedModule { }

@@ -111,7 +111,6 @@ export class UserService {
 
 
   awardPoint(points: number, id: string) {
-    console.log(points, "AWARD POINTS")
     const userDocRef = doc(this.userCollection, id);
     return updateDoc(userDocRef, { points });
   }

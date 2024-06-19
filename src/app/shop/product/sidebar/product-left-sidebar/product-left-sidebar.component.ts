@@ -109,7 +109,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   async buyNow(product: any) {
     product.quantity = this.counter || 1;
     const status = await this.productService.addToCart(product);
-    if (status) this.router.navigate(["/shop/checkout"]);
+    if (status) this.router.navigate(["/store/checkout"]);
   }
 
   onSizeChange(event: any) {
