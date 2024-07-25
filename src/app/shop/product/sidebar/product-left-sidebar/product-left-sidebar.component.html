@@ -3,7 +3,10 @@
   [breadcrumb]="'Product'"
 ></app-breadcrumb>
 <!-- section start -->
-<section class="section-b-space" style="overflow: unset !important; max-height: unset !important;">
+<section
+  class="section-b-space"
+  style="overflow: unset !important; max-height: unset !important"
+>
   <div class="collection-wrapper">
     <div class="container">
       <div class="row">
@@ -108,9 +111,9 @@
                           : productService.Currency?.currency
                           : "symbol"
                     }}</del>
-                    <span *ngIf="product?.discount"
-                      >{{ product?.discount }}% off</span
-                    >
+                    <span *ngIf="product?.discount">
+                      {{ getDiscount(product.discount) }}% off
+                    </span>
                   </h4>
                   <h3>
                     {{
@@ -171,6 +174,14 @@
                     <h5 class="avalibility" *ngIf="counter > product.stock">
                       <span>Out of Stock</span>
                     </h5>
+
+                    <div *ngIf="isArray(product.discount)">
+                      <h6 class="product-title">Discount Offers</h6>
+
+                      <div class="d-flex justify-content-between" *ngFor="let dis of product.discount">
+                        <div><p>Buy {{dis.quantity}}x and get {{dis.discount}}% discount</p> </div>
+                      </div>
+                    </div>
 
                     <div *ngIf="product?.category == 'Digital'">
                       <h6 class="product-title">Select Color(s)</h6>

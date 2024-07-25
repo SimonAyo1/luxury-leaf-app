@@ -79,18 +79,6 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   // Add to cart
   async addToCart(product: Product) {
-    console.log(
-      product,
-      "product................................................................"
-    );
-    console.log(
-      this.selectedColors,
-      "selectedColors................................................................"
-    );
-    console.log(
-      this.selectedSizes,
-      "selectedSize................................................................"
-    );
     product.colors = this.selectedColors;
     product.sizes = this.selectedSizes;
     product.quantity = this.counter || 1;
@@ -150,5 +138,20 @@ export class ProductLeftSidebarComponent implements OnInit {
   onMouseDown(event: MouseEvent) {
     if (event.button === 2) {
     }
+  }
+
+  getDiscount(discount: any): number {
+    if (Array.isArray(discount)) {
+      return (
+        discount.find((a) => a.quantity === 1)?.discount ||
+        discount[0]?.discount
+      );
+    } else {
+      return discount;
+    }
+  }
+
+  isArray(discount: any): boolean {
+    return Array.isArray(discount);
   }
 }

@@ -1,39 +1,41 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, startWith, delay, filter } from 'rxjs/operators';
-import { ToastrService } from 'ngx-toastr';
-import { Product } from '../classes/product';
-import { StoreService } from './store.service';
-import { UserI, UserService } from './user.service';
-import { NotificationService } from './notification.service';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { map, startWith, delay, filter } from "rxjs/operators";
+import { ToastrService } from "ngx-toastr";
+import { Product } from "../classes/product";
+import { StoreService } from "./store.service";
+import { UserI, UserService } from "./user.service";
+import { NotificationService } from "./notification.service";
 
 const state = {
-  products: JSON.parse(localStorage['products'] || '[]'),
-  wishlist: JSON.parse(localStorage['wishlistItems'] || '[]'),
-  compare: JSON.parse(localStorage['compareItems'] || '[]'),
-  cart: JSON.parse(localStorage['cartItems'] || '[]')
-}
+  products: JSON.parse(localStorage["products"] || "[]"),
+  wishlist: JSON.parse(localStorage["wishlistItems"] || "[]"),
+  compare: JSON.parse(localStorage["compareItems"] || "[]"),
+  cart: JSON.parse(localStorage["cartItems"] || "[]"),
+};
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ProductService {
-
-  public Currency = { name: 'Dollar', currency: 'USD', price: 1 } // Default Currency
+  public Currency = { name: "Dollar", currency: "USD", price: 1 }; // Default Currency
   public OpenCart: boolean = false;
-  public Products
-  USER: UserI
-  constructor(private http: HttpClient, private notification: NotificationService,
-    private toastrService: ToastrService, private _store: StoreService, private _user: UserService) {
+  public Products;
+  USER: UserI;
+  constructor(
+    private http: HttpClient,
+    private notification: NotificationService,
+    private toastrService: ToastrService,
+    private _store: StoreService,
+    private _user: UserService
+  ) {
     setTimeout(() => {
       this._user?.user?.subscribe((data: UserI[]) => {
-        this.USER = data[0]
+        this.USER = data[0];
         // console.log(this.USER, "USER")
-      })
-    }, 2000)
-
-
+      });
+    }, 2000);
   }
 
   /*
@@ -45,9 +47,13 @@ export class ProductService {
   // Product
   private get products(): Observable<Product[]> {
     // this.Products = this.http.get<Product[]>('assets/data/products.json').pipe(map(data => data));
-    this.Products = this._store.getAllProducts()
-    this.Products.subscribe(next => { localStorage['products'] = JSON.stringify(next) });
-    return this.Products = this.Products.pipe(startWith(JSON.parse(localStorage['products'] || '[]')));
+    this.Products = this._store.getAllProducts();
+    this.Products.subscribe((next) => {
+      localStorage["products"] = JSON.stringify(next);
+    });
+    return (this.Products = this.Products.pipe(
+      startWith(JSON.parse(localStorage["products"] || "[]"))
+    ));
   }
 
   // Get Products
@@ -57,13 +63,14 @@ export class ProductService {
 
   // Get Products By Slug
   public getProductBySlug(slug: string): Observable<Product> {
-    return this.products.pipe(map(items => {
-      return items.find((item: any) => {
-        return item.title.replace(' ', '-') === slug;
-      });
-    }));
+    return this.products.pipe(
+      map((items) => {
+        return items.find((item: any) => {
+          return item.title.replace(" ", "-") === slug;
+        });
+      })
+    );
   }
-
 
   /*
     ---------------------------------------------
@@ -73,69 +80,70 @@ export class ProductService {
 
   // Get Wishlist Items
   public get wishlistItems(): Observable<Product[]> {
-
-
-    const itemsStream = new Observable(observer => {
+    const itemsStream = new Observable((observer) => {
       observer.next(this.USER.wishlist || []);
-      observer.complete()
+      observer.complete();
     });
     return itemsStream as Observable<Product[]>;
-
-
-
-
-
   }
 
   // Add to Wishlist
   public addToWishlist(product): any {
     if (!this.USER?.id) {
-      this.toastrService.error('Please login to add to wishlist.');
-      return
+      this.toastrService.error("Please login to add to wishlist.");
+      return;
     }
-    const wishlistItem = this.USER.wishlist?.find(item => item.id === product.id)
+    const wishlistItem = this.USER.wishlist?.find(
+      (item) => item.id === product.id
+    );
     if (!wishlistItem) {
-      this.notification.startSpinner()
-      const new_wishlist = this.USER.wishlist || []
-      new_wishlist.push(product)
+      this.notification.startSpinner();
+      const new_wishlist = this.USER.wishlist || [];
+      new_wishlist.push(product);
       const data: any = {
         id: this.USER.id,
-        wishlist: new_wishlist
-      }
-      this._user.updateuser(data).then(() => {
-        this.notification.hideSpinner()
-        this.notification.successMessage('Product added to wishlist.');
-      }).catch((e) => {
-        console.log(e)
-        this.notification.hideSpinner()
-        this.toastrService.error(e.code);
-      })
-      return true
+        wishlist: new_wishlist,
+      };
+      this._user
+        .updateuser(data)
+        .then(() => {
+          this.notification.hideSpinner();
+          this.notification.successMessage("Product added to wishlist.");
+        })
+        .catch((e) => {
+          console.log(e);
+          this.notification.hideSpinner();
+          this.toastrService.error(e.code);
+        });
+      return true;
     }
-    this.toastrService.error('Product has already been added to wishlist.');
+    this.toastrService.error("Product has already been added to wishlist.");
     // localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
 
-    return true
+    return true;
   }
 
   // Remove Wishlist items
   public removeWishlistItem(product: Product): any {
     const index = this.USER.wishlist.indexOf(product);
     const newArr: any = this.USER.wishlist;
-    newArr.splice(index, 1)
+    newArr.splice(index, 1);
     const data: any = {
       id: this.USER.id,
-      wishlist: newArr
-    }
+      wishlist: newArr,
+    };
     // localStorage.setItem("wishlistItems", JSON.stringify(state.wishlist));
-    this._user.updateuser(data).then(() => {
-      this.notification.hideSpinner()
-      this.notification.successMessage('Product deleted from wishlist.');
-    }).catch((e) => {
-      this.notification.hideSpinner()
-      this.toastrService.success(e.code);
-    })
-    return true
+    this._user
+      .updateuser(data)
+      .then(() => {
+        this.notification.hideSpinner();
+        this.notification.successMessage("Product deleted from wishlist.");
+      })
+      .catch((e) => {
+        this.notification.hideSpinner();
+        this.toastrService.success(e.code);
+      });
+    return true;
   }
 
   /*
@@ -146,7 +154,7 @@ export class ProductService {
 
   // Get Compare Items
   public get compareItems(): Observable<Product[]> {
-    const itemsStream = new Observable(observer => {
+    const itemsStream = new Observable((observer) => {
       observer.next(state.compare);
       observer.complete();
     });
@@ -155,15 +163,15 @@ export class ProductService {
 
   // Add to Compare
   public addToCompare(product): any {
-    const compareItem = state.compare.find(item => item.id === product.id)
+    const compareItem = state.compare.find((item) => item.id === product.id);
     if (!compareItem) {
       state.compare.push({
-        ...product
-      })
+        ...product,
+      });
     }
-    this.toastrService.success('Product has been added in compare.');
+    this.toastrService.success("Product has been added in compare.");
     localStorage.setItem("compareItems", JSON.stringify(state.compare));
-    return true
+    return true;
   }
 
   // Remove Compare items
@@ -171,7 +179,7 @@ export class ProductService {
     const index = state.compare.indexOf(product);
     state.compare.splice(index, 1);
     localStorage.setItem("compareItems", JSON.stringify(state.compare));
-    return true
+    return true;
   }
 
   /*
@@ -182,7 +190,7 @@ export class ProductService {
 
   // Get Cart Items
   public get cartItems(): Observable<Product[]> {
-    const itemsStream = new Observable(observer => {
+    const itemsStream = new Observable((observer) => {
       observer.next(state.cart);
       observer.complete();
     });
@@ -191,20 +199,20 @@ export class ProductService {
 
   // Add to Cart
   public addToCart(product): any {
-    const cartItem = state.cart.find(item => item.id === product.id);
+    const cartItem = state.cart.find((item) => item.id === product.id);
     const qty = product.quantity ? product.quantity : 1;
     const items = cartItem ? cartItem : product;
     const stock = this.calculateStockCounts(items, qty);
 
-    if (!stock) return false
+    if (!stock) return false;
 
     if (cartItem) {
-      cartItem.quantity += qty
+      cartItem.quantity += qty;
     } else {
       state.cart.push({
         ...product,
-        quantity: qty
-      })
+        quantity: qty,
+      });
     }
 
     this.OpenCart = true; // If we use cart variation modal
@@ -213,29 +221,36 @@ export class ProductService {
   }
 
   // Update Cart Quantity
-  public updateCartQuantity(product: Product, quantity: number): Product | boolean {
+  public updateCartQuantity(
+    product: Product,
+    quantity: number
+  ): Product | boolean {
     return state.cart.find((items, index) => {
       if (items.id === product.id) {
-        const qty = state.cart[index].quantity + quantity
-        const stock = this.calculateStockCounts(state.cart[index], quantity)
+        const qty = state.cart[index].quantity + quantity;
+        const stock = this.calculateStockCounts(state.cart[index], quantity);
         if (qty !== 0 && stock) {
-          state.cart[index].quantity = qty
+          state.cart[index].quantity = qty;
         }
         localStorage.setItem("cartItems", JSON.stringify(state.cart));
-        return true
+        return true;
       }
-    })
+    });
   }
 
   // Calculate Stock Counts
   public calculateStockCounts(product, quantity) {
-    const qty = product.quantity + quantity
-    const stock = product.stock
+    const qty = product.quantity + quantity;
+    const stock = product.stock;
     if (stock < qty || stock == 0) {
-      this.toastrService.error('You can not add more items than available. In stock ' + stock + ' items.');
-      return false
+      this.toastrService.error(
+        "You can not add more items than available. In stock " +
+          stock +
+          " items."
+      );
+      return false;
     }
-    return true
+    return true;
   }
 
   // Remove Cart items
@@ -243,26 +258,31 @@ export class ProductService {
     const index = state.cart.indexOf(product);
     state.cart.splice(index, 1);
     localStorage.setItem("cartItems", JSON.stringify(state.cart));
-    return true
+    return true;
   }
   public deleteCart(): any {
-
-    state.cart = null
+    state.cart = null;
     localStorage.removeItem("cartItems");
-    return true
+    return true;
   }
 
-  // Total amount 
+  // Total amount
   public cartTotalAmount(): Observable<number> {
-    return this.cartItems.pipe(map((product: Product[]) => {
-      return product.reduce((prev, curr: Product) => {
-        let price = curr.price;
-        if (curr.discount) {
-          price = curr.price - (curr.price * curr.discount / 100)
-        }
-        return (prev + price * curr.quantity) * this.Currency.price;
-      }, 0);
-    }));
+    return this.cartItems.pipe(
+      map((product: Product[]) => {
+        return product.reduce((prev, curr: Product) => {
+          let price = curr.price;
+          if (curr.discount) {
+            const discount = Array.isArray(curr.discount)
+              ? curr.discount.find((a) => a.quantity === curr.quantity)
+                  ?.discount || curr.discount[0]?.discount
+              : curr.discount;
+            price = curr.price - (curr.price * discount) / 100;
+          }
+          return (prev + price * curr.quantity) * this.Currency.price;
+        }, 0);
+      })
+    );
   }
 
   /*
@@ -273,26 +293,29 @@ export class ProductService {
 
   // Get Product Filter
   public filterProducts(filter: any): Observable<Product[]> {
-    return this.products.pipe(map(product =>
-      product.filter((item: Product) => {
-        if (!filter.length) return true
-        const Tags = filter.some((prev) => { // Match Tags
-          if (item.tags) {
-            if (item.tags.includes(prev)) {
-              return prev
+    return this.products.pipe(
+      map((product) =>
+        product.filter((item: Product) => {
+          if (!filter.length) return true;
+          const Tags = filter.some((prev) => {
+            // Match Tags
+            if (item.tags) {
+              if (item.tags.includes(prev)) {
+                return prev;
+              }
             }
-          }
+          });
+          return Tags;
         })
-        return Tags
-      })
-    ));
+      )
+    );
   }
   generateUniqueID(): string {
     const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const length = 6;
 
-    let uniqueID = '';
+    let uniqueID = "";
 
     // Add random characters to the uniqueID
     for (let i = 0; i < length; i++) {
@@ -308,8 +331,7 @@ export class ProductService {
   }
   // Sorting Filter
   public sortProducts(products: Product[], payload: string): any {
-
-    if (payload === 'ascending') {
+    if (payload === "ascending") {
       return products.sort((a, b) => {
         if (a.id < b.id) {
           return -1;
@@ -317,8 +339,8 @@ export class ProductService {
           return 1;
         }
         return 0;
-      })
-    } else if (payload === 'a-z') {
+      });
+    } else if (payload === "a-z") {
       return products.sort((a, b) => {
         if (a.title < b.title) {
           return -1;
@@ -326,8 +348,8 @@ export class ProductService {
           return 1;
         }
         return 0;
-      })
-    } else if (payload === 'z-a') {
+      });
+    } else if (payload === "z-a") {
       return products.sort((a, b) => {
         if (a.title > b.title) {
           return -1;
@@ -335,8 +357,8 @@ export class ProductService {
           return 1;
         }
         return 0;
-      })
-    } else if (payload === 'low') {
+      });
+    } else if (payload === "low") {
       return products.sort((a, b) => {
         if (a.price < b.price) {
           return -1;
@@ -344,8 +366,8 @@ export class ProductService {
           return 1;
         }
         return 0;
-      })
-    } else if (payload === 'high') {
+      });
+    } else if (payload === "high") {
       return products.sort((a, b) => {
         if (a.price > b.price) {
           return -1;
@@ -353,7 +375,7 @@ export class ProductService {
           return 1;
         }
         return 0;
-      })
+      });
     }
   }
 
@@ -362,7 +384,11 @@ export class ProductService {
     ------------- Product Pagination  -----------
     ---------------------------------------------
   */
-  public getPager(totalItems: number, currentPage: number = 1, pageSize: number = 16) {
+  public getPager(
+    totalItems: number,
+    currentPage: number = 1,
+    pageSize: number = 16
+  ) {
     // calculate total pages
     let totalPages = Math.ceil(totalItems / pageSize);
 
@@ -393,7 +419,9 @@ export class ProductService {
     let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
 
     // create an array of pages to ng-repeat in the pager control
-    let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i);
+    let pages = Array.from(Array(endPage + 1 - startPage).keys()).map(
+      (i) => startPage + i
+    );
 
     // return object with all pager properties required by the view
     return {
@@ -405,8 +433,7 @@ export class ProductService {
       endPage: endPage,
       startIndex: startIndex,
       endIndex: endIndex,
-      pages: pages
+      pages: pages,
     };
   }
-
 }
