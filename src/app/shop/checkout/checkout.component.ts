@@ -103,28 +103,30 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   handlePaymentStatus(event: { isSuccess: boolean; orderId: string }) {
     if (event.isSuccess) {
       this.modal.dismissAll();
-      this._user
-        .awardPoint(this.amount, this._user.userId)
-        .then(() => {
-          this.orderService.createOrder(
-            this.products,
-            this.checkoutForm.value,
-            event.orderId,
-            this.amount,
-            "success",
-            this.payment
-          );
-        })
-        .catch(() => {
-          this.orderService.createOrder(
-            this.products,
-            this.checkoutForm.value,
-            event.orderId,
-            this.amount,
-            "success",
-            this.payment
-          );
-        });
+      this._user.user.subscribe((user) => {
+        this._user
+          // .awardPoint(user[0]?.points + 5, this._user.userId)
+          // .then(() => {
+            this.orderService.createOrder(
+              this.products,
+              this.checkoutForm.value,
+              event.orderId,
+              this.amount,
+              "success",
+              this.payment
+            );
+          // })
+          // .catch(() => {
+            this.orderService.createOrder(
+              this.products,
+              this.checkoutForm.value,
+              event.orderId,
+              this.amount,
+              "success",
+              this.payment
+            );
+          // });
+      });
     }
   }
   open() {
@@ -146,9 +148,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       if (user[0]?.points >= 100 && user[0]?.points < 250) {
         const val = (user[0]?.points / 100) * 10;
         if (this.amount <= val) {
-          this._user
-            .awardPoint(user[0]?.points - this.amount, user[0]?.id)
-            .then(() => {
+          // this._user
+          //   .awardPoint(user[0]?.points - this.amount, user[0]?.id)
+          //   .then(() => {
               this._notification.hideSpinner();
               this.orderService.createOrder(
                 this.products,
@@ -158,7 +160,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
                 "success",
                 this.payment
               );
-            });
+            // });
         }
       } else if (user[0]?.points >= 250) {
         const val = (user[0]?.points / 250) * 35;

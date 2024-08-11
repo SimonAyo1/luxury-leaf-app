@@ -29,7 +29,6 @@ export class ProfileComponent implements OnInit {
 
   updateProfile() {
     this._notification.startSpinner()
-    console.log(this.profileForm.value)
     this._user.updateuser(this.profileForm.value).then(() => {
       this._notification.hideSpinner()
       this._notification.successMessage("Updated succesfully!")

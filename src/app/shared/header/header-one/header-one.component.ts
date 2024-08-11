@@ -18,7 +18,6 @@ export class HeaderOneComponent implements OnInit {
   constructor(private afAuth: Auth) {
     this.afAuth.onAuthStateChanged((user) => {
       this.isLoggedIn = !!user
-      console.log(this.isLoggedIn, user)
     });
   }
 

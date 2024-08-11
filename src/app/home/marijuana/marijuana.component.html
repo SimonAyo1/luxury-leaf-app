@@ -13,9 +13,92 @@
 
 <!-- Home slider End -->
 
+<div style="margin-top: 50px" *ngIf="!isLoading && isActivated">
+  <ngb-tabset [justify]="'center'" [type]="'pills'" class="tabs tab-title">
+    <ngb-tab>
+      <ng-template ngbTabTitle>Platnium</ng-template>
+      <ng-template ngbTabContent>
+        <div
+          class="p-t-0 section-b-space tools-grey border-box"
+          style="margin-top: 60px; max-height: fit-content !important"
+        >
+          <div class="container">
+            <div class="row">
+              <div
+                class="col-lg-3 col-md-4 col-sm-12"
+                *ngFor="let product of platinum"
+              >
+                <div class="product-box product-wrap">
+                  <app-product-box-three
+                    [product]="product"
+                    [currency]="productService?.Currency"
+                  >
+                  </app-product-box-three>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab >
+      <ng-template ngbTabTitle>Premium</ng-template>
+      <ng-template ngbTabContent>
+        <div
+          class="p-t-0 section-b-space tools-grey border-box"
+          style="margin-top: 60px; max-height: fit-content !important"
+        >
+          <div class="container">
+            <div class="row">
+              <div
+                class="col-lg-3 col-md-4 col-sm-12"
+                *ngFor="let product of premium"
+              >
+                <div class="product-box product-wrap">
+                  <app-product-box-three
+                    [product]="product"
+                    [currency]="productService?.Currency"
+                  >
+                  </app-product-box-three>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+      <ng-template ngbTabTitle>Presidential</ng-template>
+      <ng-template ngbTabContent>
+        <div
+          class="p-t-0 section-b-space tools-grey border-box"
+          style="margin-top: 60px; max-height: fit-content !important"
+        >
+          <div class="container">
+            <div class="row">
+              <div
+                class="col-lg-3 col-md-4 col-sm-12"
+                *ngFor="let product of presidential"
+              >
+                <div class="product-box product-wrap">
+                  <app-product-box-three
+                    [product]="product"
+                    [currency]="productService?.Currency"
+                  >
+                  </app-product-box-three>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>
+
 <!-- service section start -->
 <section
-  class="banner-padding absolute-banner pb-0 tools-service"
+  class="banner-padding absolute-banner pb-0 tools-service mt-4"
   *ngIf="!isLoading && isActivated"
 >
   <div class="container absolute-bg">
@@ -25,6 +108,7 @@
   </div>
 </section>
 <!-- service section end -->
+
 <section
   class="banners-section d-none d-lg-block"
   *ngIf="!isLoading && isActivated"
@@ -66,14 +150,13 @@
     </div>
   </div>
 </section>
-<section
+<!-- <section
   *ngIf="!isLoading && isActivated"
   class="about-section-three"
   style="background-image: url(../../../assets/images/images/background/5.jpg)"
 >
   <div class="auto-container">
     <div class="row">
-      <!-- Content Column -->
       <div class="content-column col-lg-6 col-md-12 col-sm-12 order-3">
         <div class="inner-column wow fadeInRight">
           <div class="sec-title">
@@ -102,7 +185,6 @@
         </div>
       </div>
 
-      <!-- Image Column -->
       <div class="image-column col-lg-6 col-md-12 col-sm-12 d-none d-lg-block">
         <div class="image-box">
           <figure class="image-1" data-wow-delay="300ms">
@@ -118,7 +200,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- FAQ Section -->
 <section class="faqs-section" *ngIf="!isLoading && isActivated">
@@ -128,7 +210,6 @@
       <span class="bg-pattern-right"></span>
     </div>
     <div class="row">
-      <!-- FAQ Column -->
       <div class="faq-column col-lg-7 col-md-12 col-sm-12 order-4">
         <div class="inner-column">
           <div class="sec-title">
@@ -165,11 +246,14 @@
         </div>
       </div>
 
-      <!-- Image Column -->
       <div class="image-column col-lg-5 col-md-12 col-sm-12">
         <div class="inner-column">
           <figure class="image">
-            <img src="../../../assets/images/cbd-oil2.jpg" alt="" />
+            <img
+              src="../../../assets/images/cbd-oil2.jpg"
+              class="d-lg-block d-none"
+              alt=""
+            />
           </figure>
         </div>
       </div>

@@ -30,7 +30,6 @@ export class AuthService {
     this.afAuth.onAuthStateChanged((user) => {
       this.userSubject = new BehaviorSubject<User | null>(user);
       this.user$ = this.userSubject.asObservable();
-      console.log("1");
     });
   }
 
@@ -118,7 +117,6 @@ export class AuthService {
       .catch((error) => {
         this.notification.hideSpinner();
         this.notification.errorMessage(error.code);
-        console.log(error.code);
         throw new Error(error.message);
       });
   }

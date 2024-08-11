@@ -111,7 +111,6 @@ export class ProductService {
           this.notification.successMessage("Product added to wishlist.");
         })
         .catch((e) => {
-          console.log(e);
           this.notification.hideSpinner();
           this.toastrService.error(e.code);
         });
@@ -270,13 +269,15 @@ export class ProductService {
   public cartTotalAmount(): Observable<number> {
     return this.cartItems.pipe(
       map((product: Product[]) => {
-        return product.reduce((prev, curr: Product) => {
+        return product?.reduce((prev, curr: Product) => {
           let price = curr.price;
           if (curr.discount) {
             const discount = Array.isArray(curr.discount)
               ? curr.discount.find((a) => a.quantity === curr.quantity)
-                  ?.discount || curr.discount[0]?.discount
-              : curr.discount;
+                  ?.discount ||
+                curr.discount[0]?.discount ||
+                0
+              : curr.discount || 0;
             price = curr.price - (curr.price * discount) / 100;
           }
           return (prev + price * curr.quantity) * this.Currency.price;

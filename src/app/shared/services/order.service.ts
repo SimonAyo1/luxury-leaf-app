@@ -101,7 +101,7 @@ export class OrderService {
     orderId: any,
     amount: any,
     paymentStatus: string,
-    paymentMethod
+    paymentMethod,
   ) {
     this.notify.startSpinner();
     var item: Order = {
@@ -127,7 +127,7 @@ export class OrderService {
         this.http
           .post(`${this.BASE_URL}/api/order-mail`, {
             email: details?.email,
-            orderLink: `${this.BASE_URL}/store/checkout/success/${orderId}`,
+            orderLink: `https://www.luxuryleafcompany.com/store/checkout/success/${orderId}`,
           })
           .subscribe({
             next: () => {

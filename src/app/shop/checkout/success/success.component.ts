@@ -29,7 +29,6 @@ export class SuccessComponent implements OnInit, AfterViewInit {
         // }
         this.notify.hideSpinner()
         this.orderDetails = response
-        console.log(this.orderDetails)
         this.isLoading = false
       });
     })

@@ -16,7 +16,6 @@ export class MyMembershipComponent implements OnInit {
   constructor(private _user: UserService, private modal: NgbModal, private notify: NotificationService) {
     this._user?.user?.subscribe((e) => {
       this.user = e[0]
-      console.log(this.user, "UEEEEEEEEEE")
       this.checkoutForm = {
         name: e[0].name,
         email: e[0].email,
@@ -39,7 +38,6 @@ export class MyMembershipComponent implements OnInit {
 
     // Convert both dates to the same format for comparison
 
-    console.log(dateToCheckFormatted, currentDate)
     return dateToCheckFormatted < currentDate;
   }
 

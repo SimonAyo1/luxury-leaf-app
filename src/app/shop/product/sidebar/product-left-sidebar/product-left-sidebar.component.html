@@ -183,7 +183,7 @@
                       </div>
                     </div>
 
-                    <div *ngIf="product?.category == 'Digital'">
+                    <div *ngIf="product?.colors?.length">
                       <h6 class="product-title">Select Color(s)</h6>
 
                       <div class="form-group row mt-2" style="margin-left: 1px">
@@ -206,7 +206,7 @@
                         </div>
                       </div>
                     </div>
-                    <div *ngIf="product?.category == 'Digital'">
+                    <div *ngIf="product?.sizes?.length">
                       <h6 class="product-title">Select Sizes(s)</h6>
                       <div class="form-group">
                         <div

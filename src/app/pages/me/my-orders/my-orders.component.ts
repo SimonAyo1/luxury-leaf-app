@@ -32,11 +32,9 @@ export class MyOrdersComponent implements OnInit {
     this.orderService.getOrdersByUserId(userId).subscribe({
       next: (orders: any) => {
         this.orders = orders;
-        console.log(orders)
         this.notification.hideSpinner()
       },
       error: (error: any) => {
-        console.log(error);
         this.notification.hideSpinner()
 
       }

@@ -31,7 +31,7 @@
       <p class="card-text">Products:</p>
       <ul class="items-list">
         <li *ngFor="let product of order.product; let i = index" class="item">
-          <span class="item-name">{{ i + 1 }}. {{ product.title }}</span>
+          <span class="item-name">{{ i + 1 }}. {{ product.title }} x {{ product.quantity }}</span>
           <span class="item-quantity"
             >Price: {{ product.price | currency }}</span
           >

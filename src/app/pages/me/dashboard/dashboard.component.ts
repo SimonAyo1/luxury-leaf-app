@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
     this._user?.user?.subscribe((data: UserI[]) => {
       this.user = data[0]
       this._notification.hideSpinner()
-      console.log(this.user)
     })
   }   
   getGreeting() {

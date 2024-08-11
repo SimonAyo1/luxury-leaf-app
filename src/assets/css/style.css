@@ -387,7 +387,8 @@ img {
 }
 
 body {
-  background-color: #fff;
+  /* background-color: #fff; */
+  background: url(../../assets/images/mainbg.jpeg);
   background-attachment: fixed;
   -ms-word-wrap: break-word;
   word-wrap: break-word;

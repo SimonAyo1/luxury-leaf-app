@@ -97,11 +97,6 @@ export class PaymentComponent implements OnInit {
         layout: "vertical",
       },
       onApprove: (data, actions) => {
-        console.log(
-          "onApprove - transaction was approved, but not authorized",
-          data,
-          actions
-        );
         actions.order.get().then((details) => {
           // console.log('onApprove - you can get full order details inside onApprove: ', details);
         });
@@ -115,7 +110,6 @@ export class PaymentComponent implements OnInit {
         // console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
       },
       onCancel: (data, actions) => {
-        console.log("OnCancel", data, actions);
         this.paymentStatus.emit({
           isSuccess: false,
           orderId: this.orderID,
@@ -162,14 +156,12 @@ export class PaymentComponent implements OnInit {
       })
       .subscribe((result) => {
         this.paying = false;
-        console.log("Result", result);
         if (result.error) {
           // Show error to your customer (e.g., insufficient funds)
           this.paymentStatus.emit({
             isSuccess: false,
             orderId: this.orderID,
           });
-          console.log({ success: false, error: result.error.message });
           this.notify.hideSpinner();
           this.notify.warningMessage(result.error.message);
         } else {

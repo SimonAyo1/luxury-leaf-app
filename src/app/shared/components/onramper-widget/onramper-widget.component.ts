@@ -22,7 +22,6 @@ export class OnramperWidgetComponent implements AfterViewInit, OnDestroy {
 
     this.subscription = this.onramperService.transactionSuccess.subscribe(
       (data: any) => {
-        console.log("Transaction was successful!", data);
         this.handleTransactionSuccess(data);
       }
     );
@@ -37,6 +36,5 @@ export class OnramperWidgetComponent implements AfterViewInit, OnDestroy {
   private handleTransactionSuccess(data: any): void {
     // Add your custom logic here, e.g., update UI, show a notification, etc.
     alert("Transaction was successful!");
-    console.log("Transaction data:", data);
   }
 }
