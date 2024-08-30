@@ -3,12 +3,14 @@
 <section class="cart-section section-b-space">
   <div class="container">
     <div class="col-sm-12 empty-cart-cls text-center" *ngIf="!products.length">
-      <img src="assets/images/icon/marijuana-shipping.svg" class="img-fluid" style="width: 250px" />
-      <h3><strong>Nothing is in your cart</strong></h3>
+      <img
+        src="assets/images/icon/marijuana-shipping.svg"
+        class="img-fluid"
+        style="width: 250px"
+      />
+      <h3><strong style="color: #fff;">Nothing is in your cart</strong></h3>
       <div>
-        <a
-          [routerLink]="['/store/collections']"
-          class="btn btn-solid"
+        <a [routerLink]="['/store/collections']" class="btn btn-solid"
           >Shop Now</a
         >
       </div>
@@ -128,8 +130,7 @@
               <td>
                 <h2 class="td-color">
                   {{
-                    (product.price | discount : product) *
-                      product.quantity *
+                    (product.price * product.quantity | discount : product) *
                       productService?.Currency.price
                       | currency : productService?.Currency.currency : "symbol"
                   }}
@@ -150,7 +151,7 @@
         <table class="table cart-table table-responsive-md">
           <tfoot>
             <tr>
-              <td>total price :</td>
+              <td style="color: #fff">total price :</td>
               <td>
                 <h2>
                   {{
@@ -167,14 +168,14 @@
     </div>
     <div class="row cart-buttons" *ngIf="products.length">
       <div class="col-6">
-        <a
-          [routerLink]="['/store/collections']"
-          class="btn btn-solid"
+        <a [routerLink]="['/store/collections']" class="btn btn-solid"
           >continue shopping</a
         >
       </div>
       <div class="col-6">
-        <a [routerLink]="['/store/checkout']" class="btn btn-solid">check out</a>
+        <a [routerLink]="['/store/checkout']" class="btn btn-solid"
+          >check out</a
+        >
       </div>
     </div>
   </div>

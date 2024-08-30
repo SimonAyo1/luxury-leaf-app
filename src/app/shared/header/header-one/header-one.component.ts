@@ -9,7 +9,7 @@ import { Auth } from '@angular/fire/auth';
 export class HeaderOneComponent implements OnInit {
 
   @Input() class: string;
-  @Input() themeLogo: string = 'assets/images/logos/luxury-logo.png'; // Default Logo
+  @Input() themeLogo: string = 'assets/images/logos/llc-white.jpeg'; // Default Logo
   @Input() topbar: boolean = true; // Default True
   @Input() sticky: boolean = false; // Default false
 

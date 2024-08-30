@@ -105,15 +105,21 @@
                 <div class="product-right">
                   <h2>{{ product?.title }}</h2>
                   <h4>
-                    <del *ngIf="product?.discount">{{
+                    {{
+                      product?.price * productService.Currency?.price
+                        | currency
+                          : productService.Currency?.currency
+                          : "symbol"
+                    }}
+                    <!-- <del *ngIf="getDiscount(product.discount)">{{
                       product?.price * productService.Currency?.price
                         | currency
                           : productService.Currency?.currency
                           : "symbol"
                     }}</del>
-                    <span *ngIf="product?.discount">
+                    <span *ngIf="getDiscount(product.discount)">
                       {{ getDiscount(product.discount) }}% off
-                    </span>
+                    </span> -->
                   </h4>
                   <h3>
                     {{
@@ -178,8 +184,16 @@
                     <div *ngIf="isArray(product.discount)">
                       <h6 class="product-title">Discount Offers</h6>
 
-                      <div class="d-flex justify-content-between" *ngFor="let dis of product.discount">
-                        <div><p>Buy {{dis.quantity}}x and get {{dis.discount}}% discount</p> </div>
+                      <div
+                        class="d-flex justify-content-between"
+                        *ngFor="let dis of product.discount"
+                      >
+                        <div>
+                          <p>
+                            Buy {{ dis.quantity }}x and get {{ dis.discount }}%
+                            discount
+                          </p>
+                        </div>
                       </div>
                     </div>
 

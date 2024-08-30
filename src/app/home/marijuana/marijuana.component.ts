@@ -11,8 +11,8 @@ import { NotificationService } from "src/app/shared/services/notification.servic
   styleUrls: ["./marijuana.component.scss"],
 })
 export class MarijuanaComponent implements OnInit, OnDestroy {
-  public themeLogo: string = "assets/images/logos/luxury-logo.png";
-  public themeFooterLogo: string = "assets/images/logos/luxury-logo.png";
+  public themeLogo: string = "assets/images/logos/llc-white.jpeg";
+  public themeFooterLogo: string = "assets/images/logos/llc-white.jpeg";
   public isLoading: boolean = true;
   public products: Product[] = [];
   public presidential: Product[] = [];

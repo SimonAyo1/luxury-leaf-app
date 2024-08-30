@@ -35,6 +35,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   ) {
     this.route.data.subscribe((response) => {
       this.product = response.data;
+      console.log(this.product, "productproductproductproductproduct");
       this.init_price = this.product?.price;
     });
   }
@@ -71,7 +72,14 @@ export class ProductLeftSidebarComponent implements OnInit {
   increment() {
     this.counter++;
   }
+  // increment(product, qty = 1) {
+  //   this.productService.updateCartQuantity(product, qty);
+  // }
 
+  // // Decrement
+  // decrement(product, qty = -1) {
+  //   this.productService.updateCartQuantity(product, qty);
+  // }
   // Decrement
   decrement() {
     if (this.counter > 1) this.counter--;
@@ -142,12 +150,9 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   getDiscount(discount: any): number {
     if (Array.isArray(discount)) {
-      return (
-        discount.find((a) => a.quantity === 1)?.discount ||
-        discount[0]?.discount
-      );
+      return discount.find((a) => a.quantity === 1)?.discount || null;
     } else {
-      return discount;
+      return null;
     }
   }
 

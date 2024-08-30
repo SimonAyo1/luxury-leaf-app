@@ -786,7 +786,7 @@ button {
     ==========================*/
 
 header {
-    background-color: $white;
+    background-color: #000
 }
 
 .left-header {
@@ -1514,10 +1514,10 @@ header {
 .absolute-banner {
     margin-top: -105px;
     .absolute-bg {
-        background-color: white;
+        // background-color: white;
         position: relative;
         padding: 25px;
-        box-shadow: 0 0 8px 0 #ddd;
+        // box-shadow: 0 0 8px 0 #ddd;
         z-index: 1;
     }
 }
@@ -7689,7 +7689,8 @@ footer {
         .checkout-details {
             position: relative;
             background-color: $grey-lighter;
-            border: 1px solid $round-border;
+            // border: 1px solid $round-border;  
+            border: 1px solid #9fec97;
             padding: 40px;
         }
         .check-out {
@@ -16182,8 +16183,8 @@ div{
       Footer CSS Start
 ==========================**/
 footer{
-  background-color: $footer_bg_color;
-  border-top: 1px solid $footer_top_bgr_color;
+//   background-color: $footer_bg_color;
+//   border-top: 1px solid $footer_top_bgr_color;
   bottom: 0;
   left: 0;
   a{

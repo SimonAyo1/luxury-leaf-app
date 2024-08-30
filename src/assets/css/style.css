@@ -1251,7 +1251,7 @@ Page Title
   top: 0;
   height: 100%;
   width: 100%;
-  background: #000000;
+  background: #7394531f;
   opacity: 0.5;
   content: "";
 }
@@ -5929,7 +5929,7 @@ table.tbl-shopping-cart > tfoot > tr > th {
   top: 0;
   height: 100%;
   width: 100%;
-  background: #131313;
+  background: #7394531f;
   opacity: 0.8;
   content: "";
 }

@@ -206,7 +206,7 @@ export class ProductService {
     if (!stock) return false;
 
     if (cartItem) {
-      cartItem.quantity += qty;
+      cartItem.quantity = qty;
     } else {
       state.cart.push({
         ...product,

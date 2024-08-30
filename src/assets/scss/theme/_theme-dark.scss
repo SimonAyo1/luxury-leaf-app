@@ -59,7 +59,7 @@ body {
         color: $white-5;
         background-color: $dark-body;
         transition: all 0.3s ease;
-        border: 1px solid $dark-border;
+        border: 1px solid #96b68d;
     }
     .btn-solid {
         color: $white !important;
@@ -1007,7 +1007,9 @@ body {
                 &[type="url"] {
                     background-color: $dark-body;
                     transition: all 0.3s ease;
-                    border-color: $dark-border;
+                    // border-color: $dark-border;
+                    border: 1px solid #9fec97;
+
                 }
             }
             select,
@@ -1437,9 +1439,9 @@ body {
     }
     .absolute-banner {
         .absolute-bg {
-            background-color: $dark-body;
+            // background-color: $dark-body;
             transition: all 0.3s ease;
-            box-shadow: 0 0 8px 0 rgba(black, 0.40);
+            // box-shadow: 0 0 8px 0 rgba(black, 0.40);
         }
     }
     .login-page {
