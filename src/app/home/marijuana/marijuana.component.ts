@@ -49,7 +49,6 @@ export class MarijuanaComponent implements OnInit, OnDestroy {
     private _user: UserService
   ) {
     this.productService.getProducts.subscribe((response) => {
-      console.log(response, "response")
       this.products = response.slice(0, 4);
       this.platinum = response
         .filter((r) => r.category?.toLocaleLowerCase() == "platinum")

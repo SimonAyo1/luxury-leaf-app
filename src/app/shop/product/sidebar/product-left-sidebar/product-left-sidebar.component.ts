@@ -35,7 +35,6 @@ export class ProductLeftSidebarComponent implements OnInit {
   ) {
     this.route.data.subscribe((response) => {
       this.product = response.data;
-      console.log(this.product, "productproductproductproductproduct");
       this.init_price = this.product?.price;
     });
   }
