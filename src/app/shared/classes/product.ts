@@ -9,15 +9,18 @@ export interface Product {
   category?: string;
   price?: number;
   sale?: boolean;
-  discount?: number;
+  discount?: any;
   stock?: number;
   new?: boolean;
   quantity?: number;
   tags?: any[];
   variants?: Variants[];
   images?: Images[];
-  colors?: string[];
-  sizes?: { size: string; price: number }[];
+  color?: string;
+  size?: string;
+  productType?: string
+  // colors?: string[];
+  // sizes?: { size: string; price: number }[];
 }
 
 export interface Variants {

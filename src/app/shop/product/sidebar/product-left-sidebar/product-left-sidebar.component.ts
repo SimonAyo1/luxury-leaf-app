@@ -87,8 +87,8 @@ export class ProductLeftSidebarComponent implements OnInit {
 
   // Add to cart
   async addToCart(product: Product) {
-    product.colors = this.selectedColors;
-    product.sizes = this.selectedSizes;
+    // product.colors = this.selectedColors;
+    // product.sizes = this.selectedSizes;
     product.quantity = this.counter || 1;
     const status = await this.productService.addToCart(product);
     if (status) this.router.navigate(["/store/cart"]);
@@ -108,24 +108,24 @@ export class ProductLeftSidebarComponent implements OnInit {
     if (status) this.router.navigate(["/store/checkout"]);
   }
 
-  onSizeChange(event: any) {
-    const size = event.target.value;
-    if (event.target.checked) {
-      const pr = this.product?.sizes?.filter((s) => s.size == size)[0];
-      this.selectedSizes.push({
-        price: Number(pr?.price),
-        size: pr?.size,
-      });
-    } else {
-      this.selectedSizes = this.selectedSizes.filter((s) => s.size != size);
-    }
-    this.product.price = 0;
-    this.selectedSizes?.forEach((s) => (this.product.price += s.price));
+  // onSizeChange(event: any) {
+  //   const size = event.target.value;
+  //   if (event.target.checked) {
+  //     const pr = this.product?.sizes?.filter((s) => s.size == size)[0];
+  //     this.selectedSizes.push({
+  //       price: Number(pr?.price),
+  //       size: pr?.size,
+  //     });
+  //   } else {
+  //     this.selectedSizes = this.selectedSizes.filter((s) => s.size != size);
+  //   }
+  //   this.product.price = 0;
+  //   this.selectedSizes?.forEach((s) => (this.product.price += s.price));
 
-    if (this.selectedSizes?.length == 0) {
-      this.product.price = this.init_price;
-    }
-  }
+  //   if (this.selectedSizes?.length == 0) {
+  //     this.product.price = this.init_price;
+  //   }
+  // }
 
   // Add to Wishlist
   addToWishlist(product: any) {

@@ -2994,7 +2994,7 @@ Page Title
 
 .accordion-box .block {
   position: relative;
-  background-color: #f6f5f0;
+  background-color: #252522;
   border-radius: 10px;
   margin-bottom: 10px;
 }
@@ -3002,7 +3002,7 @@ Page Title
   position: relative;
   font-size: 20px;
   line-height: 34px;
-  color: var(--theme-color1);
+  color: #fff;
   font-weight: 600;
   cursor: pointer;
   padding: 20px 40px;
@@ -3047,7 +3047,7 @@ Page Title
   display: block;
   font-size: 16px;
   line-height: 30px;
-  color: #819291;
+  color: #d3dcdc;
   margin-bottom: 0;
 }
 .accordion-box .block .acc-content.current {

@@ -1704,7 +1704,9 @@ body {
                 .nav-link {
                     color: #ffffff;
                     &.active {
-                        color: $theme-deafult;
+                        // color: $theme-deafult;
+                                                color: #fff;
+
                     }
                 }
             }

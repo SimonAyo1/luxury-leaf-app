@@ -2,3 +2,8 @@
   max-height: fit-content !important;
   overflow-y: unset !important;
 }
+
+
+input:disabled {
+  color: #fff !important;
+}

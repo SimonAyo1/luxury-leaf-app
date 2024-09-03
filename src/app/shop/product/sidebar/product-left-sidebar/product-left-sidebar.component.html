@@ -181,23 +181,49 @@
                       <span>Out of Stock</span>
                     </h5>
 
-                    <div *ngIf="isArray(product.discount)">
-                      <h6 class="product-title">Discount Offers</h6>
+                    <div class="discount-off">
+                      <div>
+                        <div *ngIf="isArray(product.discount)">
+                          <h6 class="product-title" *ngIf="product.discount?.length > 0">Discount Offers</h6>
 
-                      <div
-                        class="d-flex justify-content-between"
-                        *ngFor="let dis of product.discount"
-                      >
-                        <div>
-                          <p>
-                            Buy {{ dis.quantity }}x and get {{ dis.discount }}%
-                            discount
-                          </p>
+                          <div
+                            class="d-flex justify-content-between"
+                            *ngFor="let dis of product.discount"
+                          >
+                            <div>
+                              <p>
+                                Buy {{ dis.quantity }}x and get
+                                {{ dis.discount }}% discount
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-
-                    <div *ngIf="product?.colors?.length">
+                    <div class="discount-off">
+                      <div>
+                        <div
+                          class="mt-4"
+                          *ngIf="product.productType == 'multiple'"
+                        >
+                          <div
+                            *ngIf="product.color"
+                            style="display: flex; gap: 10px"
+                          >
+                            <h6 class="product-title">Color:</h6>
+                            <p style="margin-top: 3px">{{ product.color }}</p>
+                          </div>
+                          <div
+                            *ngIf="product.size"
+                            style="display: flex; gap: 10px"
+                          >
+                            <h6 class="product-title">Size:</h6>
+                            <p style="margin-top: 3px">{{ product.size }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div *ngIf="product?.colors?.length">
                       <h6 class="product-title">Select Color(s)</h6>
 
                       <div class="form-group row mt-2" style="margin-left: 1px">
@@ -248,9 +274,9 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
-                    <h6 class="product-title">quantity</h6>
+                    <h6 class="product-title mt-4">quantity</h6>
                     <div class="qty-box">
                       <div class="input-group">
                         <span class="input-group-prepend">

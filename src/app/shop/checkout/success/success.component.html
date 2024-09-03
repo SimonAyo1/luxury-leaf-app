@@ -37,6 +37,7 @@
 <section
   class="section-b-space light-layout"
   *ngIf="orderDetails && !isLoading"
+  style="background-color: unset !important;"
 >
   <div class="container">
     <div class="row">
@@ -53,7 +54,7 @@
               aria-hidden="true"
             ></i>
           </p>
-          <p><b>Order ID:</b>{{ orderDetails.orderId }}</p>
+          <p><b style="color: #fff;">Order ID:</b>{{ orderDetails.orderId }}</p>
         </div>
       </div>
     </div>
