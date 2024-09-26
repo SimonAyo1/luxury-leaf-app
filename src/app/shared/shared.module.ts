@@ -110,7 +110,7 @@ import { OnramperWidgetComponent } from './components/onramper-widget/onramper-w
     NgxSkeletonLoaderModule,
     TranslateModule,
     NgxPayPalModule,
-    NgxStripeModule.forRoot('pk_test_51OAxYZAYThx0GdC1KUuJfT8zzAu07o33Qsk32OX73st7kTtNXW4U8vvCSezeeLXkdiDJHPVmUwUQxSvvr68QLLHv00GZi2yGAs'),
+    NgxStripeModule.forRoot('pk_live_51O0wohKVYd3fW84LApQ6SyQ3JgIrdXz42zbpLkNVwrzv7KbovRrYdMnQGrWl47f0vSmh0XbCVrAcriRBvO7BzNXe00H06SwRr2'),
   ],
   exports: [
     CommonModule,
